@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4soma0g2ugjo"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mwb40"]
+
+[node name="Game" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_mwb40")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.248581, 0.845714)
