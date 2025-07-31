@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccowan11ehccn"]
+
+[ext_resource type="Script" uid="uid://bbdm23orleeqy" path="res://scenes/Plant/plant_activated_particles.gd" id="1_tly6p"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_syc0h"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 163.69
+initial_velocity_max = 329.7
+gravity = Vector3(0, 0, 0)
+damping_max = 82.292
+scale_min = 4.0
+scale_max = 4.0
+color = Color(0.905882, 0.854902, 0.0666667, 1)
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+emitting = false
+amount = 40
+lifetime = 0.26
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_syc0h")
+script = ExtResource("1_tly6p")

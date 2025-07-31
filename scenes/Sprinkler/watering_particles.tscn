@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyptd6ma5v42e"]
+
+[ext_resource type="Script" uid="uid://xlsxrhjfn0e1" path="res://scenes/Sprinkler/watering_particles.gd" id="1_utsn7"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gomms"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0.205, 0, 0)
+emission_shape_scale = Vector3(100, 100, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, 500, 0)
+color = Color(0, 0.72549, 1, 1)
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+z_index = 1
+emitting = false
+amount = 353
+lifetime = 1.95
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_gomms")
+script = ExtResource("1_utsn7")

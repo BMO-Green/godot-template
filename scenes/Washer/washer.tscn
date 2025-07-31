@@ -107,6 +107,9 @@ position = Vector2(4, -34)
 script = ExtResource("3_p4vi5")
 seed_prefab = ExtResource("4_ufg6d")
 
+[node name="Sprinkler" parent="." instance=ExtResource("7_1n734")]
+position = Vector2(-3, 31)
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -165,6 +168,14 @@ offset_right = 229.0
 offset_bottom = -200.0
 text = "SPIN"
 
+[node name="SprayButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = -147.0
+offset_right = 225.0
+offset_bottom = -116.0
+text = "SPRAY"
+
 [node name="Seedbutton" type="Button" parent="Control"]
 layout_mode = 2
 offset_left = 40.0
@@ -173,9 +184,6 @@ offset_right = 226.0
 offset_bottom = -159.0
 text = "SEED"
 
-[node name="Sprinkler" parent="." instance=ExtResource("7_1n734")]
-visible = false
-position = Vector2(-3, 31)
-
 [connection signal="pressed" from="Control/SpinButton" to="." method="_on_spin_button_pressed"]
+[connection signal="pressed" from="Control/SprayButton" to="Sprinkler" method="_on_spray_button_pressed"]
 [connection signal="pressed" from="Control/Seedbutton" to="." method="_on_seedbutton_pressed"]
