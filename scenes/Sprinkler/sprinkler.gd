@@ -5,7 +5,7 @@ class_name Sprinkler
 @export var particle_system : PackedScene
 
 func spray_water() -> void:
-	var colliders = water_spray_detection.get_overlapping_bodies()
+	var colliders = water_spray_detection.get_overlapping_areas()
 	
 	for collider in colliders:
 		if collider is Plant:
