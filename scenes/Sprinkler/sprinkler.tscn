@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://62kfcgolanpg"]
+[gd_scene load_steps=7 format=3 uid="uid://62kfcgolanpg"]
 
 [ext_resource type="Script" uid="uid://c8h2n0qdcjbwf" path="res://scenes/Sprinkler/sprinkler.gd" id="1_0xn57"]
+[ext_resource type="PackedScene" uid="uid://cyptd6ma5v42e" path="res://scenes/Sprinkler/watering_particles.tscn" id="2_vmldu"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_0xn57"]
 size = Vector2(200, 400)
@@ -16,6 +17,7 @@ size = Vector2(204, 370)
 [node name="Sprinkler" type="Node2D" node_paths=PackedStringArray("water_spray_detection")]
 script = ExtResource("1_0xn57")
 water_spray_detection = NodePath("WateringCollider")
+particle_system = ExtResource("2_vmldu")
 
 [node name="wateringzonedisplay" type="MeshInstance2D" parent="."]
 modulate = Color(0.25098, 1, 1, 0.0313726)

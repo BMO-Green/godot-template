@@ -38,7 +38,7 @@ position = Vector2(-1, 10)
 mesh = SubResource("BoxMesh_h8208")
 
 [node name="Cavity" type="MeshInstance2D" parent="."]
-modulate = Color(0.393086, 0.393086, 0.393085, 1)
+self_modulate = Color(0.306923, 0.306923, 0.306923, 1)
 position = Vector2(2, 82)
 mesh = SubResource("SphereMesh_lfd6o")
 
@@ -98,7 +98,7 @@ position = Vector2(61, -68)
 shape = SubResource("CapsuleShape2D_mgpd2")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Cavity"]
-self_modulate = Color(0, 1, 1, 1)
+self_modulate = Color(0.197399, 0.373462, 0.413027, 1)
 position = Vector2(4, 2)
 mesh = SubResource("QuadMesh_h8208")
 
@@ -106,6 +106,9 @@ mesh = SubResource("QuadMesh_h8208")
 position = Vector2(4, -34)
 script = ExtResource("3_p4vi5")
 seed_prefab = ExtResource("4_ufg6d")
+
+[node name="Sprinkler" parent="." instance=ExtResource("7_1n734")]
+position = Vector2(-3, 31)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -165,6 +168,14 @@ offset_right = 229.0
 offset_bottom = -200.0
 text = "SPIN"
 
+[node name="SprayButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = -147.0
+offset_right = 225.0
+offset_bottom = -116.0
+text = "SPRAY"
+
 [node name="Seedbutton" type="Button" parent="Control"]
 layout_mode = 2
 offset_left = 40.0
@@ -173,9 +184,6 @@ offset_right = 226.0
 offset_bottom = -159.0
 text = "SEED"
 
-[node name="Sprinkler" parent="." instance=ExtResource("7_1n734")]
-visible = false
-position = Vector2(-3, 31)
-
 [connection signal="pressed" from="Control/SpinButton" to="." method="_on_spin_button_pressed"]
+[connection signal="pressed" from="Control/SprayButton" to="Sprinkler" method="_on_spray_button_pressed"]
 [connection signal="pressed" from="Control/Seedbutton" to="." method="_on_seedbutton_pressed"]
