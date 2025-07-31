@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2v76ttkfjs7c"]
+[gd_scene load_steps=4 format=3 uid="uid://b2v76ttkfjs7c"]
 
 [ext_resource type="PackedScene" uid="uid://b1an0fegyfxgt" path="res://scenes/Washer/washer.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://cr86vh7nyi3gx" path="res://scenes/point_manager.tscn" id="3_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://j6mugwi4uxu8" path="res://scenes/point_display.tscn" id="3_lnu2h"]
 
 [node name="Game" type="Node2D"]
 
@@ -9,3 +11,26 @@ position = Vector2(-3, 0)
 
 [node name="Washer" parent="." instance=ExtResource("1_uwrxv")]
 position = Vector2(-6, 43)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PointsLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -518.0
+offset_top = -190.0
+offset_right = -465.0
+offset_bottom = -167.0
+text = "Points:"
+
+[node name="PointDisplay" parent="Control" instance=ExtResource("3_lnu2h")]
+layout_mode = 0
+offset_left = -462.0
+offset_top = -190.0
+offset_right = -422.0
+offset_bottom = -167.0
+
+[node name="PointManager" parent="." instance=ExtResource("3_lbhrr")]
