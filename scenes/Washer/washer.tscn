@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://ccsr5veij22yb" path="res://godot-donut-collision-polygon-2d-7780d026ae3d4a37fe68f43cc1f97ba664dd775d/addons/donut_collision_polygon2D/donut_collision_polygon2D.gd" id="2_mgpd2"]
 [ext_resource type="Script" uid="uid://bdqmepomsr402" path="res://scenes/Washer/seed_spawner.gd" id="3_p4vi5"]
 [ext_resource type="PackedScene" uid="uid://d0ka7875s2t78" path="res://scenes/Seed/seed.tscn" id="4_ufg6d"]
-[ext_resource type="Script" uid="uid://c7hn4iwn2hwt" path="res://scripts/speed_slider.gd" id="5_4too1"]
-[ext_resource type="Script" uid="uid://dh381otaqdp0e" path="res://scripts/duration_slider.gd" id="6_1n734"]
+[ext_resource type="Script" uid="uid://c7hn4iwn2hwt" path="res://scripts/UI/speed_slider.gd" id="5_4too1"]
+[ext_resource type="Script" uid="uid://dh381otaqdp0e" path="res://scripts/UI/duration_slider.gd" id="6_1n734"]
 [ext_resource type="PackedScene" uid="uid://62kfcgolanpg" path="res://scenes/Sprinkler/sprinkler.tscn" id="7_1n734"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_h8208"]
@@ -124,7 +124,7 @@ offset_top = -227.0
 offset_right = -12.0
 offset_bottom = -137.0
 
-[node name="Label2" type="Label" parent="Control/VBoxContainer"]
+[node name="SpeedLabel" type="Label" parent="Control/VBoxContainer"]
 layout_mode = 2
 text = "                SPEED                 "
 
@@ -137,7 +137,7 @@ value = 0.5
 script = ExtResource("5_4too1")
 washer = NodePath("../../..")
 
-[node name="Label" type="Label" parent="Control/VBoxContainer"]
+[node name="DurationLabel" type="Label" parent="Control/VBoxContainer"]
 layout_mode = 2
 text = "                DURATION                 "
 
@@ -166,24 +166,15 @@ offset_left = 43.0
 offset_top = -231.0
 offset_right = 229.0
 offset_bottom = -200.0
-text = "SPIN"
-
-[node name="SprayButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 39.0
-offset_top = -147.0
-offset_right = 225.0
-offset_bottom = -116.0
-text = "SPRAY"
+text = "SPIN (1 COIN)"
 
 [node name="Seedbutton" type="Button" parent="Control"]
 layout_mode = 2
-offset_left = 40.0
+offset_left = 42.0
 offset_top = -190.0
-offset_right = 226.0
+offset_right = 228.0
 offset_bottom = -159.0
-text = "SEED"
+text = "SEED (2 COINS)"
 
 [connection signal="pressed" from="Control/SpinButton" to="." method="_on_spin_button_pressed"]
-[connection signal="pressed" from="Control/SprayButton" to="Sprinkler" method="_on_spray_button_pressed"]
-[connection signal="pressed" from="Control/Seedbutton" to="." method="_on_seedbutton_pressed"]
+[connection signal="pressed" from="Control/Seedbutton" to="." method="_on_seed_button_pressed"]
