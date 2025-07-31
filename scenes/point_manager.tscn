@@ -4,3 +4,4 @@
 
 [node name="PointManager" type="Node"]
 script = ExtResource("1_o0418")
+threshold_list = Array[int]([10, 25, 60, 100, 300, 700, 1200, 2000])

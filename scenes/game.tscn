@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2v76ttkfjs7c"]
+[gd_scene load_steps=6 format=3 uid="uid://b2v76ttkfjs7c"]
 
 [ext_resource type="PackedScene" uid="uid://b1an0fegyfxgt" path="res://scenes/Washer/washer.tscn" id="1_uwrxv"]
-[ext_resource type="PackedScene" uid="uid://cr86vh7nyi3gx" path="res://scenes/point_manager.tscn" id="3_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://j6mugwi4uxu8" path="res://scenes/point_display.tscn" id="3_lnu2h"]
+[ext_resource type="Script" uid="uid://b5o07bgs1gupw" path="res://scenes/currency_display.gd" id="3_iywne"]
+[ext_resource type="Script" uid="uid://do1ooirbe8nyf" path="res://scripts/UI/round_display.gd" id="3_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://j6mugwi4uxu8" path="res://scripts/UI/point_display.tscn" id="3_lnu2h"]
+[ext_resource type="Script" uid="uid://p0n4me5pwe3w" path="res://scripts/UI/treshold_display.gd" id="3_p57ef"]
 
 [node name="Game" type="Node2D"]
 
@@ -10,6 +12,7 @@
 position = Vector2(-3, 0)
 
 [node name="Washer" parent="." instance=ExtResource("1_uwrxv")]
+unique_name_in_owner = true
 position = Vector2(-6, 43)
 
 [node name="Control" type="Control" parent="."]
@@ -17,6 +20,58 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="TresholdLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -38.0
+offset_top = -250.0
+offset_right = 17.0
+offset_bottom = -227.0
+text = "Target:"
+
+[node name="TresholdDisplay" parent="Control" instance=ExtResource("3_lnu2h")]
+layout_mode = 0
+offset_left = 22.0
+offset_top = -251.0
+offset_right = 62.0
+offset_bottom = -202.0
+text = "0
+"
+script = ExtResource("3_p57ef")
+
+[node name="RoundLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -37.0
+offset_top = -274.0
+offset_right = 16.0
+offset_bottom = -251.0
+text = "Round:"
+
+[node name="RoundDisplay" parent="Control" instance=ExtResource("3_lnu2h")]
+layout_mode = 0
+offset_left = 21.0
+offset_top = -273.0
+offset_right = 61.0
+offset_bottom = -224.0
+text = "0
+"
+script = ExtResource("3_lbhrr")
+
+[node name="CurrencyLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -519.0
+offset_top = -167.0
+offset_right = -466.0
+offset_bottom = -144.0
+text = "Coins:"
+
+[node name="CurrencyDisplay" parent="Control" instance=ExtResource("3_lnu2h")]
+layout_mode = 0
+offset_left = -462.0
+offset_top = -166.0
+offset_right = -422.0
+offset_bottom = -143.0
+script = ExtResource("3_iywne")
 
 [node name="PointsLabel" type="Label" parent="Control"]
 layout_mode = 0
@@ -28,9 +83,7 @@ text = "Points:"
 
 [node name="PointDisplay" parent="Control" instance=ExtResource("3_lnu2h")]
 layout_mode = 0
-offset_left = -462.0
+offset_left = -463.0
 offset_top = -190.0
-offset_right = -422.0
+offset_right = -423.0
 offset_bottom = -167.0
-
-[node name="PointManager" parent="." instance=ExtResource("3_lbhrr")]

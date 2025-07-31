@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c32kp85nhi0xx"]
+
+[ext_resource type="Script" uid="uid://bq54un4w526y" path="res://scenes/GameStateManager/game_state_manager.gd" id="1_py4rd"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_py4rd")

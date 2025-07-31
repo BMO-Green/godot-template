@@ -18,6 +18,7 @@ size = Vector2(204, 370)
 script = ExtResource("1_0xn57")
 water_spray_detection = NodePath("WateringCollider")
 particle_system = ExtResource("2_vmldu")
+time_between_sprays = 1.5
 
 [node name="wateringzonedisplay" type="MeshInstance2D" parent="."]
 modulate = Color(0.25098, 1, 1, 0.0313726)

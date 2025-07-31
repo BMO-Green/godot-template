@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 PointManager="*res://scenes/point_manager.tscn"
+CurrencyManager="*res://scenes/CurrencyManager/currency_manager.tscn"
+GameStateManager="*res://scenes/GameStateManager/game_state_manager.tscn"
 
 [editor]
 
@@ -27,7 +29,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/maaacks_game_template/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 
