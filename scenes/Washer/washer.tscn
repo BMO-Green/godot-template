@@ -1,0 +1,180 @@
+[gd_scene load_steps=13 format=3 uid="uid://b1an0fegyfxgt"]
+
+[ext_resource type="Script" uid="uid://24fku4hjw18q" path="res://scenes/Washer/washer.gd" id="1_lfd6o"]
+[ext_resource type="Script" uid="uid://ccsr5veij22yb" path="res://godot-donut-collision-polygon-2d-7780d026ae3d4a37fe68f43cc1f97ba664dd775d/addons/donut_collision_polygon2D/donut_collision_polygon2D.gd" id="2_mgpd2"]
+[ext_resource type="Script" uid="uid://bdqmepomsr402" path="res://scenes/Washer/seed_spawner.gd" id="3_p4vi5"]
+[ext_resource type="PackedScene" uid="uid://d0ka7875s2t78" path="res://scenes/Seed/seed.tscn" id="4_ufg6d"]
+[ext_resource type="Script" uid="uid://c7hn4iwn2hwt" path="res://scripts/speed_slider.gd" id="5_4too1"]
+[ext_resource type="Script" uid="uid://dh381otaqdp0e" path="res://scripts/duration_slider.gd" id="6_1n734"]
+[ext_resource type="PackedScene" uid="uid://62kfcgolanpg" path="res://scenes/Sprinkler/sprinkler.tscn" id="7_1n734"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_h8208"]
+size = Vector3(500, 500, 100)
+
+[sub_resource type="SphereMesh" id="SphereMesh_lfd6o"]
+radius = 150.0
+height = 300.0
+radial_segments = 65
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mgpd2"]
+rough = true
+bounce = 0.33
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mgpd2"]
+radius = 25.0
+height = 56.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_h8208"]
+size = Vector2(20, 300)
+
+[node name="Washer" type="Node2D" node_paths=PackedStringArray("spin_duration_label", "seed_spawner")]
+script = ExtResource("1_lfd6o")
+spin_duration_label = NodePath("Control/Label")
+spin_amount = 1.445
+seed_spawner = NodePath("SeedSpawnLocation")
+
+[node name="Background" type="MeshInstance2D" parent="."]
+position = Vector2(-1, 10)
+mesh = SubResource("BoxMesh_h8208")
+
+[node name="Cavity" type="MeshInstance2D" parent="."]
+modulate = Color(0.393086, 0.393086, 0.393085, 1)
+position = Vector2(2, 82)
+mesh = SubResource("SphereMesh_lfd6o")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Cavity"]
+position = Vector2(0, -80)
+physics_material_override = SubResource("PhysicsMaterial_mgpd2")
+
+[node name="DonutCollisionPolygon2D" type="CollisionPolygon2D" parent="Cavity/StaticBody2D"]
+position = Vector2(0, 80)
+scale = Vector2(16.6832, 16.8187)
+polygon = PackedVector2Array(6.73533e-16, -11, 2.14599, -10.7886, 4.20952, -10.1627, 6.11127, -9.14617, 7.77817, -7.77817, 9.14617, -6.11127, 10.1627, -4.20952, 10.7886, -2.14599, 11, 0, 10.7886, 2.14599, 10.1627, 4.20952, 9.14617, 6.11127, 7.77817, 7.77817, 6.11127, 9.14617, 4.20952, 10.1627, 2.14599, 10.7886, 6.73533e-16, 11, -2.14599, 10.7886, -4.20952, 10.1627, -6.11127, 9.14617, -7.77817, 7.77817, -9.14617, 6.11127, -10.1627, 4.20952, -10.7886, 2.14599, -11, 1.34707e-15, -10.7886, -2.14599, -10.1627, -4.20952, -9.14617, -6.11127, -7.77817, -7.77817, -6.11127, -9.14617, -4.20952, -10.1627, -2.14599, -10.7886, -2.0206e-15, -11, -1.65322e-15, -9, -1.75581, -8.82707, -3.44415, -8.31492, -5.00013, -7.48323, -6.36396, -6.36396, -7.48323, -5.00013, -8.31492, -3.44415, -8.82707, -1.75581, -9, 1.10215e-15, -8.82707, 1.75581, -8.31492, 3.44415, -7.48323, 5.00013, -6.36396, 6.36396, -5.00013, 7.48323, -3.44415, 8.31492, -1.75581, 8.82707, 5.51073e-16, 9, 1.75581, 8.82707, 3.44415, 8.31492, 5.00013, 7.48323, 6.36396, 6.36396, 7.48323, 5.00013, 8.31492, 3.44415, 8.82707, 1.75581, 9, 0, 8.82707, -1.75581, 8.31492, -3.44415, 7.48323, -5.00013, 6.36396, -6.36396, 5.00013, -7.48323, 3.44415, -8.31492, 1.75581, -8.82707, 5.51073e-16, -9, 0.0001, -10.9999)
+script = ExtResource("2_mgpd2")
+metadata/_custom_type_script = "uid://ccsr5veij22yb"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cavity/StaticBody2D"]
+position = Vector2(137, -12)
+shape = SubResource("CapsuleShape2D_mgpd2")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Cavity/StaticBody2D"]
+position = Vector2(164, 79)
+shape = SubResource("CapsuleShape2D_mgpd2")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Cavity/StaticBody2D"]
+position = Vector2(135, 170)
+shape = SubResource("CapsuleShape2D_mgpd2")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Cavity/StaticBody2D"]
+position = Vector2(63, 230)
+shape = SubResource("CapsuleShape2D_mgpd2")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Cavity/StaticBody2D"]
+position = Vector2(-33, 237)
+shape = SubResource("CapsuleShape2D_mgpd2")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Cavity/StaticBody2D"]
+position = Vector2(-112, 190)
+shape = SubResource("CapsuleShape2D_mgpd2")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Cavity/StaticBody2D"]
+position = Vector2(-158, 107)
+shape = SubResource("CapsuleShape2D_mgpd2")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Cavity/StaticBody2D"]
+position = Vector2(-149, 13)
+shape = SubResource("CapsuleShape2D_mgpd2")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Cavity/StaticBody2D"]
+position = Vector2(-89, -54)
+shape = SubResource("CapsuleShape2D_mgpd2")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Cavity/StaticBody2D"]
+position = Vector2(-21, -77)
+shape = SubResource("CapsuleShape2D_mgpd2")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Cavity/StaticBody2D"]
+position = Vector2(61, -68)
+shape = SubResource("CapsuleShape2D_mgpd2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Cavity"]
+self_modulate = Color(0, 1, 1, 1)
+position = Vector2(4, 2)
+mesh = SubResource("QuadMesh_h8208")
+
+[node name="SeedSpawnLocation" type="Node2D" parent="."]
+position = Vector2(4, -34)
+script = ExtResource("3_p4vi5")
+seed_prefab = ExtResource("4_ufg6d")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+modulate = Color(1, 0.03, 0.03, 1)
+layout_mode = 2
+offset_left = -233.0
+offset_top = -227.0
+offset_right = -12.0
+offset_bottom = -137.0
+
+[node name="Label2" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "                SPEED                 "
+
+[node name="SpeedSlider" type="HSlider" parent="Control/VBoxContainer" node_paths=PackedStringArray("washer")]
+layout_mode = 2
+min_value = 0.5
+max_value = 4.0
+step = 0.5
+value = 0.5
+script = ExtResource("5_4too1")
+washer = NodePath("../../..")
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "                DURATION                 "
+
+[node name="DurationSlider" type="HSlider" parent="Control/VBoxContainer" node_paths=PackedStringArray("washer", "label")]
+layout_mode = 2
+min_value = 5.0
+max_value = 30.0
+step = 5.0
+value = 5.0
+script = ExtResource("6_1n734")
+washer = NodePath("../../..")
+label = NodePath("../../Label")
+
+[node name="Label" type="Label" parent="Control"]
+modulate = Color(0, 1, 1, 1)
+layout_mode = 0
+offset_left = -157.0
+offset_top = -134.0
+offset_right = 64.0
+offset_bottom = -111.0
+text = "00:00"
+
+[node name="SpinButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = -231.0
+offset_right = 229.0
+offset_bottom = -200.0
+text = "SPIN"
+
+[node name="Seedbutton" type="Button" parent="Control"]
+layout_mode = 2
+offset_left = 40.0
+offset_top = -190.0
+offset_right = 226.0
+offset_bottom = -159.0
+text = "SEED"
+
+[node name="Sprinkler" parent="." instance=ExtResource("7_1n734")]
+position = Vector2(-3, 31)
+
+[connection signal="pressed" from="Control/SpinButton" to="." method="_on_spin_button_pressed"]
+[connection signal="pressed" from="Control/Seedbutton" to="." method="_on_seedbutton_pressed"]
