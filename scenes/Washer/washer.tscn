@@ -174,6 +174,7 @@ offset_bottom = -159.0
 text = "SEED"
 
 [node name="Sprinkler" parent="." instance=ExtResource("7_1n734")]
+visible = false
 position = Vector2(-3, 31)
 
 [connection signal="pressed" from="Control/SpinButton" to="." method="_on_spin_button_pressed"]

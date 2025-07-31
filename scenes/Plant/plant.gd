@@ -1,4 +1,4 @@
-extends Node2D
+extends StaticBody2D
 class_name Plant
 
 
@@ -7,4 +7,4 @@ func _onready() -> void:
 	print("instantiated")
 
 func activate() -> void:
-	print("activated!")
+	PointManager.increase_score(1)
