@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dq87i1lo66mc6"]
+
+[ext_resource type="Script" uid="uid://ddpyxkankebsp" path="res://scenes/DebugTools/debug_tools.gd" id="1_eu1bm"]
+
+[node name="DebugTools" type="Node"]
+script = ExtResource("1_eu1bm")

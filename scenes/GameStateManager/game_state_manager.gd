@@ -8,35 +8,40 @@ var end_of_cycle_signal: Signal
 enum GameState{ShopMenu, Spinning}
 
 var current_game_state: GameState :
-	set(value):
-		current_game_state = value
-		on_state_changed.emit()
+    set(value):
+        current_game_state = value
+        on_state_changed.emit()
 
 var round_index: int: 
-	set(value):
-		round_index = value
-		on_round_changed.emit(round_index) 
+    set(value):
+        round_index = value
+        on_round_changed.emit(round_index) 
 
 
 func _ready() -> void:
-	round_index = 0
-	CurrencyManager.on_out_of_coins.connect(_handle_out_of_coins)
-	
+    round_index = 0
+    CurrencyManager.on_out_of_coins.connect(_handle_out_of_coins)
+    
 
 func _handle_out_of_coins() -> void:
-	await end_of_cycle_signal
-	if PointManager.is_past_threshold(round_index):
-		pass
-	else:
-		#some game over type shit happens here
-		print("you lost brotherman")
-	
+    await end_of_cycle_signal
+    if PointManager.is_past_threshold(round_index):
+        pass
+    else:
+        #some game over type shit happens here
+        print("you lost brotherman")
+    
 func _handle_end_of_cycle() -> void:
-	current_game_state = GameState.ShopMenu
-	
-	
+    current_game_state = GameState.ShopMenu
+    if PointManager.is_past_threshold(round_index):
+        progress_to_next_round()
+    
+func progress_to_next_round() -> void:
+    round_index += 1
+    PointManager.points = 0
+    
 # Called by washer
 func init_washer(washer: Washer):
-	washer.on_cycle_end.connect(_handle_end_of_cycle)	
-	end_of_cycle_signal = washer.on_cycle_end
-	washer.on_cycle_start.connect(func(): current_game_state = GameState.Spinning)	
+    washer.on_cycle_end.connect(_handle_end_of_cycle)	
+    end_of_cycle_signal = washer.on_cycle_end
+    washer.on_cycle_start.connect(func(): current_game_state = GameState.Spinning)	
