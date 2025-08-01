@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ccowan11ehccn"]
 
-[ext_resource type="Script" uid="uid://bbdm23orleeqy" path="res://scenes/Plant/plant_activated_particles.gd" id="1_tly6p"]
+[ext_resource type="Script" uid="uid://bbdm23orleeqy" path="res://scenes/Plants/Plant/plant_activated_particles.gd" id="1_tly6p"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_syc0h"]
 particle_flag_disable_z = true

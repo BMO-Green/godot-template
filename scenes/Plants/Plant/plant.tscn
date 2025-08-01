@@ -1,0 +1,30 @@
+[gd_scene load_steps=8 format=3 uid="uid://up6g1bb2ei2m"]
+
+[ext_resource type="Script" uid="uid://yb3q4v8g2q12" path="res://scenes/Plants/Plant/plant.gd" id="1_fi0kw"]
+[ext_resource type="PackedScene" uid="uid://ccowan11ehccn" path="res://scenes/Plants/Plant/plant_activated_particles.tscn" id="2_genx4"]
+[ext_resource type="Script" uid="uid://blttmux522ia1" path="res://scripts/PlantEffects/PlantEffect.gd" id="3_canmp"]
+[ext_resource type="Script" uid="uid://cq8g1h4djhk4x" path="res://scripts/PlantEffects/PointEffect.gd" id="4_d5kx3"]
+
+[sub_resource type="Resource" id="Resource_vlmnx"]
+script = ExtResource("4_d5kx3")
+point_amount = 2
+particle_effect = ExtResource("2_genx4")
+metadata/_custom_type_script = "uid://cq8g1h4djhk4x"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5plcq"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_genx4"]
+radius = 10.0
+height = 40.0
+
+[node name="Plant" type="Area2D"]
+script = ExtResource("1_fi0kw")
+activated_particle_effect = ExtResource("2_genx4")
+effects = Array[ExtResource("3_canmp")]([SubResource("Resource_vlmnx")])
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5plcq")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+self_modulate = Color(0.207843, 1, 0.109804, 1)
+mesh = SubResource("CapsuleMesh_genx4")

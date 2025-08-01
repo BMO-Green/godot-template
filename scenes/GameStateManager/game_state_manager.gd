@@ -4,6 +4,7 @@ signal on_round_changed(round_index: int)
 signal on_state_changed(new_state: GameState)
 
 var end_of_cycle_signal: Signal
+var game_over_screen: Label
 
 enum GameState{ShopMenu, Spinning}
 
@@ -28,8 +29,8 @@ func _handle_out_of_coins() -> void:
     if PointManager.is_past_threshold(round_index):
         pass
     else:
-        #some game over type shit happens here
-        print("you lost brotherman")
+        game_over_screen.visible = true
+       
     
 func _handle_end_of_cycle() -> void:
     current_game_state = GameState.ShopMenu
@@ -39,6 +40,7 @@ func _handle_end_of_cycle() -> void:
 func progress_to_next_round() -> void:
     round_index += 1
     PointManager.points = 0
+    CurrencyManager.coins += 10
     
 # Called by washer
 func init_washer(washer: Washer):
