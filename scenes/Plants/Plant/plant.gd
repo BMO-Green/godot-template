@@ -13,6 +13,7 @@ var plant_data: PlantData
 var effects : Array[PlantEffect]
 var conditions: Array[PlantCondition]
 
+var activations_since_planted : int = 0
 var activated_this_cycle : bool
 var time_since_last_activation: float
 var previous_activations_this_cycle: Array[PlantCondition.ActivationType]= []
@@ -39,6 +40,7 @@ func _process(delta: float) -> void:
 func activate(activation_type: PlantCondition.ActivationType) -> void:
 	if GameStateManager.current_game_state != GameStateManager.GameState.Spinning: return
 	activated_this_cycle = true
+	activations_since_planted += 1
 	var should_trigger = false	
 	
 	if	activation_type == PlantCondition.ActivationType.Force:
