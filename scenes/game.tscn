@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2v76ttkfjs7c"]
+[gd_scene load_steps=11 format=3 uid="uid://b2v76ttkfjs7c"]
 
 [ext_resource type="PackedScene" uid="uid://dylocvpccd342" path="res://scenes/SeedBuffer/seed_buffer.tscn" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://b1an0fegyfxgt" path="res://scenes/Washer/washer.tscn" id="1_uwrxv"]
@@ -8,6 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://j6mugwi4uxu8" path="res://scripts/UI/point_display.tscn" id="3_lnu2h"]
 [ext_resource type="Script" uid="uid://p0n4me5pwe3w" path="res://scripts/UI/treshold_display.gd" id="3_p57ef"]
 [ext_resource type="Script" uid="uid://cv7yq0txvoc68" path="res://scenes/game_over_screen.gd" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://ni8fj4vev8s4" path="res://scenes/DraggableCoin/draggable_coin.tscn" id="9_0tnpc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gee14"]
+size = Vector2(279, 20)
 
 [node name="Game" type="Node2D"]
 
@@ -123,3 +127,12 @@ offset_left = -527.0
 offset_top = -233.0
 offset_right = -527.0
 offset_bottom = -233.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CoinRecepticle" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-379, 189)
+shape = SubResource("RectangleShape2D_gee14")
+
+[node name="DraggableCoin" parent="StaticBody2D" instance=ExtResource("9_0tnpc")]
+position = Vector2(-373, 16)

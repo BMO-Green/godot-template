@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://ni8fj4vev8s4"]
+
+[ext_resource type="Script" uid="uid://j8iofkjvgqy8" path="res://scenes/DraggableCoin/draggable_coin.gd" id="1_x7akd"]
+[ext_resource type="Texture2D" uid="uid://r81qred5f78e" path="res://assets/ui_elements/coin_flat.png" id="2_hygbv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hygbv"]
+radius = 44.4072
+
+[node name="DraggableCoin" type="RigidBody2D"]
+script = ExtResource("1_x7akd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_hygbv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hygbv")
