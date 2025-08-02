@@ -2,19 +2,31 @@ class_name Plant
 extends Node2D
 
 const PlantEffect = preload("res://scripts/PlantEffects/PlantEffect.gd")
+const PlantCondition = preload("res://scripts/PlantConditions/PlantCondition.gd")
+
 
 @export var activated_particle_effect : PackedScene
 @export var effects : Array[PlantEffect]
+@export var conditions: Array[PlantCondition]
 
 
 func _ready() -> void:
 	add_to_group("plants")
+	listen_to_activation_signals()
 	
-func activate() -> void:
-	if GameStateManager.current_game_state == GameStateManager.GameState.Spinning:
+func activate(activation_type: PlantCondition.ActivationType) -> void:
+	if GameStateManager.current_game_state != GameStateManager.GameState.Spinning: return
+
+	var should_trigger = false	
+	for condition in conditions:
+		if condition.attempt_activate(self,activation_type):
+			should_trigger = true
+
+	if should_trigger:
 		for effect in effects:
 			effect.activate(self)
 	
+
 	
 func play_particle_effect(effect: PackedScene) -> void:
 	var particle_effect = effect.instantiate()
@@ -33,3 +45,14 @@ func get_nearby_plants(radius: float) -> Array[Plant]:
 				nearby_plants.append(plant)
 			
 	return nearby_plants
+	
+func listen_to_activation_signals() -> void:
+	var activation_signals = []
+	
+	for condition in conditions:
+		activation_signals.append_array(condition.get_activation_signals(self))
+		
+	for s in activation_signals:
+		s.connect(func(): 
+			activate(PlantCondition.ActivationType.Signal)
+			)

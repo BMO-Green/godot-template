@@ -21,6 +21,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
 
 [node name="TresholdLabel" type="Label" parent="Control"]
 layout_mode = 0
@@ -29,6 +30,7 @@ offset_top = -250.0
 offset_right = 17.0
 offset_bottom = -227.0
 text = "Target:"
+metadata/_edit_use_anchors_ = true
 
 [node name="TresholdDisplay" parent="Control" instance=ExtResource("3_lnu2h")]
 layout_mode = 0
@@ -39,6 +41,7 @@ offset_bottom = -202.0
 text = "0
 "
 script = ExtResource("3_p57ef")
+metadata/_edit_use_anchors_ = true
 
 [node name="RoundLabel" type="Label" parent="Control"]
 layout_mode = 0
@@ -47,6 +50,7 @@ offset_top = -274.0
 offset_right = 16.0
 offset_bottom = -251.0
 text = "Round:"
+metadata/_edit_use_anchors_ = true
 
 [node name="RoundDisplay" parent="Control" instance=ExtResource("3_lnu2h")]
 layout_mode = 0
@@ -57,6 +61,7 @@ offset_bottom = -224.0
 text = "0
 "
 script = ExtResource("3_lbhrr")
+metadata/_edit_use_anchors_ = true
 
 [node name="CurrencyLabel" type="Label" parent="Control"]
 layout_mode = 0
@@ -65,6 +70,7 @@ offset_top = -167.0
 offset_right = -466.0
 offset_bottom = -144.0
 text = "Coins:"
+metadata/_edit_use_anchors_ = true
 
 [node name="CurrencyDisplay" parent="Control" instance=ExtResource("3_lnu2h")]
 layout_mode = 0
@@ -73,6 +79,7 @@ offset_top = -166.0
 offset_right = -422.0
 offset_bottom = -143.0
 script = ExtResource("3_iywne")
+metadata/_edit_use_anchors_ = true
 
 [node name="PointsLabel" type="Label" parent="Control"]
 layout_mode = 0
@@ -81,6 +88,7 @@ offset_top = -190.0
 offset_right = -465.0
 offset_bottom = -167.0
 text = "Points:"
+metadata/_edit_use_anchors_ = true
 
 [node name="PointDisplay" parent="Control" instance=ExtResource("3_lnu2h")]
 layout_mode = 0
@@ -88,6 +96,7 @@ offset_left = -463.0
 offset_top = -190.0
 offset_right = -423.0
 offset_bottom = -167.0
+metadata/_edit_use_anchors_ = true
 
 [node name="GameOverScreen" type="Label" parent="Control"]
 unique_name_in_owner = true

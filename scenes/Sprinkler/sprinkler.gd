@@ -20,7 +20,7 @@ func spray_water() -> void:
 	
 	for collider in colliders:
 		if collider is Plant:
-			collider.activate()
+			collider.activate(PlantCondition.ActivationType.Water)
 
 
 func _on_spray_button_pressed() -> void:
