@@ -19,4 +19,5 @@ func spawn_next_seed() -> void:
 	if	seeds_in_buffer.size() == 0: 
 		return
 	seed_spawner.spawn_seed(seeds_in_buffer[0])
+	seeds_in_buffer.remove_at(0)
 	
