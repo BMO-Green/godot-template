@@ -54,7 +54,7 @@ func play_particle_effect(effect: PackedScene) -> void:
 	particle_effect.restart()
 	
 func get_nearby_plants(radius: float) -> Array[Plant]:
-	var nearby_plants = []
+	var nearby_plants : Array[Plant]= []
 	var all_plants = get_tree().get_nodes_in_group("plants")
 	
 	for plant in all_plants:

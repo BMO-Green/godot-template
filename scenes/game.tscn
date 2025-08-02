@@ -26,6 +26,12 @@ position = Vector2(-3, 0)
 unique_name_in_owner = true
 position = Vector2(109, 47)
 
+[node name="CurrencySpawner" type="Node2D" parent="."]
+position = Vector2(-393, -31)
+script = ExtResource("10_vtaks")
+currency_scene = ExtResource("9_0tnpc")
+COIN_SPAWN_DELAY = 1.0
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -161,9 +167,3 @@ position = Vector2(575, 14)
 rotation = 1.57122
 scale = Vector2(4.2615, -0.999756)
 shape = SubResource("RectangleShape2D_gee14")
-
-[node name="CurrencySpawner" type="Node2D" parent="."]
-position = Vector2(-393, -31)
-script = ExtResource("10_vtaks")
-currency_scene = ExtResource("9_0tnpc")
-COIN_SPAWN_DELAY = 1.0
