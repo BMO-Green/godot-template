@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://dygjq4gkwhjxs"]
+
+[ext_resource type="Script" uid="uid://wgbfodsn108a" path="res://scenes/SeedShopPlantCard/seed_shop_popup.gd" id="1_hjdk2"]
+[ext_resource type="Texture2D" uid="uid://cwcao3b8wi4pn" path="res://assets/ui_elements/seed_bag.png" id="1_mlxiu"]
+[ext_resource type="Texture2D" uid="uid://wrryrx1cvr4i" path="res://assets/plants/sunflower_anims/sunflower_image.png" id="2_414lr"]
+
+[node name="SeedShopPopup" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 340.0
+offset_bottom = 443.0
+script = ExtResource("1_hjdk2")
+
+[node name="CardBackground" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_mlxiu")
+
+[node name="DescriptionText" type="Label" parent="CardBackground"]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 267.0
+offset_right = 118.0
+offset_bottom = 290.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Descriptive text of the 
+card above!"
+
+[node name="Icon" type="TextureRect" parent="CardBackground"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 37.0
+offset_right = 444.0
+offset_bottom = 367.0
+scale = Vector2(0.590677, 0.590677)
+texture = ExtResource("2_414lr")

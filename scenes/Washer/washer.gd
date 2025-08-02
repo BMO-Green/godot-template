@@ -4,6 +4,7 @@ class_name Washer
 
 signal on_cycle_start
 signal on_cycle_end
+signal on_seed_shop_opened
 
 @onready var cavity: Node2D = $Cavity
 
@@ -48,5 +49,5 @@ func _on_spin_button_pressed() -> void:
 
 func _on_seed_button_pressed() -> void:
 	if CurrencyManager.attempt_spend(SEED_COST):
-		seed_spawner.spawn_seed()
+		on_seed_shop_opened.emit()
 		
