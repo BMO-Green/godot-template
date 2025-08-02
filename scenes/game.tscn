@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://p0n4me5pwe3w" path="res://scripts/UI/treshold_display.gd" id="3_p57ef"]
 [ext_resource type="Script" uid="uid://cv7yq0txvoc68" path="res://scenes/game_over_screen.gd" id="6_p57ef"]
 [ext_resource type="PackedScene" uid="uid://ni8fj4vev8s4" path="res://scenes/DraggableCoin/draggable_coin.tscn" id="9_0tnpc"]
-[ext_resource type="Script" uid="uid://db60nng4coe8s" path="res://scenes/currency_spawner.gd" id="10_vtaks"]
+[ext_resource type="Script" path="res://scenes/currency_spawner.gd" id="10_vtaks"]
 [ext_resource type="PackedScene" uid="uid://dx7r3d811j4cu" path="res://scenes/MusicManager/music_manager.tscn" id="11_kvpfn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gee14"]
@@ -18,6 +18,7 @@ size = Vector2(362.895, 20)
 [node name="Game" type="Node2D"]
 
 [node name="MusicManager" parent="." instance=ExtResource("11_kvpfn")]
+notes_panner_effect = null
 
 [node name="SeedBuffer" parent="." instance=ExtResource("1_gee14")]
 unique_name_in_owner = true
@@ -29,12 +30,6 @@ zoom = Vector2(3.02, 3.02)
 [node name="Washer" parent="." instance=ExtResource("1_uwrxv")]
 unique_name_in_owner = true
 position = Vector2(109, 47)
-
-[node name="CurrencySpawner" type="Node2D" parent="."]
-position = Vector2(-393, -31)
-script = ExtResource("10_vtaks")
-currency_scene = ExtResource("9_0tnpc")
-COIN_SPAWN_DELAY = 1.0
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
