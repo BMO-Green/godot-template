@@ -1,6 +1,8 @@
 class_name Plant
 extends Node2D
 
+signal hit_by_seed
+
 const PlantEffect = preload("res://scripts/PlantEffects/PlantEffect.gd")
 const PlantCondition = preload("res://scripts/PlantConditions/PlantCondition.gd")
 
@@ -62,7 +64,7 @@ func get_nearby_plants(radius: float) -> Array[Plant]:
 				nearby_plants.append(plant)
 			
 	return nearby_plants
-	
+
 func listen_to_activation_signals() -> void:
 	var activation_signals = []
 	
@@ -73,3 +75,6 @@ func listen_to_activation_signals() -> void:
 		s.connect(func(): 
 			activate(PlantCondition.ActivationType.Signal)
 			)
+
+func _on_body_entered(body):
+	if(body is Seed): hit_by_seed.emit()
