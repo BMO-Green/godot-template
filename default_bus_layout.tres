@@ -16,13 +16,15 @@ tap2_level_db = -21.0
 tap2_pan = -0.6
 feedback_active = true
 feedback_delay_ms = 150.0
-feedback_level_db = -9.0
+feedback_level_db = -15.0
 feedback_lowpass = 8000.0
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_j3pel"]
 resource_name = "Reverb"
+room_size = 0.6
+damping = 0.25
 hipass = 0.5
-wet = 0.25
+wet = 0.2
 
 [resource]
 bus/1/name = &"Music"
