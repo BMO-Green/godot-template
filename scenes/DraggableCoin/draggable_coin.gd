@@ -5,7 +5,7 @@ signal clicked
 var held = false
 
 
-func _ready() -> void:
+func _init() -> void:
 	self.add_to_group("pickable")
 
 func _on_input_event(viewport, event, shape_idx):
@@ -17,6 +17,7 @@ func _on_input_event(viewport, event, shape_idx):
 func _physics_process(delta):
 	if held:
 		global_transform.origin = get_global_mouse_position()
+		print("held")
 		
 func pickup():
 	if held:
