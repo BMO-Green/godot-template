@@ -23,6 +23,12 @@ CurrencyManager="*res://scenes/CurrencyManager/currency_manager.tscn"
 GameStateManager="*res://scenes/GameStateManager/game_state_manager.tscn"
 DebugTools="*res://scenes/DebugTools/DebugTools.tscn"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="canvas_items"
+
 [editor]
 
 version_control/plugin_name="GitPlugin"
