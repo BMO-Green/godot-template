@@ -1,16 +1,26 @@
-[gd_scene load_steps=9 format=3 uid="uid://c32kp85nhi0xx"]
+[gd_scene load_steps=13 format=3 uid="uid://c32kp85nhi0xx"]
 
 [ext_resource type="Script" uid="uid://bq54un4w526y" path="res://scenes/GameStateManager/game_state_manager.gd" id="1_py4rd"]
 [ext_resource type="Script" uid="uid://7213i26wusbl" path="res://scripts/PlantData/plant_data.gd" id="2_057w6"]
 [ext_resource type="Texture2D" uid="uid://wrryrx1cvr4i" path="res://assets/plants/sunflower_anims/sunflower_image.png" id="3_1mk46"]
+[ext_resource type="Script" uid="uid://duht5knl030ng" path="res://scripts/PlantConditions/PlantCondition.gd" id="3_d4yke"]
+[ext_resource type="Script" uid="uid://blttmux522ia1" path="res://scripts/PlantEffects/PlantEffect.gd" id="4_e1bgg"]
 [ext_resource type="Texture2D" uid="uid://bndycoc5xfobp" path="res://assets/plants/lily_anims/lily_image.png" id="4_qaph2"]
+[ext_resource type="Script" uid="uid://cq8g1h4djhk4x" path="res://scripts/PlantEffects/PointEffect.gd" id="5_2i40f"]
 [ext_resource type="Texture2D" uid="uid://dplcjomtdxeqw" path="res://assets/plants/cherry_anims/cherry_image.png" id="5_d4yke"]
+
+[sub_resource type="Resource" id="Resource_qfs6d"]
+script = ExtResource("5_2i40f")
+point_amount = 1
+metadata/_custom_type_script = "uid://cq8g1h4djhk4x"
 
 [sub_resource type="Resource" id="Resource_e1bgg"]
 script = ExtResource("2_057w6")
 plant_name = "Plant 1"
 plant_description = "very cool"
 store_icon = ExtResource("3_1mk46")
+effects = Array[ExtResource("4_e1bgg")]([SubResource("Resource_qfs6d")])
+conditions = Array[ExtResource("3_d4yke")]([])
 metadata/_custom_type_script = "uid://7213i26wusbl"
 
 [sub_resource type="Resource" id="Resource_2i40f"]
@@ -18,6 +28,8 @@ script = ExtResource("2_057w6")
 plant_name = "Plant 2"
 plant_description = "not so cool"
 store_icon = ExtResource("4_qaph2")
+effects = Array[ExtResource("4_e1bgg")]([])
+conditions = Array[ExtResource("3_d4yke")]([])
 metadata/_custom_type_script = "uid://7213i26wusbl"
 
 [sub_resource type="Resource" id="Resource_7vrr1"]
@@ -25,6 +37,8 @@ script = ExtResource("2_057w6")
 plant_name = "plant 5"
 plant_description = "adsdasd"
 store_icon = ExtResource("5_d4yke")
+effects = Array[ExtResource("4_e1bgg")]([])
+conditions = Array[ExtResource("3_d4yke")]([])
 metadata/_custom_type_script = "uid://7213i26wusbl"
 
 [node name="Node" type="Node"]
