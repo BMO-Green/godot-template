@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://buev7i4viyf3s"]
+
+[ext_resource type="Texture2D" uid="uid://cf7qtfha7ttgd" path="res://assets/ui_elements/coin_slot.png" id="1_0x8y6"]
+[ext_resource type="Script" uid="uid://cbjxnfqkbtf0f" path="res://scenes/CoinSlot/coin_slot.gd" id="1_xbysr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0x8y6"]
+size = Vector2(52, 100.5)
+
+[node name="CoinSlot" type="Area2D"]
+script = ExtResource("1_xbysr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_0x8y6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0x8y6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

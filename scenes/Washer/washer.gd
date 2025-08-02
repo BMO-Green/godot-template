@@ -41,15 +41,14 @@ func spin() -> void:
 	is_spinning = true
 	on_cycle_start.emit()
 
-func _on_spin_button_pressed() -> void:
-	if CurrencyManager.attempt_spend(SPIN_COST):
-		spin()
-		
-	
-
-func _on_seed_button_pressed() -> void:
-	if CurrencyManager.attempt_spend(SEED_COST):
-		on_seed_shop_opened.emit()
 		
 func get_seed_spawner() -> SeedSpawner:
 	return $SeedSpawnLocation
+
+
+func _on_seed_coin_slot_on_coin_deposited() -> void:
+	on_seed_shop_opened.emit()
+	
+
+func _on_spin_coin_slot_on_coin_deposited() -> void:
+	spin()

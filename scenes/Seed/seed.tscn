@@ -11,7 +11,8 @@ bounce = 0.41
 radius = 25.0
 height = 50.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_254dx"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lgtmi"]
+radius = 7.35294
 
 [node name="Seed" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_254dx")
@@ -27,4 +28,4 @@ mesh = SubResource("SphereMesh_254dx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.36, 1.36)
-shape = SubResource("CircleShape2D_254dx")
+shape = SubResource("CapsuleShape2D_lgtmi")

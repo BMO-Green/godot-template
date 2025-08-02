@@ -1,11 +1,12 @@
 extends RigidBody2D
-
+class_name DraggableCoin
 signal clicked
+signal on_released
 
 var held = false
+var coin_slot
 
-
-func _ready() -> void:
+func _init() -> void:
 	self.add_to_group("pickable")
 
 func _on_input_event(viewport, event, shape_idx):
@@ -29,3 +30,19 @@ func drop(impulse=Vector2.ZERO):
 		freeze = false
 		apply_central_impulse(impulse)
 		held = false
+		on_released.emit()
+		if coin_slot != null:
+			coin_slot.on_coin_deposited.emit()
+			handle_depositing()
+
+
+func handle_depositing():
+	queue_free()
+
+func _on_coin_trigger_area_area_entered(area: Area2D) -> void:
+	if area is CoinSlot:
+		coin_slot = area
+
+func _on_coin_trigger_area_area_exited(area: Area2D) -> void:
+	if area == coin_slot:
+		coin_slot = null

@@ -3,27 +3,36 @@ extends Node
 signal on_coins_changed
 signal on_out_of_coins
 
-@export var STARTING_COINS: int = 5
+@export var STARTING_COINS: int = 10
+@export var coin_scene : PackedScene
 
-var coins: int:
-	set(value):
-		coins = value
-		on_coins_changed.emit(coins)
-		if coins == 0:
-			on_out_of_coins.emit()
-		
-		
+var currency_spawner: CurrencySpawner
+var held_object = null
+var coins : Array[DraggableCoin]= []
+
+
+
 func _ready() -> void:
-	coins = STARTING_COINS
+	currency_spawner.spawn_coins(STARTING_COINS)
+	
+	currency_spawner.on_coin_created.connect(func(coin):
+		coin.clicked.connect(_on_pickable_clicked))
+		
 
 func modify_currency(amount: int) -> void:
-	coins += amount
+	currency_spawner.spawn_coins(amount)
 
-func can_afford(amount: int) -> bool:
-	return amount <= coins
+func _on_pickable_clicked(object):
+	if !held_object:
+		object.pickup()
+		held_object = object
+		
+func _unhandled_input(event):
+
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 	
-func attempt_spend(amount:int) -> bool:
-	if can_afford(amount):
-		modify_currency(-amount)
-		return true
-	else: return false
+		if held_object and !event.pressed:
+			held_object.drop(Input.get_last_mouse_velocity())
+			held_object = null
+
+	
