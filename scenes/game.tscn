@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2v76ttkfjs7c"]
+[gd_scene load_steps=9 format=3 uid="uid://b2v76ttkfjs7c"]
 
+[ext_resource type="PackedScene" uid="uid://dylocvpccd342" path="res://scenes/SeedBuffer/seed_buffer.tscn" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://b1an0fegyfxgt" path="res://scenes/Washer/washer.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://cxyspvx5yunoj" path="res://scenes/ShopScreen/shop_screen_ui.tscn" id="2_u5sy4"]
 [ext_resource type="Script" uid="uid://b5o07bgs1gupw" path="res://scenes/CurrencyManager/currency_display.gd" id="3_iywne"]
@@ -9,6 +10,9 @@
 [ext_resource type="Script" uid="uid://cv7yq0txvoc68" path="res://scenes/game_over_screen.gd" id="6_p57ef"]
 
 [node name="Game" type="Node2D"]
+
+[node name="SeedBuffer" parent="." instance=ExtResource("1_gee14")]
+unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-3, 0)

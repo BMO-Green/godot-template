@@ -35,3 +35,11 @@ offset_right = 444.0
 offset_bottom = 367.0
 scale = Vector2(0.590677, 0.590677)
 texture = ExtResource("2_414lr")
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 341.0
+offset_bottom = 434.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

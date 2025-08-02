@@ -18,7 +18,7 @@ physics_material_override = SubResource("PhysicsMaterial_254dx")
 gravity_scale = 0.644
 script = ExtResource("1_m0bgt")
 rooting_velocity = 1.0
-plant = ExtResource("2_lgtmi")
+plant_scene = ExtResource("2_lgtmi")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 modulate = Color(0.885333, 1, 0.14, 1)

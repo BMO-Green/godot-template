@@ -4,16 +4,28 @@ extends Node2D
 const PlantEffect = preload("res://scripts/PlantEffects/PlantEffect.gd")
 const PlantCondition = preload("res://scripts/PlantConditions/PlantCondition.gd")
 
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 @export var activated_particle_effect : PackedScene
-@export var effects : Array[PlantEffect]
-@export var conditions: Array[PlantCondition]
+var plant_data: PlantData
+var effects : Array[PlantEffect]
+var conditions: Array[PlantCondition]
 
 
 func _ready() -> void:
 	add_to_group("plants")
-	listen_to_activation_signals()
 	
+	
+	
+
+func initialize(_plant_data: PlantData):
+	plant_data = _plant_data
+	sprite_2d.texture = plant_data.store_icon
+	effects = plant_data.effects
+	conditions = plant_data.conditions
+	listen_to_activation_signals()
+
+
 func activate(activation_type: PlantCondition.ActivationType) -> void:
 	if GameStateManager.current_game_state != GameStateManager.GameState.Spinning: return
 

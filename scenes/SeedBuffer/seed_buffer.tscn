@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dylocvpccd342"]
+
+[ext_resource type="Script" uid="uid://ddpvwjawdqn1s" path="res://scenes/SeedBuffer/seed_buffer.gd" id="1_dv52k"]
+
+[node name="SeedBuffer" type="Node2D"]
+script = ExtResource("1_dv52k")

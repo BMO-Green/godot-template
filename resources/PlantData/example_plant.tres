@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PlantData" load_steps=4 format=3 uid="uid://c8svpetv52qy8"]
+
+[ext_resource type="Script" uid="uid://duht5knl030ng" path="res://scripts/PlantConditions/PlantCondition.gd" id="1_tr8vo"]
+[ext_resource type="Script" uid="uid://blttmux522ia1" path="res://scripts/PlantEffects/PlantEffect.gd" id="2_3wly8"]
+[ext_resource type="Script" uid="uid://7213i26wusbl" path="res://scripts/PlantData/plant_data.gd" id="3_xyyde"]
+
+[resource]
+script = ExtResource("3_xyyde")
+plant_name = "Example Plant"
+plant_description = "Its an example"
+effects = Array[ExtResource("2_3wly8")]([])
+conditions = Array[ExtResource("1_tr8vo")]([])
+metadata/_custom_type_script = "uid://7213i26wusbl"

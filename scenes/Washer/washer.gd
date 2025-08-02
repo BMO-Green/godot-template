@@ -51,3 +51,5 @@ func _on_seed_button_pressed() -> void:
 	if CurrencyManager.attempt_spend(SEED_COST):
 		on_seed_shop_opened.emit()
 		
+func get_seed_spawner() -> SeedSpawner:
+	return $SeedSpawnLocation

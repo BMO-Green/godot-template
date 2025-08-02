@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="PlantData" load_steps=2 format=3 uid="uid://moxovrsyknte"]
-
-[ext_resource type="Script" uid="uid://7213i26wusbl" path="res://scripts/PlantData/plant_data.gd" id="1_6p7ku"]
-
-[resource]
-script = ExtResource("1_6p7ku")
-plant_name = ""
-plant_description = ""
-metadata/_custom_type_script = "uid://7213i26wusbl"
