@@ -8,6 +8,8 @@ signal on_state_changed(new_state: GameState)
 var end_of_cycle_signal: Signal
 var game_over_screen: Label
 var shop_screen: ShopScreenUI
+var held_object = null
+
 
 enum GameState{ShopMenu, Spinning}
 
@@ -25,7 +27,12 @@ var round_index: int:
 func _ready() -> void:
 	round_index = 0
 	CurrencyManager.on_out_of_coins.connect(_handle_out_of_coins)
+	for node in get_tree().get_nodes_in_group("pickable"):
+		node.clicked.connect(_on_pickable_clicked)
 	
+
+func _on_pickable_clicked():
+	pass
 
 func _handle_out_of_coins() -> void:
 	await end_of_cycle_signal

@@ -159,22 +159,3 @@ offset_top = -134.0
 offset_right = 64.0
 offset_bottom = -111.0
 text = "00:00"
-
-[node name="SpinButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 43.0
-offset_top = -231.0
-offset_right = 229.0
-offset_bottom = -200.0
-text = "SPIN (1 COIN)"
-
-[node name="Seedbutton" type="Button" parent="Control"]
-layout_mode = 2
-offset_left = 42.0
-offset_top = -190.0
-offset_right = 228.0
-offset_bottom = -159.0
-text = "SEED (2 COINS)"
-
-[connection signal="pressed" from="Control/SpinButton" to="." method="_on_spin_button_pressed"]
-[connection signal="pressed" from="Control/Seedbutton" to="." method="_on_seed_button_pressed"]

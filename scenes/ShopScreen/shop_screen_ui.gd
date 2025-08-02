@@ -12,6 +12,9 @@ func _ready() -> void:
 	GameStateManager.shop_screen = self
 
 func initialize(cards_to_display: Array[PlantData]) -> void:
+	for child in card_box.get_children():
+		child.queue_free()
+	
 	for card in cards_to_display:
 		var new_popup = card_scene.instantiate()
 		new_popup.initialize(card)
