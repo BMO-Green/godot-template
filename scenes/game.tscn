@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b2v76ttkfjs7c"]
+[gd_scene load_steps=8 format=3 uid="uid://b2v76ttkfjs7c"]
 
 [ext_resource type="PackedScene" uid="uid://b1an0fegyfxgt" path="res://scenes/Washer/washer.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://cxyspvx5yunoj" path="res://scenes/ShopScreen/shop_screen_ui.tscn" id="2_u5sy4"]
 [ext_resource type="Script" uid="uid://b5o07bgs1gupw" path="res://scenes/CurrencyManager/currency_display.gd" id="3_iywne"]
 [ext_resource type="Script" uid="uid://do1ooirbe8nyf" path="res://scripts/UI/round_display.gd" id="3_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://j6mugwi4uxu8" path="res://scripts/UI/point_display.tscn" id="3_lnu2h"]
@@ -14,7 +15,7 @@ position = Vector2(-3, 0)
 
 [node name="Washer" parent="." instance=ExtResource("1_uwrxv")]
 unique_name_in_owner = true
-position = Vector2(-6, 43)
+position = Vector2(109, 47)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -111,3 +112,10 @@ theme_override_font_sizes/font_size = 31
 text = "GAME OVER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 "
 script = ExtResource("6_p57ef")
+
+[node name="ShopScreenUI" parent="." instance=ExtResource("2_u5sy4")]
+visible = false
+offset_left = -527.0
+offset_top = -233.0
+offset_right = -527.0
+offset_bottom = -233.0

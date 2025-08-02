@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxyspvx5yunoj"]
+
+[ext_resource type="Script" uid="uid://ds0wpfgsspvx5" path="res://scenes/ShopScreen/shop_screen_ui.gd" id="1_04qs7"]
+[ext_resource type="PackedScene" uid="uid://dygjq4gkwhjxs" path="res://scenes/SeedShopPlantCard/seed_shop_popup.tscn" id="2_avc30"]
+
+[sub_resource type="Gradient" id="Gradient_avc30"]
+offsets = PackedFloat32Array(0.0119048, 0.52381, 0.990476)
+colors = PackedColorArray(0.164706, 0.168627, 0.184314, 0.533333, 0.164706, 0.168627, 0.184314, 0, 0.164706, 0.168627, 0.184314, 0.705882)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_f63tc"]
+gradient = SubResource("Gradient_avc30")
+width = 200
+
+[node name="ShopScreenUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_04qs7")
+card_scene = ExtResource("2_avc30")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1316.0
+offset_top = -288.0
+offset_right = 1572.0
+offset_bottom = -248.0
+rotation = 1.5708
+scale = Vector2(3.86738, 38.1521)
+texture = SubResource("GradientTexture1D_f63tc")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 350
