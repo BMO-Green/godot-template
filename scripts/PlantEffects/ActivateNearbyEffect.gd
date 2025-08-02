@@ -4,12 +4,12 @@ extends PlantEffect
 @export var point_amount := 1
 @export var area := 2
 @export var particle_effect: PackedScene
-@export var activate_type: String
+@export var activate_type: PlantCondition.ActivationType
 
 func activate(plant: Plant):
-    PointManager.increase_score(point_amount)
-    plant.play_particle_effect(particle_effect)
-    var nearby_plants = plant.get_nearby_plants(area)
-    
-    for n_plant in nearby_plants:
-        n_plant.activate()
+	PointManager.increase_score(point_amount)
+	plant.play_particle_effect(particle_effect)
+	var nearby_plants := plant.get_nearby_plants(area)
+	
+	for n_plant in nearby_plants:
+		n_plant.activate(activate_type)
