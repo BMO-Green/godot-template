@@ -13,6 +13,10 @@ var plant_data: PlantData
 var effects : Array[PlantEffect]
 var conditions: Array[PlantCondition]
 
+var activated_this_cycle : bool
+var time_since_last_activation: float
+var previous_activations_this_cycle: Array[PlantCondition.ActivationType]= []
+
 
 func _ready() -> void:
 	add_to_group("plants")
@@ -26,12 +30,15 @@ func initialize(_plant_data: PlantData):
 	effects = plant_data.effects
 	conditions = plant_data.conditions
 	listen_to_activation_signals()
+	
 
+func _process(delta: float) -> void:
+	if activated_this_cycle:
+		time_since_last_activation += delta
 
 func activate(activation_type: PlantCondition.ActivationType) -> void:
 	if GameStateManager.current_game_state != GameStateManager.GameState.Spinning: return
-	
-
+	activated_this_cycle = true
 	var should_trigger = false	
 	
 	if	activation_type == PlantCondition.ActivationType.Force:
@@ -44,6 +51,7 @@ func activate(activation_type: PlantCondition.ActivationType) -> void:
 	if should_trigger:
 		for effect in effects:
 			effect.activate(self)
+			previous_activations_this_cycle.append(activation_type)
 	
 
 	
@@ -78,3 +86,10 @@ func listen_to_activation_signals() -> void:
 
 func _on_body_entered(body):
 	if(body is Seed): hit_by_seed.emit()
+
+func on_cycle_start():
+	activated_this_cycle = false
+	time_since_last_activation = 0
+
+func handle_destruction():
+	queue_free()

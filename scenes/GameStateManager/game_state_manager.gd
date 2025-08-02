@@ -29,7 +29,6 @@ func _ready() -> void:
 	
 	
 
-
 func _handle_out_of_coins() -> void:
 	await end_of_cycle_signal
 	if PointManager.is_past_threshold(round_index):
