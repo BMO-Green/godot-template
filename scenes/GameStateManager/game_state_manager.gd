@@ -46,7 +46,7 @@ func _handle_end_of_cycle() -> void:
 func progress_to_next_round() -> void:
 	round_index += 1
 	PointManager.points = 0
-	CurrencyManager.coins += 10
+	CurrencyManager.modify_currency(10)
 	
 # Called by washer
 func init_washer(washer: Washer):
