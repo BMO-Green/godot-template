@@ -23,7 +23,8 @@ size = Vector2(362.895, 20)
 unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-3, 0)
+position = Vector2(-23, 134)
+zoom = Vector2(3.02, 3.02)
 
 [node name="Washer" parent="." instance=ExtResource("1_uwrxv")]
 unique_name_in_owner = true
@@ -141,32 +142,38 @@ offset_bottom = -233.0
 [node name="WorldBoundaries" type="StaticBody2D" parent="."]
 
 [node name="CoinRecepticle" type="CollisionShape2D" parent="WorldBoundaries"]
-position = Vector2(-407, 202)
+position = Vector2(-202, 302)
 shape = SubResource("RectangleShape2D_gee14")
 
 [node name="CoinRecepticle6" type="CollisionShape2D" parent="WorldBoundaries"]
-position = Vector2(-220, 210)
+position = Vector2(-186, 346)
 rotation = -0.667953
 shape = SubResource("RectangleShape2D_gee14")
 
 [node name="CoinRecepticle2" type="CollisionShape2D" parent="WorldBoundaries"]
-position = Vector2(-148.24, 320)
+position = Vector2(-146, 330)
 scale = Vector2(4.2615, -0.999756)
 shape = SubResource("RectangleShape2D_gee14")
 
 [node name="CoinRecepticle5" type="CollisionShape2D" parent="WorldBoundaries"]
-position = Vector2(7, -340)
+position = Vector2(43, -79)
 scale = Vector2(4.2615, -0.999756)
 shape = SubResource("RectangleShape2D_gee14")
 
 [node name="CoinRecepticle3" type="CollisionShape2D" parent="WorldBoundaries"]
-position = Vector2(-584, 48)
+position = Vector2(-359.00003, 75.00001)
 rotation = 1.57122
 scale = Vector2(4.2615, -0.999756)
 shape = SubResource("RectangleShape2D_gee14")
 
 [node name="CoinRecepticle4" type="CollisionShape2D" parent="WorldBoundaries"]
-position = Vector2(575, 14)
+position = Vector2(311, 50.999996)
 rotation = 1.57122
 scale = Vector2(4.2615, -0.999756)
 shape = SubResource("RectangleShape2D_gee14")
+
+[node name="CurrencySpawner" type="Node2D" parent="."]
+position = Vector2(-89, 233)
+script = ExtResource("10_vtaks")
+currency_scene = ExtResource("9_0tnpc")
+COIN_SPAWN_DELAY = 1.0
