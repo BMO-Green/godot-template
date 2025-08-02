@@ -28,8 +28,13 @@ func initialize(_plant_data: PlantData):
 
 func activate(activation_type: PlantCondition.ActivationType) -> void:
 	if GameStateManager.current_game_state != GameStateManager.GameState.Spinning: return
+	
 
 	var should_trigger = false	
+	
+	if	activation_type == PlantCondition.ActivationType.Force:
+		should_trigger = true
+	
 	for condition in conditions:
 		if condition.attempt_activate(self,activation_type):
 			should_trigger = true
