@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ni8fj4vev8s4" path="res://scenes/DraggableCoin/draggable_coin.tscn" id="9_0tnpc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gee14"]
-size = Vector2(279, 20)
+size = Vector2(362.895, 20)
 
 [node name="Game" type="Node2D"]
 
@@ -128,11 +128,59 @@ offset_top = -233.0
 offset_right = -527.0
 offset_bottom = -233.0
 
+[node name="DraggableCoin" parent="." instance=ExtResource("9_0tnpc")]
+position = Vector2(-373, 16)
+
+[node name="DraggableCoin2" parent="." instance=ExtResource("9_0tnpc")]
+position = Vector2(-492, 106)
+
+[node name="DraggableCoin3" parent="." instance=ExtResource("9_0tnpc")]
+position = Vector2(-449, -4)
+
+[node name="DraggableCoin4" parent="." instance=ExtResource("9_0tnpc")]
+position = Vector2(-364, 129)
+
+[node name="DraggableCoin5" parent="." instance=ExtResource("9_0tnpc")]
+position = Vector2(-363, -75)
+
+[node name="DraggableCoin6" parent="." instance=ExtResource("9_0tnpc")]
+position = Vector2(-522, -101)
+
+[node name="DraggableCoin7" parent="." instance=ExtResource("9_0tnpc")]
+position = Vector2(-311, 77)
+
+[node name="DraggableCoin8" parent="." instance=ExtResource("9_0tnpc")]
+position = Vector2(-274, 6)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CoinRecepticle" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-379, 189)
+position = Vector2(-407, 202)
 shape = SubResource("RectangleShape2D_gee14")
 
-[node name="DraggableCoin" parent="StaticBody2D" instance=ExtResource("9_0tnpc")]
-position = Vector2(-373, 16)
+[node name="CoinRecepticle6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-220, 210)
+rotation = -0.667953
+shape = SubResource("RectangleShape2D_gee14")
+
+[node name="CoinRecepticle2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-148.24, 320)
+scale = Vector2(4.2615, -0.999756)
+shape = SubResource("RectangleShape2D_gee14")
+
+[node name="CoinRecepticle5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(7, -340)
+scale = Vector2(4.2615, -0.999756)
+shape = SubResource("RectangleShape2D_gee14")
+
+[node name="CoinRecepticle3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-584, 48)
+rotation = 1.57122
+scale = Vector2(4.2615, -0.999756)
+shape = SubResource("RectangleShape2D_gee14")
+
+[node name="CoinRecepticle4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(575, 14)
+rotation = 1.57122
+scale = Vector2(4.2615, -0.999756)
+shape = SubResource("RectangleShape2D_gee14")

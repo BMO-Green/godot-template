@@ -5,6 +5,9 @@ signal on_out_of_coins
 
 @export var STARTING_COINS: int = 5
 
+var held_object = null
+
+
 var coins: int:
 	set(value):
 		coins = value
@@ -15,6 +18,8 @@ var coins: int:
 		
 func _ready() -> void:
 	coins = STARTING_COINS
+	for node in get_tree().get_nodes_in_group("pickable"):
+		node.clicked.connect(_on_pickable_clicked)
 
 func modify_currency(amount: int) -> void:
 	coins += amount
@@ -27,3 +32,17 @@ func attempt_spend(amount:int) -> bool:
 		modify_currency(-amount)
 		return true
 	else: return false
+	
+
+func _on_pickable_clicked(object):
+	if !held_object:
+		object.pickup()
+		held_object = object
+		
+func _unhandled_input(event):
+
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+	
+		if held_object and !event.pressed:
+			held_object.drop(Input.get_last_mouse_velocity())
+			held_object = null

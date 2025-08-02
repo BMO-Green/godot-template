@@ -1,19 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://ni8fj4vev8s4"]
+[gd_scene load_steps=6 format=3 uid="uid://ni8fj4vev8s4"]
 
 [ext_resource type="Script" uid="uid://j8iofkjvgqy8" path="res://scenes/DraggableCoin/draggable_coin.gd" id="1_x7akd"]
 [ext_resource type="Texture2D" uid="uid://r81qred5f78e" path="res://assets/ui_elements/coin_flat.png" id="2_hygbv"]
+[ext_resource type="Script" uid="uid://cg15lefhiwutd" path="res://scenes/DraggableCoin/coin_trigger_area.gd" id="3_3sd2e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hygbv"]
 radius = 44.4072
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hygbv"]
+size = Vector2(63.5, 84)
 
 [node name="DraggableCoin" type="RigidBody2D"]
 input_pickable = true
 script = ExtResource("1_x7akd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.440002, 0.440002)
 texture = ExtResource("2_hygbv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.440002, 0.440002)
 shape = SubResource("CircleShape2D_hygbv")
 
+[node name="CoinTriggerArea" type="Area2D" parent="."]
+scale = Vector2(0.440002, 0.440002)
+script = ExtResource("3_3sd2e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CoinTriggerArea"]
+position = Vector2(1.25, -3)
+shape = SubResource("RectangleShape2D_hygbv")
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="area_entered" from="CoinTriggerArea" to="." method="_on_coin_trigger_area_area_entered"]
+[connection signal="area_exited" from="CoinTriggerArea" to="." method="_on_coin_trigger_area_area_exited"]
