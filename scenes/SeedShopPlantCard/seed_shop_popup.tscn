@@ -19,13 +19,14 @@ texture = ExtResource("1_mlxiu")
 
 [node name="DescriptionText" type="Label" parent="CardBackground"]
 layout_mode = 0
-offset_left = 78.0
-offset_top = 267.0
-offset_right = 118.0
-offset_bottom = 290.0
+offset_left = 72.0
+offset_top = 262.0
+offset_right = 270.0
+offset_bottom = 363.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Descriptive text of the 
 card above!"
+autowrap_mode = 2
 
 [node name="Icon" type="TextureRect" parent="CardBackground"]
 layout_mode = 0

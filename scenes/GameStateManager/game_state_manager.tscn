@@ -1,44 +1,82 @@
-[gd_scene load_steps=13 format=3 uid="uid://c32kp85nhi0xx"]
+[gd_scene load_steps=21 format=3 uid="uid://c32kp85nhi0xx"]
 
 [ext_resource type="Script" uid="uid://bq54un4w526y" path="res://scenes/GameStateManager/game_state_manager.gd" id="1_py4rd"]
 [ext_resource type="Script" uid="uid://7213i26wusbl" path="res://scripts/PlantData/plant_data.gd" id="2_057w6"]
 [ext_resource type="Texture2D" uid="uid://wrryrx1cvr4i" path="res://assets/plants/sunflower_anims/sunflower_image.png" id="3_1mk46"]
 [ext_resource type="Script" uid="uid://duht5knl030ng" path="res://scripts/PlantConditions/PlantCondition.gd" id="3_d4yke"]
+[ext_resource type="Script" uid="uid://0b0mvqf508uj" path="res://scripts/PlantConditions/StatusCondition.gd" id="4_7vrr1"]
 [ext_resource type="Script" uid="uid://blttmux522ia1" path="res://scripts/PlantEffects/PlantEffect.gd" id="4_e1bgg"]
 [ext_resource type="Texture2D" uid="uid://bndycoc5xfobp" path="res://assets/plants/lily_anims/lily_image.png" id="4_qaph2"]
 [ext_resource type="Script" uid="uid://cq8g1h4djhk4x" path="res://scripts/PlantEffects/PointEffect.gd" id="5_2i40f"]
 [ext_resource type="Texture2D" uid="uid://dplcjomtdxeqw" path="res://assets/plants/cherry_anims/cherry_image.png" id="5_d4yke"]
+[ext_resource type="PackedScene" uid="uid://ccowan11ehccn" path="res://scenes/Plants/Plant/plant_activated_particles.tscn" id="6_qfs6d"]
+[ext_resource type="Script" uid="uid://dxky0vim82pm8" path="res://scripts/PlantEffects/ActivateNearbyEffect.gd" id="9_lo58c"]
+
+[sub_resource type="Resource" id="Resource_8an15"]
+script = ExtResource("4_7vrr1")
+description_text = ""
+required_activation_type = 0
+metadata/_custom_type_script = "uid://0b0mvqf508uj"
 
 [sub_resource type="Resource" id="Resource_qfs6d"]
 script = ExtResource("5_2i40f")
-point_amount = 1
+point_amount = 15
+particle_effect = ExtResource("6_qfs6d")
 metadata/_custom_type_script = "uid://cq8g1h4djhk4x"
 
 [sub_resource type="Resource" id="Resource_e1bgg"]
 script = ExtResource("2_057w6")
 plant_name = "Plant 1"
-plant_description = "very cool"
+plant_description = "When watered, gives 15 points point"
 store_icon = ExtResource("3_1mk46")
 effects = Array[ExtResource("4_e1bgg")]([SubResource("Resource_qfs6d")])
-conditions = Array[ExtResource("3_d4yke")]([])
+conditions = Array[ExtResource("3_d4yke")]([SubResource("Resource_8an15")])
 metadata/_custom_type_script = "uid://7213i26wusbl"
+
+[sub_resource type="Resource" id="Resource_lo58c"]
+script = ExtResource("4_7vrr1")
+description_text = ""
+required_activation_type = 0
+metadata/_custom_type_script = "uid://0b0mvqf508uj"
+
+[sub_resource type="Resource" id="Resource_vtlrr"]
+script = ExtResource("9_lo58c")
+point_amount = 1
+area = 2
+particle_effect = ExtResource("6_qfs6d")
+activate_type = 0
+metadata/_custom_type_script = "uid://dxky0vim82pm8"
 
 [sub_resource type="Resource" id="Resource_2i40f"]
 script = ExtResource("2_057w6")
-plant_name = "Plant 2"
-plant_description = "not so cool"
+plant_name = "Water Lilly"
+plant_description = "When watered, waters nearby plants"
 store_icon = ExtResource("4_qaph2")
-effects = Array[ExtResource("4_e1bgg")]([])
-conditions = Array[ExtResource("3_d4yke")]([])
+effects = Array[ExtResource("4_e1bgg")]([SubResource("Resource_vtlrr")])
+conditions = Array[ExtResource("3_d4yke")]([SubResource("Resource_lo58c")])
 metadata/_custom_type_script = "uid://7213i26wusbl"
+
+[sub_resource type="Resource" id="Resource_mlhxy"]
+script = ExtResource("4_7vrr1")
+description_text = ""
+required_activation_type = 0
+metadata/_custom_type_script = "uid://0b0mvqf508uj"
+
+[sub_resource type="Resource" id="Resource_khd2a"]
+script = ExtResource("9_lo58c")
+point_amount = 5
+area = 10
+particle_effect = ExtResource("6_qfs6d")
+activate_type = 0
+metadata/_custom_type_script = "uid://dxky0vim82pm8"
 
 [sub_resource type="Resource" id="Resource_7vrr1"]
 script = ExtResource("2_057w6")
-plant_name = "plant 5"
-plant_description = "adsdasd"
+plant_name = "Cherry"
+plant_description = "When cycle started, gives 5 points and waters nearby plants"
 store_icon = ExtResource("5_d4yke")
-effects = Array[ExtResource("4_e1bgg")]([])
-conditions = Array[ExtResource("3_d4yke")]([])
+effects = Array[ExtResource("4_e1bgg")]([SubResource("Resource_khd2a")])
+conditions = Array[ExtResource("3_d4yke")]([SubResource("Resource_mlhxy")])
 metadata/_custom_type_script = "uid://7213i26wusbl"
 
 [node name="Node" type="Node"]
