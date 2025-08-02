@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://y3iquc3f21k1"
-path="res://.godot/imported/landromat_bg_full.png-d257255225cd94e31a8643ec638c9134.ctex"
+uid="uid://babg7jjwnaki1"
+path="res://.godot/imported/speed_gauge_indicator.png-8aa10e4a8848d624047b3774e82799c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background_art/landromat_bg_full.png"
-dest_files=["res://.godot/imported/landromat_bg_full.png-d257255225cd94e31a8643ec638c9134.ctex"]
+source_file="res://assets/ui_elements/speed_gauge_indicator.png"
+dest_files=["res://.godot/imported/speed_gauge_indicator.png-8aa10e4a8848d624047b3774e82799c0.ctex"]
 
 [params]
 

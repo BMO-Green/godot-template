@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://y3iquc3f21k1"
-path="res://.godot/imported/landromat_bg_full.png-d257255225cd94e31a8643ec638c9134.ctex"
+uid="uid://cf7qtfha7ttgd"
+path="res://.godot/imported/coin_slot.png-347a72d45f8f093ee7b0b33d400dde95.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background_art/landromat_bg_full.png"
-dest_files=["res://.godot/imported/landromat_bg_full.png-d257255225cd94e31a8643ec638c9134.ctex"]
+source_file="res://assets/ui_elements/coin_slot.png"
+dest_files=["res://.godot/imported/coin_slot.png-347a72d45f8f093ee7b0b33d400dde95.ctex"]
 
 [params]
 
