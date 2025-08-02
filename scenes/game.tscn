@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b2v76ttkfjs7c"]
+[gd_scene load_steps=14 format=3 uid="uid://b2v76ttkfjs7c"]
 
 [ext_resource type="PackedScene" uid="uid://dylocvpccd342" path="res://scenes/SeedBuffer/seed_buffer.tscn" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://b1an0fegyfxgt" path="res://scenes/Washer/washer.tscn" id="1_uwrxv"]
@@ -12,20 +12,24 @@
 [ext_resource type="Script" path="res://scenes/currency_spawner.gd" id="10_vtaks"]
 [ext_resource type="PackedScene" uid="uid://dx7r3d811j4cu" path="res://scenes/MusicManager/music_manager.tscn" id="11_kvpfn"]
 
+[sub_resource type="AudioEffectPanner" id="AudioEffectPanner_j3pel"]
+resource_name = "Panner"
+pan = 0.398105
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gee14"]
 size = Vector2(362.895, 20)
 
 [node name="Game" type="Node2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-103, 111)
+zoom = Vector2(2.185, 2.185)
+
 [node name="MusicManager" parent="." instance=ExtResource("11_kvpfn")]
-notes_panner_effect = null
+notes_panner_effect = SubResource("AudioEffectPanner_j3pel")
 
 [node name="SeedBuffer" parent="." instance=ExtResource("1_gee14")]
 unique_name_in_owner = true
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-23, 134)
-zoom = Vector2(3.02, 3.02)
 
 [node name="Washer" parent="." instance=ExtResource("1_uwrxv")]
 unique_name_in_owner = true
@@ -156,13 +160,13 @@ scale = Vector2(4.2615, -0.999756)
 shape = SubResource("RectangleShape2D_gee14")
 
 [node name="CoinRecepticle3" type="CollisionShape2D" parent="WorldBoundaries"]
-position = Vector2(-359.00003, 75.00001)
+position = Vector2(-359, 75)
 rotation = 1.57122
 scale = Vector2(4.2615, -0.999756)
 shape = SubResource("RectangleShape2D_gee14")
 
 [node name="CoinRecepticle4" type="CollisionShape2D" parent="WorldBoundaries"]
-position = Vector2(311, 50.999996)
+position = Vector2(311, 51)
 rotation = 1.57122
 scale = Vector2(4.2615, -0.999756)
 shape = SubResource("RectangleShape2D_gee14")
