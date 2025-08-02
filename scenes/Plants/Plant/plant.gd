@@ -1,7 +1,7 @@
 class_name Plant
 extends Node2D
 
-signal hit_by_seed
+signal hit_by_seed(seed : Seed)
 
 const PlantEffect = preload("res://scripts/PlantEffects/PlantEffect.gd")
 const PlantCondition = preload("res://scripts/PlantConditions/PlantCondition.gd")
@@ -77,4 +77,4 @@ func listen_to_activation_signals() -> void:
 			)
 
 func _on_body_entered(body):
-	if(body is Seed): hit_by_seed.emit()
+	if(body is Seed): hit_by_seed.emit(body)

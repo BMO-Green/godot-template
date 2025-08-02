@@ -6,6 +6,6 @@ extends PlantEffect
 
 
 func activate(plant: Plant):
-    CurrencyManager.modify_currency(coin_amount)
-    plant.play_particle_effect(particle_effect)
+	CurrencyManager.modify_currency(coin_amount)
+	plant.play_particle_effect(particle_effect)
 	

@@ -6,6 +6,6 @@ extends PlantEffect
 
 
 func activate(plant: Plant):
-    PointManager.increase_score(point_amount)
-    plant.play_particle_effect(particle_effect)
+	PointManager.increase_score(point_amount)
+	plant.play_particle_effect(particle_effect)
 	

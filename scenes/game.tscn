@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://p0n4me5pwe3w" path="res://scripts/UI/treshold_display.gd" id="3_p57ef"]
 [ext_resource type="Script" uid="uid://cv7yq0txvoc68" path="res://scenes/game_over_screen.gd" id="6_p57ef"]
 [ext_resource type="PackedScene" uid="uid://ni8fj4vev8s4" path="res://scenes/DraggableCoin/draggable_coin.tscn" id="9_0tnpc"]
-[ext_resource type="Script" uid="uid://db60nng4coe8s" path="res://scenes/currency_spawner.gd" id="10_vtaks"]
+[ext_resource type="Script" path="res://scenes/currency_spawner.gd" id="10_vtaks"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gee14"]
 size = Vector2(362.895, 20)
