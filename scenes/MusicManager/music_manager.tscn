@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://dx7r3d811j4cu"]
+
+[ext_resource type="Script" uid="uid://cxgtc0qkngc7l" path="res://scenes/MusicManager/music_manager.gd" id="1_tn5dr"]
+[ext_resource type="AudioStream" uid="uid://dy6msgagc7il5" path="res://assets/audio/sfx/loops/BASE_NOTE.ogg" id="2_usoho"]
+[ext_resource type="AudioStream" uid="uid://vmda8emgvdum" path="res://assets/audio/sfx/one_shots/sine C4.wav" id="3_usoho"]
+
+[sub_resource type="AudioEffectPanner" id="AudioEffectPanner_j3pel"]
+resource_name = "Panner"
+pan = 0.398105
+
+[node name="MusicManager" type="Node" node_paths=PackedStringArray("note_player", "root_player", "chord_player", "toggle_root_button", "toggle_chord_button", "play_note_button", "randomize_key_button", "randomize_mode_button")]
+script = ExtResource("1_tn5dr")
+music_key = 6
+music_mode = 2
+note_player = NodePath("NotePlayer")
+root_player = NodePath("RootPlayer")
+chord_player = NodePath("ChordPlayer")
+notes_panner_effect = SubResource("AudioEffectPanner_j3pel")
+toggle_root_button = NodePath("CanvasLayer/VBoxContainer/ToggleRootButton")
+toggle_chord_button = NodePath("CanvasLayer/VBoxContainer/ToggleChordButton")
+play_note_button = NodePath("CanvasLayer/VBoxContainer/PlayNoteButton")
+randomize_key_button = NodePath("CanvasLayer/VBoxContainer/RandomizeKeyButton")
+randomize_mode_button = NodePath("CanvasLayer/VBoxContainer/RandomizeModeButton")
+
+[node name="RootPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_usoho")
+volume_db = 1.5
+pitch_scale = 1.4375
+bus = &"Music"
+
+[node name="ChordPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_usoho")
+volume_db = -15.0
+pitch_scale = 3.41406
+bus = &"Music"
+
+[node name="NotePlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_usoho")
+volume_db = -3.0
+pitch_scale = 3.05469
+max_polyphony = 64
+bus = &"Notes"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -199.0
+offset_bottom = 171.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+
+[node name="ToggleRootButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Toggle Spin - Root Note"
+
+[node name="ToggleChordButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Toggle Spin - Chord Note"
+
+[node name="PlayNoteButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Play Note!"
+
+[node name="RandomizeKeyButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Random Music Key"
+
+[node name="RandomizeModeButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Random Music Mode"
