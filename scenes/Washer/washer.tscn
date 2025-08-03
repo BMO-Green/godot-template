@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://b1an0fegyfxgt"]
+[gd_scene load_steps=47 format=3 uid="uid://b1an0fegyfxgt"]
 
 [ext_resource type="Script" uid="uid://24fku4hjw18q" path="res://scenes/Washer/washer.gd" id="1_lfd6o"]
 [ext_resource type="Texture2D" uid="uid://b8j768yj0o20" path="res://assets/background_art/laundromat_bg_full.png" id="2_fpw1r"]
@@ -21,7 +21,6 @@
 [ext_resource type="PackedScene" uid="uid://buev7i4viyf3s" path="res://scenes/CoinSlot/coin_slot.tscn" id="8_cphwb"]
 [ext_resource type="Script" uid="uid://dqjylnfytfljy" path="res://scenes/Washer/coin_pipe_active.gd" id="8_qlpwf"]
 [ext_resource type="Texture2D" uid="uid://ccsxws80owbn8" path="res://assets/background_art/laundromat_drum_interior.png" id="9_8q70s"]
-[ext_resource type="Shader" path="res://scenes/Washer/foregroundplants.gdshader" id="11_qlpwf"]
 [ext_resource type="Script" path="res://scenes/Washer/door.gd" id="9_off0q"]
 [ext_resource type="Shader" path="res://scenes/Washer/foregroundplants.gdshader" id="11_qlpwf"]
 [ext_resource type="Texture2D" uid="uid://cm7bv7moibpw2" path="res://assets/background_art/big_plant_bottom_right.png" id="12_adkea"]
@@ -36,12 +35,12 @@
 [ext_resource type="Texture2D" uid="uid://coganxbftx6u3" path="res://assets/ui_elements/tool_lamp_on.png" id="18_rylyh"]
 [ext_resource type="Texture2D" uid="uid://nta87vxlofxk" path="res://assets/ui_elements/tool_lamp_off.png" id="19_clmdp"]
 [ext_resource type="Texture2D" uid="uid://bp1w0jjlrn3ga" path="res://assets/ui_elements/tool_center.png" id="22_rylyh"]
+[ext_resource type="PackedScene" uid="uid://blvyjf466y8mk" path="res://scenes/Sprinkler/heat_particles.tscn" id="28_yxkay"]
+[ext_resource type="PackedScene" uid="uid://dcb55bhtkbd0i" path="res://scenes/Sprinkler/light_particles.tscn" id="31_pbjm3"]
 [ext_resource type="Texture2D" uid="uid://bwe6sompyu8c6" path="res://assets/ui_elements/play_button_ready.png" id="33_4w84q"]
 [ext_resource type="Script" uid="uid://ds0wpfgsspvx5" path="res://scenes/ShopScreen/shop_screen_ui.gd" id="34_oibin"]
 [ext_resource type="PackedScene" uid="uid://dygjq4gkwhjxs" path="res://scenes/SeedShopPlantCard/seed_shop_popup.tscn" id="36_off0q"]
 [ext_resource type="Texture2D" uid="uid://cs0pqrnwv475b" path="res://assets/speed_gauge_lame.png" id="36_yxkay"]
-[ext_resource type="PackedScene" uid="uid://blvyjf466y8mk" path="res://scenes/Sprinkler/heat_particles.tscn" id="28_yxkay"]
-[ext_resource type="PackedScene" uid="uid://dcb55bhtkbd0i" path="res://scenes/Sprinkler/light_particles.tscn" id="31_pbjm3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7nn5q"]
 radius = 81.18
@@ -282,10 +281,12 @@ position = Vector2(-4, 175)
 
 [node name="Sprite2D" parent="HeatLamp" index="2"]
 position = Vector2(-5, -83)
+scale = Vector2(0.12, 0.12)
 texture = ExtResource("17_r63ys")
 
 [node name="CoinSlot" parent="HeatLamp" index="3"]
 position = Vector2(-5, -85)
+scale = Vector2(0.200001, 0.200001)
 
 [node name="LightLamp" parent="." instance=ExtResource("7_1n734")]
 position = Vector2(69, 9)
@@ -306,10 +307,12 @@ position = Vector2(-4, 175)
 
 [node name="Sprite2D" parent="LightLamp" index="2"]
 position = Vector2(-5, -83)
+scale = Vector2(0.12, 0.12)
 texture = ExtResource("19_clmdp")
 
 [node name="CoinSlot" parent="LightLamp" index="3"]
 position = Vector2(-5, -85)
+scale = Vector2(0.200001, 0.200001)
 
 [node name="Sprinkler" parent="." instance=ExtResource("7_1n734")]
 position = Vector2(3, 87)

@@ -27,6 +27,10 @@ var is_spinning: bool = false
 var activations_this_cycle : int = 0
 var spins_so_far : int = 0
 var whole_seconds_passed : int = 0
+var spin_duration_remaining: int : 
+	set(value):
+		spin_duration_remaining = value
+		on_duration_changed.emit(value)
 
 func _ready() -> void:
 	GameStateManager.init_washer(self)
