@@ -1,13 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://b2v76ttkfjs7c"]
+[gd_scene load_steps=9 format=3 uid="uid://b2v76ttkfjs7c"]
 
 [ext_resource type="PackedScene" uid="uid://dylocvpccd342" path="res://scenes/SeedBuffer/seed_buffer.tscn" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://b1an0fegyfxgt" path="res://scenes/Washer/washer.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://cxyspvx5yunoj" path="res://scenes/ShopScreen/shop_screen_ui.tscn" id="2_u5sy4"]
-[ext_resource type="Script" uid="uid://b5o07bgs1gupw" path="res://scenes/CurrencyManager/currency_display.gd" id="3_iywne"]
-[ext_resource type="Script" uid="uid://do1ooirbe8nyf" path="res://scripts/UI/round_display.gd" id="3_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://j6mugwi4uxu8" path="res://scripts/UI/point_display.tscn" id="3_lnu2h"]
-[ext_resource type="Script" uid="uid://p0n4me5pwe3w" path="res://scripts/UI/treshold_display.gd" id="3_p57ef"]
-[ext_resource type="Script" uid="uid://cv7yq0txvoc68" path="res://scenes/game_over_screen.gd" id="6_p57ef"]
 [ext_resource type="PackedScene" uid="uid://ni8fj4vev8s4" path="res://scenes/DraggableCoin/draggable_coin.tscn" id="9_0tnpc"]
 [ext_resource type="Script" uid="uid://db60nng4coe8s" path="res://scenes/currency_spawner.gd" id="10_vtaks"]
 
@@ -30,112 +25,19 @@ zoom = Vector2(2.52, 2.52)
 [node name="SeedBuffer" parent="." instance=ExtResource("1_gee14")]
 unique_name_in_owner = true
 
-[node name="Washer" parent="." instance=ExtResource("1_uwrxv")]
+[node name="Washer" parent="." node_paths=PackedStringArray("seed_buffer") instance=ExtResource("1_uwrxv")]
 unique_name_in_owner = true
 position = Vector2(109, 47)
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="TresholdLabel" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = -38.0
-offset_top = -250.0
-offset_right = 17.0
-offset_bottom = -227.0
-text = "Target:"
-metadata/_edit_use_anchors_ = true
-
-[node name="TresholdDisplay" parent="Control" instance=ExtResource("3_lnu2h")]
-layout_mode = 0
-offset_left = 22.0
-offset_top = -251.0
-offset_right = 62.0
-offset_bottom = -202.0
-text = "0
-"
-script = ExtResource("3_p57ef")
-metadata/_edit_use_anchors_ = true
-
-[node name="RoundLabel" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = -37.0
-offset_top = -274.0
-offset_right = 16.0
-offset_bottom = -251.0
-text = "Round:"
-metadata/_edit_use_anchors_ = true
-
-[node name="RoundDisplay" parent="Control" instance=ExtResource("3_lnu2h")]
-layout_mode = 0
-offset_left = 21.0
-offset_top = -273.0
-offset_right = 61.0
-offset_bottom = -224.0
-text = "0
-"
-script = ExtResource("3_lbhrr")
-metadata/_edit_use_anchors_ = true
-
-[node name="CurrencyLabel" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = -519.0
-offset_top = -167.0
-offset_right = -466.0
-offset_bottom = -144.0
-text = "Coins:"
-metadata/_edit_use_anchors_ = true
-
-[node name="CurrencyDisplay" parent="Control" instance=ExtResource("3_lnu2h")]
-layout_mode = 0
-offset_left = -462.0
-offset_top = -166.0
-offset_right = -422.0
-offset_bottom = -143.0
-script = ExtResource("3_iywne")
-metadata/_edit_use_anchors_ = true
-
-[node name="PointsLabel" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = -518.0
-offset_top = -190.0
-offset_right = -465.0
-offset_bottom = -167.0
-text = "Points:"
-metadata/_edit_use_anchors_ = true
-
-[node name="PointDisplay" parent="Control" instance=ExtResource("3_lnu2h")]
-layout_mode = 0
-offset_left = -463.0
-offset_top = -190.0
-offset_right = -423.0
-offset_bottom = -167.0
-metadata/_edit_use_anchors_ = true
-
-[node name="GameOverScreen" type="Label" parent="Control"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 0
-offset_left = -223.0
-offset_top = 29.0
-offset_right = 254.0
-offset_bottom = 120.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 31
-text = "GAME OVER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-"
-script = ExtResource("6_p57ef")
+seed_buffer = NodePath("../SeedBuffer")
 
 [node name="ShopScreenUI" parent="." instance=ExtResource("2_u5sy4")]
 visible = false
-offset_left = -527.0
-offset_top = -233.0
-offset_right = -527.0
-offset_bottom = -233.0
+z_index = 2070
+offset_left = -294.0
+offset_top = 44.0
+offset_right = -294.0
+offset_bottom = 44.0
+scale = Vector2(0.488826, 0.488826)
 
 [node name="WorldBoundaries" type="StaticBody2D" parent="."]
 

@@ -9,6 +9,8 @@ extends Node
 @export var coin_pickup_sounds : AudioStreamPlayer2D
 @export var spin_cycle_end_sound : AudioStreamPlayer
 @export var create_coin_sound : AudioStreamPlayer
+@export var spawn_seed_sound : AudioStreamPlayer
+@export var slider_sound : AudioStreamPlayer
 
 func _ready() -> void:
 	ambience_sfx_indoor.play() # Ambience sound - keep playing

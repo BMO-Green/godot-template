@@ -6,44 +6,45 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_5plcq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iv0qu"]
+resource_local_to_scene = true
 animations = [{
 "frames": [],
-"loop": true,
+"loop": false,
 "name": &"activated",
 "speed": 8.0
 }, {
 "frames": [],
-"loop": true,
-"name": &"cherry_planted",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"idle",
+"loop": false,
+"name": &"enabled",
 "speed": 8.0
 }, {
 "frames": [],
 "loop": true,
-"name": &"planted",
+"name": &"idle",
 "speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"planted",
+"speed": 8.0
 }]
 
 [node name="Plant" type="Area2D"]
-z_index = 1000
+z_index = 5
 z_as_relative = false
 script = ExtResource("1_fi0kw")
 activated_particle_effect = ExtResource("2_genx4")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-scale = Vector2(0.68, 0.68)
+scale = Vector2(0.559999, 0.559999)
 shape = SubResource("CircleShape2D_5plcq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 2
 position = Vector2(3.00001, 9)
-scale = Vector2(0.299121, 0.299121)
+scale = Vector2(0.246334, 0.246334)
 sprite_frames = SubResource("SpriteFrames_iv0qu")
-animation = &"activated"
-autoplay = "idle"
+animation = &"idle"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -16,6 +16,7 @@ signal on_spin_second_passed
 var spin_duration_elapsed: float
 @export var spin_amount: float
 @export var seed_spawner: SeedSpawner
+@export var seed_buffer : SeedBuffer
 @export var SPIN_COST : int = 1
 @export var SEED_COST: int = 2
 
@@ -68,3 +69,14 @@ func _on_seed_coin_slot_on_coin_deposited() -> void:
 
 func _on_spin_coin_slot_on_coin_deposited() -> void:
 	spin()
+
+
+func _on_pinball_mechanism_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	var event_is_mouse_click: bool = (
+		event is InputEventMouseButton and 
+		event.button_index == MOUSE_BUTTON_LEFT and 
+		event.is_released()
+	)
+	
+	if event_is_mouse_click and is_spinning:
+		seed_buffer.spawn_next_seed()

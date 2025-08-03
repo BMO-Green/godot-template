@@ -20,15 +20,17 @@ var mult_increase_per_cycle : float = 0.02
 var plant: int
 
 var activations_since_planted : int = 0
+var activations_this_cycle: int
+var MAX_ACTIVATIONS = 10
 var activated_this_cycle : bool
 var time_since_last_activation: float
 var previous_activations_this_cycle: Array[PlantCondition.ActivationType]= []
 
 
+
 func _ready() -> void:
 	add_to_group("plants")
-	
-	
+
 
 func initialize(_plant_data: PlantData):
 	plant_data = _plant_data
@@ -40,8 +42,15 @@ func initialize(_plant_data: PlantData):
 	setup_animations()
 	if plant_data.planted_animation != null:
 		sprite_2d.play("planted")
+		
 
+	var cavity_center: Node2D = get_parent().get_node("CenterOfCavity")
+	look_at(cavity_center.global_position)
 	
+	var direction_to_cavity_center := cavity_center.global_position - global_position
+	global_position += direction_to_cavity_center.normalized() * 15
+
+	rotate(1.5708)
 
 func _process(delta: float) -> void:
 	if activated_this_cycle:
@@ -50,6 +59,7 @@ func _process(delta: float) -> void:
 func activate(activation_type: PlantCondition.ActivationType) -> void:
 	if GameStateManager.current_game_state != GameStateManager.GameState.Spinning: return
 	var should_trigger = false	
+	if activations_this_cycle > MAX_ACTIVATIONS: return
 	
 	if	activation_type == PlantCondition.ActivationType.Force:
 		should_trigger = true
@@ -59,6 +69,7 @@ func activate(activation_type: PlantCondition.ActivationType) -> void:
 			should_trigger = true
 
 	if should_trigger:	
+		activations_this_cycle += 1
 		activated_this_cycle = true
 		activations_since_planted += 1
 		get_tree().root.get_node("Game/Washer").activations_this_cycle += 1
@@ -87,7 +98,8 @@ func setup_animations():
 
 	for frame in plant_data.activated_animation:
 		sprite_2d.sprite_frames.add_frame("activated", frame)
-
+	for frame in plant_data.enabled_animation:
+		sprite_2d.sprite_frames.add_frame("enabled", frame)
 	
 func play_particle_effect(effect: PackedScene) -> void:
 	if	effect == null: return
@@ -127,7 +139,15 @@ func on_cycle_start():
 	time_since_last_activation = 0
 	previous_activations_this_cycle = []
 	current_mult *= 1 + mult_increase_per_cycle
+	activations_this_cycle = 0
 
 func handle_destruction():
 	has_died.emit()
 	queue_free()
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if (sprite_2d.animation == "planted"):
+		sprite_2d.play("enabled")
+	if (sprite_2d.animation == "activated"):
+		sprite_2d.play("idle")
