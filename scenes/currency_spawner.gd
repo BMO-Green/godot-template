@@ -24,6 +24,7 @@ func spawn_coin()-> void:
 	coins_left_to_spawn -= 1
 	print(coins_left_to_spawn)
 	on_coin_created.emit(coin)
+	SfxManager.create_coin_sound.play()
 	
 func spawn_coins(amount: int) -> void:
 	coins_left_to_spawn += amount
