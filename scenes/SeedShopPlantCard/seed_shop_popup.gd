@@ -15,9 +15,8 @@ func initialize(_plant_data: PlantData) -> void:
 	
 	textureRect.texture = plant_data.store_icon
 	description_text.text = plant_data.plant_description
-	
-	
 
-func _on_button_pressed() -> void:
+
+func _on_coin_slot_on_coin_deposited() -> void:
 	on_selected.emit(plant_data) 
 	queue_free()

@@ -32,7 +32,7 @@ turbulence_noise_strength = 0.1
 turbulence_noise_scale = 0.1
 turbulence_noise_speed_random = 0.1
 
-[node name="GPUParticles2D" type="GPUParticles2D"]
+[node name="GPUParticles2D2" type="GPUParticles2D"]
 modulate = Color(64.766, 2.591, 0.571, 1)
 z_index = 1
 amount = 300

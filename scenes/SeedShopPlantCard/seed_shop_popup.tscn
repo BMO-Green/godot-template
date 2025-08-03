@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dygjq4gkwhjxs"]
+[gd_scene load_steps=5 format=3 uid="uid://dygjq4gkwhjxs"]
 
 [ext_resource type="Script" uid="uid://wgbfodsn108a" path="res://scenes/SeedShopPlantCard/seed_shop_popup.gd" id="1_hjdk2"]
 [ext_resource type="Texture2D" uid="uid://cwcao3b8wi4pn" path="res://assets/ui_elements/seed_bag.png" id="1_mlxiu"]
 [ext_resource type="Texture2D" uid="uid://wrryrx1cvr4i" path="res://assets/plants/sunflower_anims/sunflower_image.png" id="2_414lr"]
+[ext_resource type="PackedScene" uid="uid://buev7i4viyf3s" path="res://scenes/CoinSlot/coin_slot.tscn" id="4_ifw3u"]
 
 [node name="SeedShopPopup" type="Control"]
 layout_mode = 3
@@ -44,4 +45,8 @@ layout_mode = 0
 offset_right = 341.0
 offset_bottom = 434.0
 
+[node name="CoinSlot" parent="." instance=ExtResource("4_ifw3u")]
+position = Vector2(59.7429, 77.6657)
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="on_coin_deposited" from="CoinSlot" to="." method="_on_coin_slot_on_coin_deposited"]
