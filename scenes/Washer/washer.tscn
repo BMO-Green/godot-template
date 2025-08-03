@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://b1an0fegyfxgt"]
+[gd_scene load_steps=49 format=3 uid="uid://b1an0fegyfxgt"]
 
 [ext_resource type="Script" uid="uid://24fku4hjw18q" path="res://scenes/Washer/washer.gd" id="1_lfd6o"]
 [ext_resource type="Texture2D" uid="uid://b8j768yj0o20" path="res://assets/background_art/laundromat_bg_full.png" id="2_fpw1r"]
@@ -41,6 +41,8 @@
 [ext_resource type="Script" uid="uid://ds0wpfgsspvx5" path="res://scenes/ShopScreen/shop_screen_ui.gd" id="34_oibin"]
 [ext_resource type="PackedScene" uid="uid://dygjq4gkwhjxs" path="res://scenes/SeedShopPlantCard/seed_shop_popup.tscn" id="36_off0q"]
 [ext_resource type="Texture2D" uid="uid://cs0pqrnwv475b" path="res://assets/speed_gauge_lame.png" id="36_yxkay"]
+[ext_resource type="Script" uid="uid://blj5m6sb04c16" path="res://scripts/UI/point_display.gd" id="40_na54g"]
+[ext_resource type="Script" uid="uid://84nyvtos2mu4" path="res://scenes/Washer/target_label.gd" id="41_ij2v1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7nn5q"]
 radius = 81.18
@@ -408,6 +410,32 @@ offset_bottom = 40.0
 position = Vector2(-363, 2)
 scale = Vector2(0.396874, 0.396874)
 texture = ExtResource("36_yxkay")
+
+[node name="ScoreLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -429.0
+offset_top = 207.0
+offset_right = -389.0
+offset_bottom = 230.0
+text = "0"
+script = ExtResource("40_na54g")
+
+[node name="TargetLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -369.0
+offset_top = 207.0
+offset_right = -329.0
+offset_bottom = 230.0
+text = "0"
+script = ExtResource("41_ij2v1")
+
+[node name="Score_Target Header" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -431.0
+offset_top = 177.0
+offset_right = -324.0
+offset_bottom = 200.0
+text = "Score / Target"
 
 [node name="SpinCoinSlot" parent="." instance=ExtResource("8_cphwb")]
 position = Vector2(-215, -97)
