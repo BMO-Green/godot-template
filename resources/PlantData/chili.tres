@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="PlantData" load_steps=11 format=3 uid="uid://c4nxg1di15tgp"]
+
+[ext_resource type="Script" uid="uid://duht5knl030ng" path="res://scripts/PlantConditions/PlantCondition.gd" id="1_y4tah"]
+[ext_resource type="Script" uid="uid://c4eic5qk5yqtp" path="res://scripts/PlantConditions/OnXSPinsCondition.gd" id="2_1xo6c"]
+[ext_resource type="Script" uid="uid://blttmux522ia1" path="res://scripts/PlantEffects/PlantEffect.gd" id="3_jnn28"]
+[ext_resource type="Script" uid="uid://cdnxr81ocxvso" path="res://scripts/PlantEffects/Untested/ActivateAllByStatusEffect.gd" id="4_jnn28"]
+[ext_resource type="Script" uid="uid://7213i26wusbl" path="res://scripts/PlantData/plant_data.gd" id="5_0q880"]
+[ext_resource type="Script" uid="uid://cq8g1h4djhk4x" path="res://scripts/PlantEffects/Tested/PointEffect.gd" id="5_2avwp"]
+[ext_resource type="Texture2D" uid="uid://bilclg7l7nbxr" path="res://assets/plants/chili_anims/chili_image.png" id="6_y4tah"]
+
+[sub_resource type="Resource" id="Resource_c34aw"]
+script = ExtResource("2_1xo6c")
+spins_interval = 3
+required_activation_type = 2
+metadata/_custom_type_script = "uid://c4eic5qk5yqtp"
+
+[sub_resource type="Resource" id="Resource_4e2yg"]
+script = ExtResource("4_jnn28")
+activate_type = 3
+metadata/_custom_type_script = "uid://cdnxr81ocxvso"
+
+[sub_resource type="Resource" id="Resource_45s4i"]
+script = ExtResource("5_2avwp")
+point_amount = 50
+metadata/_custom_type_script = "uid://cq8g1h4djhk4x"
+
+[resource]
+script = ExtResource("5_0q880")
+plant_name = "Chili"
+plant_description = "Every 3 spins, heat all plants, grants 50 points"
+store_icon = ExtResource("6_y4tah")
+effects = Array[ExtResource("3_jnn28")]([SubResource("Resource_4e2yg"), SubResource("Resource_45s4i")])
+conditions = Array[ExtResource("1_y4tah")]([SubResource("Resource_c34aw")])
+planted_animation = Array[Texture2D]([])
+activated_animation = Array[Texture2D]([])
+metadata/_custom_type_script = "uid://7213i26wusbl"

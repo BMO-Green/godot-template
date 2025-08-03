@@ -6,6 +6,7 @@ signal on_cycle_start
 signal on_cycle_end
 signal on_seed_shop_opened
 signal on_seed_planted
+signal on_spin_second_passed
 
 @onready var cavity: Node2D = $Cavity
 
@@ -22,6 +23,7 @@ var is_spinning: bool = false
 
 var activations_this_cycle : int = 0
 var spins_so_far : int = 0
+var whole_seconds_passed : int = 0
 
 func _ready() -> void:
 	GameStateManager.init_washer(self)
@@ -30,6 +32,10 @@ func _physics_process(delta: float) -> void:
 	if is_spinning:
 		cavity.rotate(spin_amount * delta)
 		spin_duration_elapsed += delta
+		
+		if(whole_seconds_passed < floori(spin_duration_elapsed)):
+			whole_seconds_passed = floori(spin_duration_elapsed)
+			on_spin_second_passed.emit()
 		
 		var rounded_time_remaining = snapped(spin_duration - spin_duration_elapsed, 0.1)
 		
@@ -43,6 +49,7 @@ func _physics_process(delta: float) -> void:
 
 func spin() -> void:
 	spin_duration_elapsed = 0
+	whole_seconds_passed = 0
 	is_spinning = true
 	on_cycle_start.emit()
 	activations_this_cycle = 0

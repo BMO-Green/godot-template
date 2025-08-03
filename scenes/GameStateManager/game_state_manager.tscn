@@ -14,7 +14,6 @@
 
 [sub_resource type="Resource" id="Resource_8an15"]
 script = ExtResource("4_7vrr1")
-description_text = ""
 required_activation_type = 0
 metadata/_custom_type_script = "uid://0b0mvqf508uj"
 
@@ -33,12 +32,10 @@ effects = Array[ExtResource("4_e1bgg")]([SubResource("Resource_qfs6d")])
 conditions = Array[ExtResource("3_d4yke")]([SubResource("Resource_8an15")])
 planted_animation = Array[Texture2D]([])
 activated_animation = Array[Texture2D]([])
-activation_stages = Array[Texture2D]([])
 metadata/_custom_type_script = "uid://7213i26wusbl"
 
 [sub_resource type="Resource" id="Resource_lo58c"]
 script = ExtResource("4_7vrr1")
-description_text = ""
 required_activation_type = 0
 metadata/_custom_type_script = "uid://0b0mvqf508uj"
 
@@ -58,12 +55,10 @@ effects = Array[ExtResource("4_e1bgg")]([SubResource("Resource_vtlrr")])
 conditions = Array[ExtResource("3_d4yke")]([SubResource("Resource_lo58c")])
 planted_animation = Array[Texture2D]([])
 activated_animation = Array[Texture2D]([])
-activation_stages = Array[Texture2D]([])
 metadata/_custom_type_script = "uid://7213i26wusbl"
 
 [sub_resource type="Resource" id="Resource_mlhxy"]
 script = ExtResource("4_7vrr1")
-description_text = ""
 required_activation_type = 0
 metadata/_custom_type_script = "uid://0b0mvqf508uj"
 
@@ -83,7 +78,6 @@ effects = Array[ExtResource("4_e1bgg")]([SubResource("Resource_khd2a")])
 conditions = Array[ExtResource("3_d4yke")]([SubResource("Resource_mlhxy")])
 planted_animation = Array[Texture2D]([])
 activated_animation = Array[Texture2D]([])
-activation_stages = Array[Texture2D]([])
 metadata/_custom_type_script = "uid://7213i26wusbl"
 
 [node name="Node" type="Node"]

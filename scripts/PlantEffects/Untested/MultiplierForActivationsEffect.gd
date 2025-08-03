@@ -13,10 +13,12 @@ class ActivationsCounter:
 	var mult : float
 	var plant : Plant
 	var active : bool = false
-	var all_plants = plant.get_tree().get_nodes_in_group("plants")
+	var all_plants
 	func _init(m : float, p : Plant = Plant.new()):
 		plant = p
 		mult = m
+	func _ready():
+		all_plants = plant.get_tree().get_nodes_in_group("plants")
 	func _process(_delta):
 		if(plant.get_tree().root.get_node("Game/Washer").activations_this_cycle >= target):
 			if(active == true): 

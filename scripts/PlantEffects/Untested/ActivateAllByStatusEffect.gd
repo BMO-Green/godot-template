@@ -1,14 +1,12 @@
-class_name TimedPointMultiplierEffect
+class_name ActivateAllByStatusEffect
 extends PlantEffect
 
-@export var mult_amount := 1
-@export var time := 1
 @export var particle_effect: PackedScene
 @export var activate_type: PlantCondition.ActivationType
 
-
-
 func activate(plant: Plant):
-	# Use the plant timer
 	plant.play_particle_effect(particle_effect)
+	var all_plants := plant.get_tree().get_nodes_in_group("plants")
 	
+	for n_plant in all_plants:
+		n_plant.activate(activate_type)

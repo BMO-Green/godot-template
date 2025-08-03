@@ -7,14 +7,14 @@
 [ext_resource type="Script" uid="uid://7213i26wusbl" path="res://scripts/PlantData/plant_data.gd" id="5_yifgk"]
 [ext_resource type="Texture2D" uid="uid://bndycoc5xfobp" path="res://assets/plants/lily_anims/lily_image.png" id="6_0412q"]
 
-[sub_resource type="Resource" id="Resource_trox0"]
+[sub_resource type="Resource" id="Resource_tncqh"]
 script = ExtResource("2_0412q")
 required_activation_type = 0
 metadata/_custom_type_script = "uid://0b0mvqf508uj"
 
 [sub_resource type="Resource" id="Resource_ug6nq"]
 script = ExtResource("4_tncqh")
-area = 2
+area = 3
 activate_type = 5
 metadata/_custom_type_script = "uid://dxky0vim82pm8"
 
@@ -24,8 +24,7 @@ plant_name = "Lily"
 plant_description = "When watered, activates nearby plants"
 store_icon = ExtResource("6_0412q")
 effects = Array[ExtResource("3_ug6nq")]([SubResource("Resource_ug6nq")])
-conditions = Array[ExtResource("1_tncqh")]([SubResource("Resource_trox0")])
+conditions = Array[ExtResource("1_tncqh")]([SubResource("Resource_tncqh")])
 planted_animation = Array[Texture2D]([])
 activated_animation = Array[Texture2D]([])
-activation_stages = Array[Texture2D]([])
 metadata/_custom_type_script = "uid://7213i26wusbl"

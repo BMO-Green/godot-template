@@ -1,24 +1,29 @@
-[gd_resource type="Resource" script_class="PlantData" load_steps=7 format=3 uid="uid://bv3v2iifu5w8w"]
+[gd_resource type="Resource" script_class="PlantData" load_steps=9 format=3 uid="uid://bv3v2iifu5w8w"]
 
 [ext_resource type="Script" uid="uid://duht5knl030ng" path="res://scripts/PlantConditions/PlantCondition.gd" id="1_3cmvj"]
+[ext_resource type="Script" uid="uid://yeby1om7yl8g" path="res://scripts/PlantConditions/OnPlantBornCondition.gd" id="2_3cmvj"]
 [ext_resource type="Script" uid="uid://blttmux522ia1" path="res://scripts/PlantEffects/PlantEffect.gd" id="3_mxce2"]
-[ext_resource type="Script" uid="uid://bdwsiili120pq" path="res://scripts/PlantEffects/Tested/CoinEffect.gd" id="4_3cmvj"]
+[ext_resource type="Script" uid="uid://cq8g1h4djhk4x" path="res://scripts/PlantEffects/Tested/PointEffect.gd" id="4_3cmvj"]
 [ext_resource type="Script" uid="uid://7213i26wusbl" path="res://scripts/PlantData/plant_data.gd" id="5_4j57r"]
 [ext_resource type="Texture2D" uid="uid://dplcjomtdxeqw" path="res://assets/plants/cherry_anims/cherry_image.png" id="6_hjbtj"]
 
-[sub_resource type="Resource" id="Resource_dj0v7"]
+[sub_resource type="Resource" id="Resource_mxce2"]
+script = ExtResource("2_3cmvj")
+required_activation_type = 2
+metadata/_custom_type_script = "uid://yeby1om7yl8g"
+
+[sub_resource type="Resource" id="Resource_hjbtj"]
 script = ExtResource("4_3cmvj")
-coin_amount = 1
-metadata/_custom_type_script = "uid://bdwsiili120pq"
+point_amount = 30
+metadata/_custom_type_script = "uid://cq8g1h4djhk4x"
 
 [resource]
 script = ExtResource("5_4j57r")
 plant_name = "Cherry"
-plant_description = "When activated by other plants, grants 1 coin"
+plant_description = "When a plant grows, gives 30 points"
 store_icon = ExtResource("6_hjbtj")
-effects = Array[ExtResource("3_mxce2")]([SubResource("Resource_dj0v7")])
-conditions = Array[ExtResource("1_3cmvj")]([])
+effects = Array[ExtResource("3_mxce2")]([SubResource("Resource_hjbtj")])
+conditions = Array[ExtResource("1_3cmvj")]([SubResource("Resource_mxce2")])
 planted_animation = Array[Texture2D]([])
 activated_animation = Array[Texture2D]([])
-activation_stages = Array[Texture2D]([])
 metadata/_custom_type_script = "uid://7213i26wusbl"
