@@ -108,13 +108,13 @@ const note_intervals = {
 	"major second" : 1.125,
 	"minor third" : 1.1875,
 	"major third" : 1.25,
-	"fourth" : 1.3225,
+	"fourth" : 1.3125,
 	"tritone" : 1.4375,
 	"fifth" : 1.5,
-	"minor sixth" : 1.5825,
+	"minor sixth" : 1.625,
 	"major sixth" : 1.6875,
-	"minor seventh" : 1.8125,
-	"major seventh" : 1.9375,
+	"minor seventh" : 1.75,
+	"major seventh" : 1.875,
 }
 
 const MODES_DICT = {
