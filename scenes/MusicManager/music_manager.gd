@@ -5,6 +5,7 @@ extends Node
 * Note Object Pool : manages note instancing
 '''
 
+
 #region Constants
 ## ====== DATABASE =====
 var music_data = MusicData.new()
@@ -182,9 +183,7 @@ func _ready():
 	if !is_instance_valid(root_player):
 		printerr("Root player not set - cannot play root note")
 	
-	if Engine.is_editor_hint():
-		
-		print("toolscript active")
+	debug_layer.visible = !Engine.is_editor_hint()
 		
 	notes_panner_effect = AudioServer.get_bus_effect(AUDIO_BUS.NOTES, 0)
 	
@@ -210,6 +209,7 @@ func generate_chord():
 
 #region UI
 @export_category("UI Nodes")
+@export var debug_layer : CanvasLayer
 @export var toggle_root_button : Button
 @export var toggle_chord_button : Button
 @export var play_note_button : Button

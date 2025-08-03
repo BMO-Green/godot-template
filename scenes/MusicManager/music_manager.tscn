@@ -8,7 +8,7 @@
 resource_name = "Panner"
 pan = 0.398105
 
-[node name="MusicManager" type="Node" node_paths=PackedStringArray("note_player", "root_player", "chord_player", "toggle_root_button", "toggle_chord_button", "play_note_button", "randomize_key_button", "randomize_mode_button")]
+[node name="MusicManager" type="Node" node_paths=PackedStringArray("note_player", "root_player", "chord_player", "debug_layer", "toggle_root_button", "toggle_chord_button", "play_note_button", "randomize_key_button", "randomize_mode_button")]
 script = ExtResource("1_tn5dr")
 music_key = 6
 music_mode = 2
@@ -16,11 +16,12 @@ note_player = NodePath("NotePlayer")
 root_player = NodePath("RootPlayer")
 chord_player = NodePath("ChordPlayer")
 notes_panner_effect = SubResource("AudioEffectPanner_j3pel")
-toggle_root_button = NodePath("CanvasLayer/VBoxContainer/ToggleRootButton")
-toggle_chord_button = NodePath("CanvasLayer/VBoxContainer/ToggleChordButton")
-play_note_button = NodePath("CanvasLayer/VBoxContainer/PlayNoteButton")
-randomize_key_button = NodePath("CanvasLayer/VBoxContainer/RandomizeKeyButton")
-randomize_mode_button = NodePath("CanvasLayer/VBoxContainer/RandomizeModeButton")
+debug_layer = NodePath("DebugLayer")
+toggle_root_button = NodePath("DebugLayer/VBoxContainer/ToggleRootButton")
+toggle_chord_button = NodePath("DebugLayer/VBoxContainer/ToggleChordButton")
+play_note_button = NodePath("DebugLayer/VBoxContainer/PlayNoteButton")
+randomize_key_button = NodePath("DebugLayer/VBoxContainer/RandomizeKeyButton")
+randomize_mode_button = NodePath("DebugLayer/VBoxContainer/RandomizeModeButton")
 
 [node name="RootPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_usoho")
@@ -41,9 +42,10 @@ pitch_scale = 3.05469
 max_polyphony = 64
 bus = &"Notes"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="DebugLayer" type="CanvasLayer" parent="."]
+visible = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="DebugLayer"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -52,22 +54,22 @@ offset_bottom = 171.0
 grow_horizontal = 0
 size_flags_horizontal = 8
 
-[node name="ToggleRootButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="ToggleRootButton" type="Button" parent="DebugLayer/VBoxContainer"]
 layout_mode = 2
 text = "Toggle Spin - Root Note"
 
-[node name="ToggleChordButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="ToggleChordButton" type="Button" parent="DebugLayer/VBoxContainer"]
 layout_mode = 2
 text = "Toggle Spin - Chord Note"
 
-[node name="PlayNoteButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="PlayNoteButton" type="Button" parent="DebugLayer/VBoxContainer"]
 layout_mode = 2
 text = "Play Note!"
 
-[node name="RandomizeKeyButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="RandomizeKeyButton" type="Button" parent="DebugLayer/VBoxContainer"]
 layout_mode = 2
 text = "Random Music Key"
 
-[node name="RandomizeModeButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="RandomizeModeButton" type="Button" parent="DebugLayer/VBoxContainer"]
 layout_mode = 2
 text = "Random Music Mode"
