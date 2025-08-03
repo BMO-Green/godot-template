@@ -27,8 +27,7 @@ var previous_activations_this_cycle: Array[PlantCondition.ActivationType]= []
 
 func _ready() -> void:
 	add_to_group("plants")
-	
-	
+
 
 func initialize(_plant_data: PlantData):
 	plant_data = _plant_data
@@ -41,7 +40,9 @@ func initialize(_plant_data: PlantData):
 	if plant_data.planted_animation != null:
 		sprite_2d.play("planted")
 
-	
+	var cavity_center: Node2D = get_parent().get_node("CenterOfCavity")
+	look_at(cavity_center.global_position)
+	rotate(1.5708)
 
 func _process(delta: float) -> void:
 	if activated_this_cycle:

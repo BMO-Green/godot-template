@@ -144,6 +144,8 @@ shape = SubResource("CapsuleShape2D_mgpd2")
 position = Vector2(61, -68)
 shape = SubResource("CapsuleShape2D_mgpd2")
 
+[node name="CenterOfCavity" type="Node2D" parent="Cavity"]
+
 [node name="SeedSpawnLocation" type="Node2D" parent="."]
 position = Vector2(4, -34)
 script = ExtResource("3_p4vi5")
