@@ -9,3 +9,4 @@ extends Resource
 
 @export var planted_animation: Array[Texture2D]
 @export var activated_animation: Array[Texture2D]
+@export var enabled_animation: Array[Texture2D]

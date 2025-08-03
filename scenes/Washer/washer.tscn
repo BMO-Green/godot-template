@@ -247,7 +247,7 @@ texture = ExtResource("19_clmdp")
 
 [node name="Sprinkler" parent="." instance=ExtResource("7_1n734")]
 position = Vector2(8, 167)
-scale = Vector2(0.956271, 0.956271)
+scale = Vector2(0.961206, 0.963944)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

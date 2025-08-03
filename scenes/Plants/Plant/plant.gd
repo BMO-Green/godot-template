@@ -20,11 +20,12 @@ var mult_increase_per_cycle : float = 0.02
 var plant: int
 
 var activations_since_planted : int = 0
-var activations_this_cycle
+var activations_this_cycle: int
 var MAX_ACTIVATIONS = 10
 var activated_this_cycle : bool
 var time_since_last_activation: float
 var previous_activations_this_cycle: Array[PlantCondition.ActivationType]= []
+
 
 
 func _ready() -> void:
@@ -41,6 +42,7 @@ func initialize(_plant_data: PlantData):
 	setup_animations()
 	if plant_data.planted_animation != null:
 		sprite_2d.play("planted")
+		
 
 	var cavity_center: Node2D = get_parent().get_node("CenterOfCavity")
 	look_at(cavity_center.global_position)
@@ -96,7 +98,8 @@ func setup_animations():
 
 	for frame in plant_data.activated_animation:
 		sprite_2d.sprite_frames.add_frame("activated", frame)
-
+	for frame in plant_data.enabled_animation:
+		sprite_2d.sprite_frames.add_frame("enabled", frame)
 	
 func play_particle_effect(effect: PackedScene) -> void:
 	if	effect == null: return
@@ -141,3 +144,8 @@ func on_cycle_start():
 func handle_destruction():
 	has_died.emit()
 	queue_free()
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if (sprite_2d.animation == "planted"):
+		sprite_2d.play("enabled")

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PlantData" load_steps=22 format=3 uid="uid://dob7pvnbx6b0w"]
+[gd_resource type="Resource" script_class="PlantData" load_steps=17 format=3 uid="uid://bcc2t2i8pujtg"]
 
 [ext_resource type="Texture2D" uid="uid://drxp6g6qwiqju" path="res://assets/plants/sunflower_anims/sunflower_radiant/sunflower_radiant_1.png" id="1_73jak"]
 [ext_resource type="Script" uid="uid://duht5knl030ng" path="res://scripts/PlantConditions/PlantCondition.gd" id="1_ckmcc"]
@@ -7,13 +7,8 @@
 [ext_resource type="Script" uid="uid://blttmux522ia1" path="res://scripts/PlantEffects/PlantEffect.gd" id="2_x4pe6"]
 [ext_resource type="Texture2D" uid="uid://d2tg16b62vxsp" path="res://assets/plants/sunflower_anims/sunflower_radiant/sunflower_radiant_3.png" id="3_duu1m"]
 [ext_resource type="Script" uid="uid://7213i26wusbl" path="res://scripts/PlantData/plant_data.gd" id="3_og278"]
-[ext_resource type="Texture2D" uid="uid://bb1i402q5inyn" path="res://assets/plants/sunflower_anims/sunflower_watered/sunflower_watered_1.png" id="4_6baqk"]
 [ext_resource type="Script" uid="uid://cq8g1h4djhk4x" path="res://scripts/PlantEffects/Tested/PointEffect.gd" id="4_24j2k"]
-[ext_resource type="Texture2D" uid="uid://rdj1e4fic7la" path="res://assets/plants/sunflower_anims/sunflower_watered/sunflower_watered_2.png" id="5_xo3oc"]
 [ext_resource type="Texture2D" uid="uid://wrryrx1cvr4i" path="res://assets/plants/sunflower_anims/sunflower_image.png" id="6_r3cvy"]
-[ext_resource type="Texture2D" uid="uid://hxbelu4cdc0k" path="res://assets/plants/sunflower_anims/sunflower_watered/sunflower_watered_3.png" id="6_t2mft"]
-[ext_resource type="Texture2D" uid="uid://bv36xem1dpv2p" path="res://assets/plants/sunflower_anims/sunflower_watered/sunflower_watered_4.png" id="7_83bq0"]
-[ext_resource type="Texture2D" uid="uid://bo4qjtnf8k2n1" path="res://assets/plants/sunflower_anims/sunflower_watered/sunflower_watered_5.png" id="8_ef5xh"]
 [ext_resource type="Texture2D" uid="uid://cieyhk7miyfv8" path="res://assets/plants/sunflower_anims/sunflower_planted/sunflower_planted_1.png" id="13_5kri4"]
 [ext_resource type="Texture2D" uid="uid://ckibveya72awg" path="res://assets/plants/sunflower_anims/sunflower_planted/sunflower_planted_2.png" id="14_c8i01"]
 [ext_resource type="Texture2D" uid="uid://1n8jrxnlx6tm" path="res://assets/plants/sunflower_anims/sunflower_planted/sunflower_planted_3.png" id="15_no1pe"]
@@ -40,5 +35,4 @@ effects = Array[ExtResource("2_x4pe6")]([SubResource("Resource_ax8mo")])
 conditions = Array[ExtResource("1_ckmcc")]([SubResource("Resource_trox0")])
 planted_animation = Array[Texture2D]([ExtResource("13_5kri4"), ExtResource("14_c8i01"), ExtResource("15_no1pe"), ExtResource("16_sygx3"), ExtResource("17_w48a5")])
 activated_animation = Array[Texture2D]([ExtResource("1_73jak"), ExtResource("2_f065e"), ExtResource("3_duu1m")])
-activation_stages = Array[Texture2D]([ExtResource("4_6baqk"), ExtResource("5_xo3oc"), ExtResource("6_t2mft"), ExtResource("7_83bq0"), ExtResource("8_ef5xh")])
 metadata/_custom_type_script = "uid://7213i26wusbl"
