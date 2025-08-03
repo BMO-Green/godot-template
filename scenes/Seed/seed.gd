@@ -6,7 +6,7 @@ class_name Seed
 @export var plant_scene: PackedScene
 var plant_data: PlantData
 @onready var cavity: Node2D = get_node("/root/Game/Washer/Cavity")
-
+@onready var washer = get_node("/root/Game/Washer")
 var bounce_sound_timer : Timer
 var bounce_sound_cooldown : float = 0.1
 
@@ -30,7 +30,6 @@ func _physics_process(_delta: float) -> void:
 		plant_instance.global_position = self.global_position
 		
 		plant_instance.initialize(plant_data)
-		var washer = cavity.get_parent()
 		washer.on_seed_planted.emit()
 
 		MusicManager.play_note()
