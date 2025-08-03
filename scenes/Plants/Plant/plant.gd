@@ -46,7 +46,7 @@ func initialize(_plant_data: PlantData):
 	look_at(cavity_center.global_position)
 	
 	var direction_to_cavity_center := cavity_center.global_position - global_position
-	global_position += direction_to_cavity_center.normalized() * 30
+	global_position += direction_to_cavity_center.normalized() * 15
 
 	rotate(1.5708)
 
