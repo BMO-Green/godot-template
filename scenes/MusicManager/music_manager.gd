@@ -1,7 +1,5 @@
 @tool
 extends Node
-class_name MusicManager
-
 
 ''' TODO LIST
 * Note Object Pool : manages note instancing
@@ -21,7 +19,6 @@ enum AUDIO_BUS {
 	SFX,
 	NOTES
 }
-
 #endregion
 
 #region Signals

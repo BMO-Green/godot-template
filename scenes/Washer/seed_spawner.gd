@@ -8,4 +8,5 @@ func spawn_seed(plant_data: PlantData) -> void:
 	add_child(seed_instance)
 	seed_instance.global_position = global_position
 	seed_instance.plant_data = plant_data
+	SfxManager.pop_sounds.play()
 	
