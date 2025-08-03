@@ -8,7 +8,7 @@ signal on_state_changed(new_state: GameState)
 var end_of_cycle_signal: Signal
 var game_over_screen: Label
 var shop_screen: ShopScreenUI
-
+var seed_buffer: SeedBuffer
 
 enum GameState{ShopMenu, Spinning}
 
@@ -53,7 +53,6 @@ func init_washer(washer: Washer):
 	end_of_cycle_signal = washer.on_cycle_end
 	washer.on_cycle_start.connect(func(): current_game_state = GameState.Spinning)	
 	washer.on_seed_shop_opened.connect(func(): 
-		shop_screen.visible = true
 		shop_screen.initialize(generate_shop_selection())
 	)
 

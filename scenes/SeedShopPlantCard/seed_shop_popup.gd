@@ -20,3 +20,4 @@ func initialize(_plant_data: PlantData) -> void:
 
 func _on_button_pressed() -> void:
 	on_selected.emit(plant_data) 
+	queue_free()

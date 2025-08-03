@@ -10,6 +10,7 @@ var seeds_in_buffer : Array[PlantData]
 func _ready() -> void:
 	#washer.on_cycle_start.connect(spawn_next_seed)
 	seed_spawner = washer.get_seed_spawner()
+	washer.seed_buffer = self
 	
 func insert_seed(plant_data: PlantData):
 	seeds_in_buffer.append(plant_data)

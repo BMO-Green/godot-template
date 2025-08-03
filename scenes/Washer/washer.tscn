@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://b1an0fegyfxgt"]
+[gd_scene load_steps=41 format=3 uid="uid://b1an0fegyfxgt"]
 
 [ext_resource type="Script" uid="uid://24fku4hjw18q" path="res://scenes/Washer/washer.gd" id="1_lfd6o"]
 [ext_resource type="Texture2D" uid="uid://b8j768yj0o20" path="res://assets/background_art/laundromat_bg_full.png" id="2_fpw1r"]
@@ -6,13 +6,12 @@
 [ext_resource type="Script" uid="uid://ccsr5veij22yb" path="res://godot-donut-collision-polygon-2d-7780d026ae3d4a37fe68f43cc1f97ba664dd775d/addons/donut_collision_polygon2D/donut_collision_polygon2D.gd" id="2_mgpd2"]
 [ext_resource type="Script" uid="uid://bdqmepomsr402" path="res://scenes/Washer/seed_spawner.gd" id="3_p4vi5"]
 [ext_resource type="Texture2D" uid="uid://c8eqiftm38puc" path="res://assets/ui_elements/pinball_spring.png" id="4_kt4jv"]
-[ext_resource type="Script" path="res://scenes/Washer/pinball_mechanism.gd" id="4_l1yce"]
+[ext_resource type="Script" uid="uid://3fbkoxk0bfys" path="res://scenes/Washer/pinball_mechanism.gd" id="4_l1yce"]
 [ext_resource type="PackedScene" uid="uid://d0ka7875s2t78" path="res://scenes/Seed/seed.tscn" id="4_ufg6d"]
 [ext_resource type="Texture2D" uid="uid://blarbxvwd15hh" path="res://assets/ui_elements/shop_bg.png" id="4_xipsq"]
 [ext_resource type="Script" uid="uid://c7hn4iwn2hwt" path="res://scripts/UI/speed_slider.gd" id="5_4too1"]
 [ext_resource type="Texture2D" uid="uid://djpem5hh3ane0" path="res://assets/ui_elements/shop_glass_and_rim.png" id="5_anttn"]
 [ext_resource type="Texture2D" uid="uid://cbj1o5xg38bn2" path="res://assets/ui_elements/pinball_button_off.png" id="5_l1yce"]
-[ext_resource type="Script" uid="uid://dh381otaqdp0e" path="res://scripts/UI/duration_slider.gd" id="6_1n734"]
 [ext_resource type="Texture2D" uid="uid://cl4ys437wipo1" path="res://assets/ui_elements/coin_pipe_inactive.png" id="6_8q70s"]
 [ext_resource type="Texture2D" uid="uid://dgwfi1bdaievo" path="res://assets/ui_elements/pinball_button_on.png" id="6_18e17"]
 [ext_resource type="Texture2D" uid="uid://bsj5w1dhyn67d" path="res://assets/background_art/door_ring.png" id="6_jy8l0"]
@@ -22,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://buev7i4viyf3s" path="res://scenes/CoinSlot/coin_slot.tscn" id="8_cphwb"]
 [ext_resource type="Script" uid="uid://dqjylnfytfljy" path="res://scenes/Washer/coin_pipe_active.gd" id="8_qlpwf"]
 [ext_resource type="Texture2D" uid="uid://ccsxws80owbn8" path="res://assets/background_art/laundromat_drum_interior.png" id="9_8q70s"]
+[ext_resource type="Shader" path="res://scenes/Washer/foregroundplants.gdshader" id="11_qlpwf"]
 [ext_resource type="Script" path="res://scenes/Washer/door.gd" id="9_off0q"]
 [ext_resource type="Shader" path="res://scenes/Washer/foregroundplants.gdshader" id="11_qlpwf"]
 [ext_resource type="Texture2D" uid="uid://cm7bv7moibpw2" path="res://assets/background_art/big_plant_bottom_right.png" id="12_adkea"]
@@ -36,6 +36,10 @@
 [ext_resource type="Texture2D" uid="uid://coganxbftx6u3" path="res://assets/ui_elements/tool_lamp_on.png" id="18_rylyh"]
 [ext_resource type="Texture2D" uid="uid://nta87vxlofxk" path="res://assets/ui_elements/tool_lamp_off.png" id="19_clmdp"]
 [ext_resource type="Texture2D" uid="uid://bp1w0jjlrn3ga" path="res://assets/ui_elements/tool_center.png" id="22_rylyh"]
+[ext_resource type="Texture2D" uid="uid://bwe6sompyu8c6" path="res://assets/ui_elements/play_button_ready.png" id="33_4w84q"]
+[ext_resource type="Script" uid="uid://ds0wpfgsspvx5" path="res://scenes/ShopScreen/shop_screen_ui.gd" id="34_oibin"]
+[ext_resource type="PackedScene" uid="uid://dygjq4gkwhjxs" path="res://scenes/SeedShopPlantCard/seed_shop_popup.tscn" id="36_off0q"]
+[ext_resource type="Texture2D" uid="uid://cs0pqrnwv475b" path="res://assets/speed_gauge_lame.png" id="36_yxkay"]
 [ext_resource type="PackedScene" uid="uid://blvyjf466y8mk" path="res://scenes/Sprinkler/heat_particles.tscn" id="28_yxkay"]
 [ext_resource type="PackedScene" uid="uid://dcb55bhtkbd0i" path="res://scenes/Sprinkler/light_particles.tscn" id="31_pbjm3"]
 
@@ -70,7 +74,7 @@ radius = 199.199
 
 [node name="Washer" type="Node2D" node_paths=PackedStringArray("spin_duration_label", "seed_spawner")]
 script = ExtResource("1_lfd6o")
-spin_duration_label = NodePath("Control/Label")
+spin_duration_label = NodePath("Control/Duration Label")
 spin_amount = 1.445
 seed_spawner = NodePath("SeedSpawnLocation")
 
@@ -128,6 +132,7 @@ scale = Vector2(0.212295, 0.212295)
 texture = ExtResource("7_8q70s")
 
 [node name="ShopGlassAndRim" type="Sprite2D" parent="."]
+z_index = 6
 position = Vector2(-278.377, 58.2368)
 scale = Vector2(0.212295, 0.212295)
 texture = ExtResource("5_anttn")
@@ -316,29 +321,17 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="SpeedLabel" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = -191.0
-offset_top = -90.0
-offset_right = -5.0
-offset_bottom = -67.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "SPIN"
-
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 modulate = Color(1, 0.03, 0.03, 1)
 layout_mode = 0
-offset_left = -534.0
-offset_top = -51.0
-offset_right = -313.0
-offset_bottom = 39.0
+offset_left = -472.0
+offset_top = 6.0
+offset_right = -251.0
+offset_bottom = 96.0
 metadata/_edit_group_ = true
 
-[node name="SpeedLabel" type="Label" parent="Control/VBoxContainer"]
-layout_mode = 2
-text = "                SPEED                 "
-
 [node name="SpeedSlider" type="HSlider" parent="Control/VBoxContainer" node_paths=PackedStringArray("washer")]
+z_index = 1
 layout_mode = 2
 min_value = 0.5
 max_value = 4.0
@@ -346,29 +339,6 @@ step = 0.5
 value = 0.5
 script = ExtResource("5_4too1")
 washer = NodePath("../../..")
-
-[node name="DurationLabel" type="Label" parent="Control/VBoxContainer"]
-layout_mode = 2
-text = "                DURATION                 "
-
-[node name="DurationSlider" type="HSlider" parent="Control/VBoxContainer" node_paths=PackedStringArray("washer", "label")]
-layout_mode = 2
-min_value = 5.0
-max_value = 30.0
-step = 5.0
-value = 5.0
-script = ExtResource("6_1n734")
-washer = NodePath("../../..")
-label = NodePath("../../Label")
-
-[node name="Label" type="Label" parent="Control"]
-modulate = Color(0, 1, 1, 1)
-layout_mode = 0
-offset_left = -291.0
-offset_top = -89.0
-offset_right = -70.0
-offset_bottom = -66.0
-text = "00:00"
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
 layout_mode = 0
@@ -379,8 +349,65 @@ offset_bottom = 276.0
 scale = Vector2(0.160001, 0.160001)
 texture = ExtResource("18_1h2w1")
 
+[node name="Duration Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -309.0
+offset_top = -125.0
+offset_right = -183.0
+offset_bottom = -56.0
+scale = Vector2(0.747059, 0.842933)
+theme_override_font_sizes/font_size = 50
+text = "000"
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = -198.0
+offset_top = -128.0
+offset_right = -33.0
+offset_bottom = 79.0
+scale = Vector2(0.314877, 0.314877)
+icon = ExtResource("33_4w84q")
+
+[node name="ShopSlotsContents" type="Control" parent="Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("34_oibin")
+card_scene = ExtResource("36_off0q")
+
+[node name="recepticle" type="Control" parent="Control/ShopSlotsContents"]
+anchors_preset = 0
+offset_left = -405.0
+offset_top = 62.0
+offset_right = -365.0
+offset_bottom = 102.0
+
+[node name="recepticle2" type="Control" parent="Control/ShopSlotsContents"]
+anchors_preset = 0
+offset_left = -336.0
+offset_top = 64.0
+offset_right = -296.0
+offset_bottom = 104.0
+
+[node name="recepticle3" type="Control" parent="Control/ShopSlotsContents"]
+anchors_preset = 0
+offset_left = -271.0
+offset_top = 64.0
+offset_right = -231.0
+offset_bottom = 104.0
+
+[node name="TextureRect2" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SpeedGaugeLame" type="Sprite2D" parent="Control"]
+position = Vector2(-363, 2)
+scale = Vector2(0.396874, 0.396874)
+texture = ExtResource("36_yxkay")
+
 [node name="SpinCoinSlot" parent="." instance=ExtResource("8_cphwb")]
-position = Vector2(-212, -80)
+position = Vector2(-215, -97)
 scale = Vector2(0.559999, 0.559999)
 
 [node name="SeedCoinSlot" parent="." instance=ExtResource("8_cphwb")]
@@ -400,14 +427,13 @@ shape = SubResource("CircleShape2D_rylyh")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="ToolCenter/StaticBody2D"]
 shape = SubResource("CircleShape2D_rylyh")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="ToolCenter"]
-
 [node name="ToolCenter2" type="Sprite2D" parent="."]
 position = Vector2(2, 72)
 scale = Vector2(0.140914, 0.142294)
 texture = ExtResource("22_rylyh")
 
 [connection signal="input_event" from="PinballMechanism" to="." method="_on_pinball_mechanism_input_event"]
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
 [connection signal="on_coin_deposited" from="SpinCoinSlot" to="." method="_on_spin_coin_slot_on_coin_deposited"]
 [connection signal="on_coin_deposited" from="SeedCoinSlot" to="." method="_on_seed_coin_slot_on_coin_deposited"]
 

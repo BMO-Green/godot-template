@@ -4,7 +4,7 @@ extends HSlider
 @export var label: Label
 
 func _ready() -> void:
-	value = washer.spin_duration
+	value = washer.spin_duration_remaining
 	label.text = str(value)
 	value_changed.connect(_on_value_changed)
 

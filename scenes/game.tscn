@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2v76ttkfjs7c"]
+[gd_scene load_steps=8 format=3 uid="uid://b2v76ttkfjs7c"]
 
 [ext_resource type="PackedScene" uid="uid://dylocvpccd342" path="res://scenes/SeedBuffer/seed_buffer.tscn" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://b1an0fegyfxgt" path="res://scenes/Washer/washer.tscn" id="1_uwrxv"]
-[ext_resource type="PackedScene" uid="uid://cxyspvx5yunoj" path="res://scenes/ShopScreen/shop_screen_ui.tscn" id="2_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://ni8fj4vev8s4" path="res://scenes/DraggableCoin/draggable_coin.tscn" id="9_0tnpc"]
 [ext_resource type="Script" uid="uid://db60nng4coe8s" path="res://scenes/currency_spawner.gd" id="10_vtaks"]
 
@@ -25,19 +24,9 @@ zoom = Vector2(2.52, 2.52)
 [node name="SeedBuffer" parent="." instance=ExtResource("1_gee14")]
 unique_name_in_owner = true
 
-[node name="Washer" parent="." node_paths=PackedStringArray("seed_buffer") instance=ExtResource("1_uwrxv")]
+[node name="Washer" parent="." instance=ExtResource("1_uwrxv")]
 unique_name_in_owner = true
 position = Vector2(109, 47)
-seed_buffer = NodePath("../SeedBuffer")
-
-[node name="ShopScreenUI" parent="." instance=ExtResource("2_u5sy4")]
-visible = false
-z_index = 2070
-offset_left = -294.0
-offset_top = 44.0
-offset_right = -294.0
-offset_bottom = 44.0
-scale = Vector2(0.488826, 0.488826)
 
 [node name="WorldBoundaries" type="StaticBody2D" parent="."]
 
