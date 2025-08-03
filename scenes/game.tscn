@@ -25,9 +25,10 @@ zoom = Vector2(2.52, 2.52)
 [node name="SeedBuffer" parent="." instance=ExtResource("1_gee14")]
 unique_name_in_owner = true
 
-[node name="Washer" parent="." instance=ExtResource("1_uwrxv")]
+[node name="Washer" parent="." node_paths=PackedStringArray("seed_buffer") instance=ExtResource("1_uwrxv")]
 unique_name_in_owner = true
 position = Vector2(109, 47)
+seed_buffer = NodePath("../SeedBuffer")
 
 [node name="ShopScreenUI" parent="." instance=ExtResource("2_u5sy4")]
 visible = false
