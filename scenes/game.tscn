@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b2v76ttkfjs7c"]
+[gd_scene load_steps=12 format=3 uid="uid://b2v76ttkfjs7c"]
 
 [ext_resource type="PackedScene" uid="uid://dylocvpccd342" path="res://scenes/SeedBuffer/seed_buffer.tscn" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://b1an0fegyfxgt" path="res://scenes/Washer/washer.tscn" id="1_uwrxv"]
@@ -10,27 +10,21 @@
 [ext_resource type="Script" uid="uid://cv7yq0txvoc68" path="res://scenes/game_over_screen.gd" id="6_p57ef"]
 [ext_resource type="PackedScene" uid="uid://ni8fj4vev8s4" path="res://scenes/DraggableCoin/draggable_coin.tscn" id="9_0tnpc"]
 [ext_resource type="Script" uid="uid://db60nng4coe8s" path="res://scenes/currency_spawner.gd" id="10_vtaks"]
-[ext_resource type="PackedScene" uid="uid://dx7r3d811j4cu" path="res://scenes/MusicManager/music_manager.tscn" id="11_kvpfn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gee14"]
-size = Vector2(362.895, 20)
+size = Vector2(397.076, 20.8382)
 
 [node name="Game" type="Node2D"]
-z_index = -5
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-103, 111)
 zoom = Vector2(2.185, 2.185)
-
-[node name="MusicManager" parent="." instance=ExtResource("11_kvpfn")]
-notes_panner_effect = null
 
 [node name="SeedBuffer" parent="." instance=ExtResource("1_gee14")]
 unique_name_in_owner = true
 
 [node name="Washer" parent="." instance=ExtResource("1_uwrxv")]
 unique_name_in_owner = true
-z_index = -10
 position = Vector2(109, 47)
 
 [node name="Control" type="Control" parent="."]
@@ -143,8 +137,9 @@ position = Vector2(-202, 302)
 shape = SubResource("RectangleShape2D_gee14")
 
 [node name="CoinRecepticle6" type="CollisionShape2D" parent="WorldBoundaries"]
-position = Vector2(-186, 346)
+position = Vector2(-97, 286)
 rotation = -0.667953
+scale = Vector2(0.443511, -1.07628)
 shape = SubResource("RectangleShape2D_gee14")
 
 [node name="CoinRecepticle2" type="CollisionShape2D" parent="WorldBoundaries"]
