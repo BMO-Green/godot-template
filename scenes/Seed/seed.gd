@@ -7,9 +7,16 @@ class_name Seed
 var plant_data: PlantData
 @onready var cavity: Node2D = get_node("/root/Game/Washer/Cavity")
 
+var bounce_sound_timer : Timer
+var bounce_sound_cooldown : float = 0.1
 
 func _ready() -> void:
 	linear_velocity = Vector2(0,-1)
+	bounce_sound_timer = Timer.new()
+	bounce_sound_timer.autostart = false
+	bounce_sound_timer.one_shot = true
+	bounce_sound_timer.wait_time = bounce_sound_cooldown
+	add_child(bounce_sound_timer)
 	self.body_entered.connect(_on_body_entered) ## NOT WORKING
 
 func _physics_process(_delta: float) -> void:
@@ -30,7 +37,9 @@ func _physics_process(_delta: float) -> void:
 		queue_free()
 
 func _on_body_entered(body): ## NOT WORKING - FROZEN?
-	SfxManager.collision_sounds.play()
+	if linear_velocity.length() > 1.25 and bounce_sound_timer.is_stopped():
+		SfxManager.collision_sounds.play()
+		bounce_sound_timer.start()
 	#MusicManager.play_note()
 
 func handle_destruction():
