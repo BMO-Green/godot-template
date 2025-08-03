@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b1an0fegyfxgt"]
+[gd_scene load_steps=41 format=3 uid="uid://b1an0fegyfxgt"]
 
 [ext_resource type="Script" uid="uid://24fku4hjw18q" path="res://scenes/Washer/washer.gd" id="1_lfd6o"]
 [ext_resource type="Texture2D" uid="uid://b8j768yj0o20" path="res://assets/background_art/laundromat_bg_full.png" id="2_fpw1r"]
@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://buev7i4viyf3s" path="res://scenes/CoinSlot/coin_slot.tscn" id="8_cphwb"]
 [ext_resource type="Script" uid="uid://dqjylnfytfljy" path="res://scenes/Washer/coin_pipe_active.gd" id="8_qlpwf"]
 [ext_resource type="Texture2D" uid="uid://ccsxws80owbn8" path="res://assets/background_art/laundromat_drum_interior.png" id="9_8q70s"]
-[ext_resource type="Shader" path="res://scenes/Washer/foregroundplants.gdshader" id="11_qlpwf"]
+[ext_resource type="Shader" uid="uid://cv60oypy7rqts" path="res://scenes/Washer/foregroundplants.gdshader" id="11_qlpwf"]
 [ext_resource type="Texture2D" uid="uid://cm7bv7moibpw2" path="res://assets/background_art/big_plant_bottom_right.png" id="12_adkea"]
 [ext_resource type="Texture2D" uid="uid://plup3w40kvh8" path="res://assets/background_art/big_plant_bottom_left.png" id="13_clmdp"]
 [ext_resource type="Texture2D" uid="uid://s8fboq0lxjh6" path="res://assets/background_art/big_plant_top_left.png" id="14_s8w7r"]
@@ -89,17 +89,14 @@ scale = Vector2(0.212295, 0.212295)
 script = ExtResource("4_l1yce")
 
 [node name="PinballSpring" type="Sprite2D" parent="PinballMechanism"]
-scale = Vector2(1, 1)
 texture = ExtResource("4_kt4jv")
 
 [node name="PinballButtonOff" type="Sprite2D" parent="PinballMechanism"]
 position = Vector2(-127.181, -1.52588e-05)
-scale = Vector2(1, 1)
 texture = ExtResource("5_l1yce")
 
 [node name="PinballButtonOn" type="Sprite2D" parent="PinballMechanism"]
 position = Vector2(-127.181, -1.52588e-05)
-scale = Vector2(1, 1)
 texture = ExtResource("6_18e17")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PinballMechanism"]
@@ -366,15 +363,15 @@ texture = ExtResource("22_rylyh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ToolCenter/StaticBody2D"]
 shape = SubResource("CircleShape2D_rylyh")
 
-[node name="ToolCenter" type="Sprite2D" parent="."]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ToolCenter/StaticBody2D"]
+shape = SubResource("CircleShape2D_rylyh")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="ToolCenter"]
+
+[node name="ToolCenter2" type="Sprite2D" parent="."]
 position = Vector2(2, 72)
 scale = Vector2(0.140914, 0.142294)
 texture = ExtResource("22_rylyh")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="ToolCenter"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ToolCenter/StaticBody2D"]
-shape = SubResource("CircleShape2D_rylyh")
 
 [connection signal="input_event" from="PinballMechanism" to="." method="_on_pinball_mechanism_input_event"]
 [connection signal="on_coin_deposited" from="SpinCoinSlot" to="." method="_on_spin_coin_slot_on_coin_deposited"]
