@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dx7r3d811j4cu" path="res://scenes/MusicManager/music_manager.tscn" id="11_kvpfn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gee14"]
-size = Vector2(362.895, 20)
+size = Vector2(397.076, 20.8382)
 
 [node name="Game" type="Node2D"]
 z_index = -5
@@ -143,8 +143,9 @@ position = Vector2(-202, 302)
 shape = SubResource("RectangleShape2D_gee14")
 
 [node name="CoinRecepticle6" type="CollisionShape2D" parent="WorldBoundaries"]
-position = Vector2(-186, 346)
+position = Vector2(-97, 286)
 rotation = -0.667953
+scale = Vector2(0.443511, -1.07628)
 shape = SubResource("RectangleShape2D_gee14")
 
 [node name="CoinRecepticle2" type="CollisionShape2D" parent="WorldBoundaries"]

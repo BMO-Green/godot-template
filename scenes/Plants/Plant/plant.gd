@@ -36,7 +36,8 @@ func initialize(_plant_data: PlantData):
 	conditions = plant_data.conditions
 	listen_to_activation_signals()
 	setup_animations()
-
+	if plant_data.planted_animation != null:
+		sprite_2d.play("planted")
 
 	
 
@@ -62,6 +63,9 @@ func activate(activation_type: PlantCondition.ActivationType) -> void:
 			effect.activate(self)
 			previous_activations_this_cycle.append(activation_type)
 			get_tree().root.get_node("Game/Washer").activations_this_cycle += 1
+			
+			if plant_data.activated_animation != null:
+				sprite_2d.play("activated")
 	
 func setup_animations():
 	sprite_2d.sprite_frames.add_frame("idle", plant_data.store_icon)
