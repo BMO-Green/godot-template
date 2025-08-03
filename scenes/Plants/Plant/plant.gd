@@ -62,6 +62,7 @@ func activate(activation_type: PlantCondition.ActivationType) -> void:
 		activations_since_planted += 1
 		get_tree().root.get_node("Game/Washer").activations_this_cycle += 1
 		has_activated.emit()
+		MusicManager.play_note()
 		for effect in effects:
 			effect.activate(self)
 			previous_activations_this_cycle.append(activation_type)
