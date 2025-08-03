@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b1an0fegyfxgt"]
+[gd_scene load_steps=21 format=3 uid="uid://b1an0fegyfxgt"]
 
 [ext_resource type="Script" uid="uid://24fku4hjw18q" path="res://scenes/Washer/washer.gd" id="1_lfd6o"]
 [ext_resource type="Texture2D" uid="uid://b8j768yj0o20" path="res://assets/background_art/laundromat_bg_full.png" id="2_fpw1r"]
@@ -18,12 +18,35 @@
 [ext_resource type="PackedScene" uid="uid://buev7i4viyf3s" path="res://scenes/CoinSlot/coin_slot.tscn" id="8_cphwb"]
 [ext_resource type="Script" uid="uid://dqjylnfytfljy" path="res://scenes/Washer/coin_pipe_active.gd" id="8_qlpwf"]
 [ext_resource type="Texture2D" uid="uid://ccsxws80owbn8" path="res://assets/background_art/laundromat_drum_interior.png" id="9_8q70s"]
+[ext_resource type="Shader" uid="uid://cv60oypy7rqts" path="res://scenes/Washer/foregroundplants.gdshader" id="11_qlpwf"]
+[ext_resource type="Texture2D" uid="uid://cm7bv7moibpw2" path="res://assets/background_art/big_plant_bottom_right.png" id="12_adkea"]
+[ext_resource type="Texture2D" uid="uid://plup3w40kvh8" path="res://assets/background_art/big_plant_bottom_left.png" id="13_clmdp"]
+[ext_resource type="Texture2D" uid="uid://s8fboq0lxjh6" path="res://assets/background_art/big_plant_top_left.png" id="14_s8w7r"]
+[ext_resource type="Texture2D" uid="uid://bo6p4q7y00it6" path="res://assets/background_art/big_plant_top_middle_left.png" id="15_tp1mv"]
+[ext_resource type="Texture2D" uid="uid://dxno7a0w8ml43" path="res://assets/background_art/big_plant_top_middle_right.png" id="16_kt4jv"]
+[ext_resource type="Texture2D" uid="uid://cfexfax22asm7" path="res://assets/background_art/big_plant_top_right.png" id="17_l1yce"]
 [ext_resource type="Texture2D" uid="uid://c600wbtmdpmdy" path="res://assets/ui_elements/tool_heatlamp_on.png" id="16_vfjhv"]
 [ext_resource type="Texture2D" uid="uid://01n46d84jryg" path="res://assets/ui_elements/tool_heatlamp_off.png" id="17_r63ys"]
 [ext_resource type="Texture2D" uid="uid://qpi4vc6iwns7" path="res://assets/ui_elements/reroll_shop_icon.png" id="18_1h2w1"]
 [ext_resource type="Texture2D" uid="uid://coganxbftx6u3" path="res://assets/ui_elements/tool_lamp_on.png" id="18_rylyh"]
 [ext_resource type="Texture2D" uid="uid://nta87vxlofxk" path="res://assets/ui_elements/tool_lamp_off.png" id="19_clmdp"]
 [ext_resource type="Texture2D" uid="uid://bp1w0jjlrn3ga" path="res://assets/ui_elements/tool_center.png" id="22_rylyh"]
+
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vfjhv"]
+shader = ExtResource("11_qlpwf")
+shader_parameter/waveAmplitude = 0.05
+shader_parameter/correctVertex = true
+shader_parameter/waveFrequency = 10.0
+shader_parameter/verticalWave = true
+shader_parameter/keepTransparency = true
+shader_parameter/useTime = true
+shader_parameter/waveSpeed = 1.0
+shader_parameter/progress = 0.0
+shader_parameter/firstHalf = 0.5
+shader_parameter/secondHalf = 0.5
+shader_parameter/freezeFirstHalf = false
+shader_parameter/freezeSecondHalf = false
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mgpd2"]
 rough = true
@@ -88,6 +111,48 @@ z_index = 3010
 position = Vector2(-224.421, 69.8456)
 scale = Vector2(0.212295, 0.212295)
 texture = ExtResource("7_8q70s")
+
+[node name="BigPlantBottomRight" type="Sprite2D" parent="."]
+z_index = 83
+material = SubResource("ShaderMaterial_vfjhv")
+position = Vector2(96, 176)
+scale = Vector2(0.212295, 0.212295)
+texture = ExtResource("12_adkea")
+
+[node name="BigPlantBottomLeft" type="Sprite2D" parent="."]
+z_index = 83
+material = SubResource("ShaderMaterial_vfjhv")
+position = Vector2(-572, 224)
+scale = Vector2(0.212295, 0.212295)
+texture = ExtResource("13_clmdp")
+
+[node name="BigPlantTopLeft" type="Sprite2D" parent="."]
+z_index = 83
+material = SubResource("ShaderMaterial_vfjhv")
+position = Vector2(-535, -116)
+scale = Vector2(0.212295, 0.212295)
+texture = ExtResource("14_s8w7r")
+
+[node name="BigPlantTopMiddleLeft" type="Sprite2D" parent="."]
+z_index = 83
+material = SubResource("ShaderMaterial_vfjhv")
+position = Vector2(-333, -154)
+scale = Vector2(0.212295, 0.212295)
+texture = ExtResource("15_tp1mv")
+
+[node name="BigPlantTopMiddleRight" type="Sprite2D" parent="."]
+z_index = 83
+material = SubResource("ShaderMaterial_vfjhv")
+position = Vector2(-23.0001, -151)
+scale = Vector2(0.212295, 0.212295)
+texture = ExtResource("16_kt4jv")
+
+[node name="BigPlantTopRight" type="Sprite2D" parent="."]
+z_index = 83
+material = SubResource("ShaderMaterial_vfjhv")
+position = Vector2(193, -137)
+scale = Vector2(0.212295, 0.212295)
+texture = ExtResource("17_l1yce")
 
 [node name="Cavity" type="MeshInstance2D" parent="."]
 self_modulate = Color(0.306923, 0.306923, 0.306923, 1)
@@ -273,6 +338,3 @@ shape = SubResource("CircleShape2D_rylyh")
 
 [connection signal="on_coin_deposited" from="SpinCoinSlot" to="." method="_on_spin_coin_slot_on_coin_deposited"]
 [connection signal="on_coin_deposited" from="SeedCoinSlot" to="." method="_on_seed_coin_slot_on_coin_deposited"]
-
-[editable path="HeatLamp"]
-[editable path="HeatLamp2"]

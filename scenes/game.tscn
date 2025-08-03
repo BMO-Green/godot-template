@@ -31,10 +31,12 @@ position = Vector2(109, 47)
 
 [node name="ShopScreenUI" parent="." instance=ExtResource("2_u5sy4")]
 visible = false
-offset_left = -527.0
-offset_top = -233.0
-offset_right = -527.0
-offset_bottom = -233.0
+z_index = 2070
+offset_left = -294.0
+offset_top = 44.0
+offset_right = -294.0
+offset_bottom = 44.0
+scale = Vector2(0.488826, 0.488826)
 
 [node name="WorldBoundaries" type="StaticBody2D" parent="."]
 
