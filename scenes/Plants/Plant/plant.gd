@@ -149,3 +149,5 @@ func handle_destruction():
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if (sprite_2d.animation == "planted"):
 		sprite_2d.play("enabled")
+	if (sprite_2d.animation == "activated"):
+		sprite_2d.play("idle")
