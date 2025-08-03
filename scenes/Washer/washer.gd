@@ -36,6 +36,8 @@ func _physics_process(delta: float) -> void:
 		if spin_duration_elapsed > spin_duration:
 			is_spinning = false
 			on_cycle_end.emit()
+			MusicManager.set_root_player(false) # disable sound
+			MusicManager.set_chord_player(false) # disable sound
 
 func spin() -> void:
 	spin_duration_elapsed = 0
@@ -43,6 +45,8 @@ func spin() -> void:
 	on_cycle_start.emit()
 	activations_this_cycle = 0
 	spins_so_far += 1
+	MusicManager.set_root_player(true) # enable sound
+	MusicManager.set_chord_player(true) # enable sound
 
 		
 func get_seed_spawner() -> SeedSpawner:

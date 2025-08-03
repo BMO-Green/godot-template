@@ -18,6 +18,7 @@ coin_amount = 1
 metadata/_custom_type_script = "uid://bdwsiili120pq"
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("3_og278")
 plant_name = "Sunflower"
 plant_description = "When sunlit, grants 5 points"
