@@ -8,7 +8,6 @@
 
 [sub_resource type="Resource" id="Resource_4xlkp"]
 script = ExtResource("2_pbjvp")
-description_text = ""
 required_activation_type = 2
 metadata/_custom_type_script = "uid://buej645b6b58j"
 
