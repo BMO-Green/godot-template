@@ -2,6 +2,7 @@ class_name Plant
 extends Node2D
 
 signal hit_by_seed(seed : Seed)
+signal has_activated
 
 const PlantEffect = preload("res://scripts/PlantEffects/PlantEffect.gd")
 const PlantCondition = preload("res://scripts/PlantConditions/PlantCondition.gd")
@@ -54,10 +55,11 @@ func activate(activation_type: PlantCondition.ActivationType) -> void:
 			should_trigger = true
 
 	if should_trigger:
+		get_tree().root.get_node("Game/Washer").activations_this_cycle += 1
+		has_activated.emit()
 		for effect in effects:
 			effect.activate(self)
 			previous_activations_this_cycle.append(activation_type)
-			get_tree().root.get_node("Game/Washer").activations_this_cycle += 1
 	
 
 	
