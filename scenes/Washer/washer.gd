@@ -19,7 +19,7 @@ var spin_duration_elapsed: float
 
 var is_spinning: bool = false
 
-
+var activations_this_cycle : int = 0
 
 func _ready() -> void:
 	GameStateManager.init_washer(self)
@@ -40,6 +40,7 @@ func spin() -> void:
 	spin_duration_elapsed = 0
 	is_spinning = true
 	on_cycle_start.emit()
+	activations_this_cycle = 0
 
 		
 func get_seed_spawner() -> SeedSpawner:

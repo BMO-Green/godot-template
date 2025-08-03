@@ -13,6 +13,9 @@ var plant_data: PlantData
 var effects : Array[PlantEffect]
 var conditions: Array[PlantCondition]
 
+var current_mult : float = 1
+var mult_increase_per_cycle : float = 0.02
+
 var activations_since_planted : int = 0
 var activated_this_cycle : bool
 var time_since_last_activation: float
@@ -54,6 +57,7 @@ func activate(activation_type: PlantCondition.ActivationType) -> void:
 		for effect in effects:
 			effect.activate(self)
 			previous_activations_this_cycle.append(activation_type)
+			get_tree().root.get_node("Game/Washer").activations_this_cycle += 1
 	
 
 	
@@ -92,6 +96,8 @@ func _on_body_entered(body):
 func on_cycle_start():
 	activated_this_cycle = false
 	time_since_last_activation = 0
+	previous_activations_this_cycle = []
+	current_mult *= 1 + mult_increase_per_cycle
 
 func handle_destruction():
 	queue_free()

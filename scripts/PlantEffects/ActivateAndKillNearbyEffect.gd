@@ -11,6 +11,6 @@ func activate(plant: Plant):
 	
 	for n_plant in nearby_plants:
 		n_plant.activate(activate_type)
-		n_plant.call_deferred("queue_free")
+		n_plant.call_deferred("handle_destruction")
 		
-	plant.queue_free()
+	plant.handle_destruction()

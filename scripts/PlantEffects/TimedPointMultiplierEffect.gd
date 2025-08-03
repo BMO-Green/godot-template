@@ -6,9 +6,9 @@ extends PlantEffect
 @export var particle_effect: PackedScene
 @export var activate_type: PlantCondition.ActivationType
 
-var timer = Timer.new()
 
 
 func activate(plant: Plant):
+	# Use the plant timer
 	plant.play_particle_effect(particle_effect)
 	

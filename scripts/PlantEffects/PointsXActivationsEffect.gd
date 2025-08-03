@@ -6,6 +6,7 @@ extends PlantEffect
 
 
 func activate(plant: Plant):
-	PointManager.increase_score(point_amount * plant.activations_since_planted)
+	var increase : float = point_amount * plant.current_mult * plant.activations_since_planted
+	PointManager.increase_score(snappedi(increase, 1))
 	plant.play_particle_effect(particle_effect)
 	

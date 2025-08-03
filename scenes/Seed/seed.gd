@@ -24,3 +24,6 @@ func _physics_process(_delta: float) -> void:
 		plant_instance.initialize(plant_data)
 
 		queue_free()
+
+func handle_destruction():
+	queue_free()

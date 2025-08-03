@@ -8,6 +8,7 @@ extends PlantEffect
 
 func activate(plant: Plant):
 	var washer :Washer = plant.get_tree().root.get_node("Game/Washer")
+	var increase : float = washer.spin_duration_elapsed * mult * plant.current_mult
 	plant.play_particle_effect(particle_effect)
-	PointManager.increase_score(washer.spin_duration_elapsed * mult)
+	PointManager.increase_score(snappedi(increase, 1))
 	

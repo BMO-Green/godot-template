@@ -8,7 +8,7 @@ var coins_left_to_spawn: int
 
 signal on_coin_created(coin: Node)
 
-func	 _init() -> void:
+func _init() -> void:
 	CurrencyManager.currency_spawner = self
 
 func _process(delta: float) -> void:
