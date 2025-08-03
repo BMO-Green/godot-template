@@ -6,7 +6,10 @@ extends Area2D
 var tween : Tween
 
 func _process(delta: float) -> void:
-	var prompt_player_to_shoot_seed_by_blinking := not washer.seed_buffer.seeds_in_buffer.is_empty()
+	var prompt_player_to_shoot_seed_by_blinking := (
+			not washer.seed_buffer.seeds_in_buffer.is_empty()
+			and washer.is_spinning
+	)
 	#print(prompt_player_to_shoot_seed_by_blinking)
 	
 	if prompt_player_to_shoot_seed_by_blinking and washer.is_spinning and tween == null:
