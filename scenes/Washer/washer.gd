@@ -27,7 +27,7 @@ var is_spinning: bool = false
 var activations_this_cycle : int = 0
 var spins_so_far : int = 0
 var whole_seconds_passed : int = 0
-var spin_duration_remaining: int : 
+var spin_duration_remaining: float : 
 	set(value):
 		spin_duration_remaining = value
 		on_duration_changed.emit(value)
@@ -36,7 +36,7 @@ func _ready() -> void:
 	GameStateManager.init_washer(self)
 	on_duration_changed.connect(func(value): 
 		spin_duration_label.text = str(snapped(value, 0.1)))
-	spin_duration_remaining = 10
+	spin_duration_remaining = 10.0
 	
 func _physics_process(delta: float) -> void:
 	if is_spinning:
