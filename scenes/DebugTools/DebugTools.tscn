@@ -2,12 +2,13 @@
 
 [ext_resource type="Script" uid="uid://ddpyxkankebsp" path="res://scenes/DebugTools/debug_tools.gd" id="1_eu1bm"]
 [ext_resource type="Resource" uid="uid://drirb6ml1yvux" path="res://resources/PlantData/Test/test_plant.tres" id="2_fqcq8"]
-[ext_resource type="Script" uid="uid://cq8g1h4djhk4x" path="res://scripts/PlantEffects/Tested/PointEffect.gd" id="2_uy2ww"]
+[ext_resource type="Script" uid="uid://ccxgfmm6y7dd" path="res://scripts/PlantEffects/Untested/CopyIntoNearbyActivationsThenDiesEffect.gd" id="2_uy2ww"]
 
 [sub_resource type="Resource" id="Resource_s4b04"]
 script = ExtResource("2_uy2ww")
-point_amount = 10
-metadata/_custom_type_script = "uid://cq8g1h4djhk4x"
+area = 10000
+activate_type = 2
+metadata/_custom_type_script = "uid://ccxgfmm6y7dd"
 
 [node name="DebugTools" type="Node"]
 script = ExtResource("1_eu1bm")

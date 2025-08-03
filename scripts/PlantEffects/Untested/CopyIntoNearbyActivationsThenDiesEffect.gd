@@ -8,7 +8,6 @@ extends PlantEffect
 func activate(plant: Plant):
 	plant.play_particle_effect(particle_effect)
 	var nearby_plants := plant.get_nearby_plants(area)
-	
 	for n_plant in nearby_plants:
 		n_plant.conditions = plant.conditions
 		

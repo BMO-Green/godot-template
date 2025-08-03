@@ -4,7 +4,7 @@ extends PlantCondition
 @export var required_activation_type: ActivationType
 
 func attempt_activate(_plant: Plant, _activation_type: ActivationType) -> bool:
-	
+	print('cycle start listened')
 	return true
 
 func get_activation_signals(plant: Plant)-> Array[Signal]:
