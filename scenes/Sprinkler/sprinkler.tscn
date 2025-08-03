@@ -1,13 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://62kfcgolanpg"]
+[gd_scene load_steps=8 format=3 uid="uid://62kfcgolanpg"]
 
 [ext_resource type="Script" uid="uid://c8h2n0qdcjbwf" path="res://scenes/Sprinkler/sprinkler.gd" id="1_0xn57"]
 [ext_resource type="PackedScene" uid="uid://cyptd6ma5v42e" path="res://scenes/Sprinkler/watering_particles.tscn" id="2_vmldu"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_0xn57"]
-size = Vector2(200, 400)
-
-[sub_resource type="QuadMesh" id="QuadMesh_yf7w0"]
-size = Vector2(50, 50)
+[ext_resource type="Texture2D" uid="uid://bpbg88ma1aquj" path="res://assets/ui_elements/tool_sprinkler_off.png" id="3_arh5y"]
+[ext_resource type="Texture2D" uid="uid://dalcadh76ve3y" path="res://assets/ui_elements/tool_sprinkler_on.png" id="3_ybw30"]
+[ext_resource type="PackedScene" uid="uid://buev7i4viyf3s" path="res://scenes/CoinSlot/coin_slot.tscn" id="5_sn2xb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0xn57"]
 
@@ -19,27 +16,30 @@ script = ExtResource("1_0xn57")
 water_spray_detection = NodePath("WateringCollider")
 particle_system = ExtResource("2_vmldu")
 time_between_sprays = 1.5
-
-[node name="wateringzonedisplay" type="MeshInstance2D" parent="."]
-modulate = Color(0.25098, 1, 1, 0.0313726)
-position = Vector2(0, 107)
-scale = Vector2(0.559998, 0.559998)
-mesh = SubResource("QuadMesh_0xn57")
-
-[node name="Mesh" type="MeshInstance2D" parent="."]
-modulate = Color(0.0352941, 1, 1, 1)
-scale = Vector2(0.4, 0.4)
-mesh = SubResource("QuadMesh_yf7w0")
+active_sprite = ExtResource("3_ybw30")
 
 [node name="SprinklerBody" type="StaticBody2D" parent="."]
+position = Vector2(-6, -82)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SprinklerBody"]
 shape = SubResource("CircleShape2D_0xn57")
 
 [node name="WateringCollider" type="Area2D" parent="."]
-position = Vector2(3, 0)
+position = Vector2(-3, -82)
 scale = Vector2(0.600001, 0.600001)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WateringCollider"]
 position = Vector2(-4, 175)
 shape = SubResource("RectangleShape2D_0xn57")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-5, -83)
+rotation = 3.13127
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("3_arh5y")
+
+[node name="CoinSlot" parent="." instance=ExtResource("5_sn2xb")]
+position = Vector2(-5, -85)
+scale = Vector2(0.200001, 0.200001)
+
+[connection signal="on_coin_deposited" from="CoinSlot" to="." method="_on_coin_slot_on_coin_deposited"]
