@@ -1,0 +1,132 @@
+[gd_scene load_steps=37 format=3 uid="uid://dli3mw3vc64we"]
+
+[ext_resource type="Script" uid="uid://dn4qbh3qrbi42" path="res://scenes/SfxManager/sfx_manager.gd" id="1_kwtne"]
+[ext_resource type="AudioStream" uid="uid://c3edh5owo8o2e" path="res://assets/audio/sfx/AMBIENCE-Indoor-noise-02.ogg" id="2_0kkc0"]
+[ext_resource type="AudioStream" uid="uid://cxflpob8eiaxp" path="res://assets/audio/sfx/SFX-Bump-12.ogg" id="3_3u3qk"]
+[ext_resource type="AudioStream" uid="uid://cjcqdevle33eu" path="res://assets/audio/sfx/SFX-Bump-13.ogg" id="4_r6cek"]
+[ext_resource type="AudioStream" uid="uid://cehc8kb525sa3" path="res://assets/audio/sfx/SFX-Bump-20.ogg" id="5_wpfur"]
+[ext_resource type="AudioStream" uid="uid://bs5r6pjbt2epd" path="res://assets/audio/sfx/SFX-Bump-21.ogg" id="6_66crh"]
+[ext_resource type="AudioStream" uid="uid://btch5m2guvhw8" path="res://assets/audio/sfx/SFX-Bump-22.ogg" id="7_hytfg"]
+[ext_resource type="AudioStream" uid="uid://c0pumttqmt4q5" path="res://assets/audio/sfx/SFX-Bump-23.ogg" id="8_7fufe"]
+[ext_resource type="AudioStream" uid="uid://cnoxdp6rbh0jh" path="res://assets/audio/sfx/Coin Drop-01.ogg" id="9_7fufe"]
+[ext_resource type="AudioStream" uid="uid://ig2bq7xsdgm" path="res://assets/audio/sfx/Coin Drop-02.ogg" id="10_r8ejx"]
+[ext_resource type="AudioStream" uid="uid://drbhin73r67hu" path="res://assets/audio/sfx/Coin Drop-03.ogg" id="11_upw1i"]
+[ext_resource type="AudioStream" uid="uid://bs787nf6lcqnf" path="res://assets/audio/sfx/Coin Drop-04.ogg" id="12_esuln"]
+[ext_resource type="AudioStream" uid="uid://d3mqrcwvjukha" path="res://assets/audio/sfx/Coin Drop-06.ogg" id="13_gklcb"]
+[ext_resource type="AudioStream" uid="uid://cf3cx21bcjkr5" path="res://assets/audio/sfx/SFX-Pops-01.ogg" id="14_vwr3i"]
+[ext_resource type="AudioStream" uid="uid://cse7xf8j6f0mc" path="res://assets/audio/sfx/SFX-Pops-02.ogg" id="15_sov3n"]
+[ext_resource type="AudioStream" uid="uid://v76eqnx75bll" path="res://assets/audio/sfx/SFX-Pops-03.ogg" id="16_yta3n"]
+[ext_resource type="AudioStream" uid="uid://sv8ll56nfmpd" path="res://assets/audio/sfx/SFX-Pops-04.ogg" id="17_43p8t"]
+[ext_resource type="AudioStream" uid="uid://chvg2kdtibjud" path="res://assets/audio/sfx/SFX-Pops-24.ogg" id="18_4oqvl"]
+[ext_resource type="AudioStream" uid="uid://bx2rumpt4glk8" path="res://assets/audio/sfx/SFX-Pops-27.ogg" id="19_jbx3y"]
+[ext_resource type="AudioStream" uid="uid://3177efvdjdu3" path="res://assets/audio/sfx/SFX-Drops-05.ogg" id="20_6pnvn"]
+[ext_resource type="AudioStream" uid="uid://dgelwbhhocxh6" path="res://assets/audio/sfx/SFX-Drops-06.ogg" id="21_dj751"]
+[ext_resource type="AudioStream" uid="uid://dnj6j15pfskma" path="res://assets/audio/sfx/SFX-Drops-07.ogg" id="22_5okc6"]
+[ext_resource type="AudioStream" uid="uid://bcpubhpin77gj" path="res://assets/audio/sfx/SFX-Drops-08.ogg" id="23_y8mkp"]
+[ext_resource type="AudioStream" uid="uid://pt3l8be13bxj" path="res://assets/audio/sfx/SFX-Drops-09.ogg" id="24_jo3g1"]
+[ext_resource type="AudioStream" uid="uid://dhcybmhbilahj" path="res://assets/audio/sfx/SFX-Drops-10.ogg" id="25_4h1cf"]
+[ext_resource type="AudioStream" uid="uid://cohg53ji65055" path="res://assets/audio/sfx/SFX-Drops-11.ogg" id="26_4umj2"]
+[ext_resource type="AudioStream" uid="uid://ck1aruxvkx0so" path="res://assets/audio/sfx/SFX-Drops-25.ogg" id="27_yddi6"]
+[ext_resource type="AudioStream" uid="uid://c0n7x4awu73o7" path="res://assets/audio/sfx/SFX-Drops-26.ogg" id="28_rpchu"]
+[ext_resource type="AudioStream" uid="uid://b7v3w5simci6c" path="res://assets/audio/sfx/SFX-Pickup-01.ogg" id="29_dj751"]
+[ext_resource type="AudioStream" uid="uid://d4i0f41d0an6d" path="res://assets/audio/sfx/cat-meow.ogg" id="30_5okc6"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_r8ejx"]
+streams_count = 6
+stream_0/stream = ExtResource("3_3u3qk")
+stream_1/stream = ExtResource("4_r6cek")
+stream_2/stream = ExtResource("5_wpfur")
+stream_3/stream = ExtResource("6_66crh")
+stream_4/stream = ExtResource("7_hytfg")
+stream_5/stream = ExtResource("8_7fufe")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3u3qk"]
+random_pitch = 1.2
+streams_count = 5
+stream_0/stream = ExtResource("9_7fufe")
+stream_1/stream = ExtResource("10_r8ejx")
+stream_2/stream = ExtResource("11_upw1i")
+stream_3/stream = ExtResource("12_esuln")
+stream_4/stream = ExtResource("13_gklcb")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7fufe"]
+random_pitch = 1.2
+streams_count = 6
+stream_0/stream = ExtResource("14_vwr3i")
+stream_1/stream = ExtResource("15_sov3n")
+stream_2/stream = ExtResource("16_yta3n")
+stream_3/stream = ExtResource("17_43p8t")
+stream_4/stream = ExtResource("18_4oqvl")
+stream_5/stream = ExtResource("19_jbx3y")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7b5j1"]
+random_pitch = 1.25
+streams_count = 9
+stream_0/stream = ExtResource("20_6pnvn")
+stream_1/stream = ExtResource("21_dj751")
+stream_2/stream = ExtResource("22_5okc6")
+stream_3/stream = ExtResource("23_y8mkp")
+stream_4/stream = ExtResource("24_jo3g1")
+stream_5/stream = ExtResource("25_4h1cf")
+stream_6/stream = ExtResource("26_4umj2")
+stream_7/stream = ExtResource("27_yddi6")
+stream_8/stream = ExtResource("28_rpchu")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5okc6"]
+random_pitch = 1.15
+streams_count = 1
+stream_0/stream = ExtResource("29_dj751")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_y8mkp"]
+random_pitch = 1.3
+streams_count = 1
+stream_0/stream = ExtResource("30_5okc6")
+
+[node name="SfxManager" type="Node" node_paths=PackedStringArray("ambience_sfx_indoor", "collision_sounds", "coin_drop_sounds", "pop_sounds", "water_drop_sounds", "coin_pickup_sounds")]
+script = ExtResource("1_kwtne")
+ambience_sfx_indoor = NodePath("AmbiencePlayer")
+collision_sounds = NodePath("CollisionSounds")
+coin_drop_sounds = NodePath("CoinDropSounds")
+pop_sounds = NodePath("PopSounds")
+water_drop_sounds = NodePath("WaterDropSounds")
+coin_pickup_sounds = NodePath("CoinPickupSound")
+
+[node name="AmbiencePlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_0kkc0")
+volume_db = -12.0
+bus = &"Ambience"
+
+[node name="CollisionSounds" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_r8ejx")
+max_polyphony = 32
+panning_strength = 1.5
+bus = &"SFX"
+
+[node name="CoinDropSounds" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_3u3qk")
+max_polyphony = 32
+panning_strength = 1.5
+bus = &"SFX"
+
+[node name="PopSounds" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_7fufe")
+max_polyphony = 32
+panning_strength = 1.5
+bus = &"SFX"
+
+[node name="WaterDropSounds" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_7b5j1")
+max_polyphony = 32
+panning_strength = 1.5
+bus = &"SFX"
+
+[node name="CoinPickupSound" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_5okc6")
+max_polyphony = 2
+bus = &"SFX"
+
+[node name="MeowSounds" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_y8mkp")
+volume_db = -6.0
+pitch_scale = 1.2
+max_polyphony = 16

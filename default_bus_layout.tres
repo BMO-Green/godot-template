@@ -21,10 +21,11 @@ feedback_lowpass = 8000.0
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_j3pel"]
 resource_name = "Reverb"
-room_size = 0.6
-damping = 0.25
+room_size = 0.1
+damping = 0.2
+spread = 0.5
 hipass = 0.5
-wet = 0.2
+wet = 0.05
 
 [resource]
 bus/1/name = &"Music"
@@ -58,7 +59,7 @@ bus/5/solo = false
 bus/5/mute = false
 bus/5/bypass_fx = false
 bus/5/volume_db = 0.0
-bus/5/send = &"Master"
+bus/5/send = &"SFX"
 bus/5/effect/0/effect = SubResource("AudioEffectPanner_j3pel")
 bus/5/effect/0/enabled = true
 bus/5/effect/1/effect = SubResource("AudioEffectDelay_j3pel")
