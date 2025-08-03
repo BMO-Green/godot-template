@@ -20,6 +20,8 @@ var mult_increase_per_cycle : float = 0.02
 var plant: int
 
 var activations_since_planted : int = 0
+var activations_this_cycle
+var MAX_ACTIVATIONS = 10
 var activated_this_cycle : bool
 var time_since_last_activation: float
 var previous_activations_this_cycle: Array[PlantCondition.ActivationType]= []
@@ -42,6 +44,10 @@ func initialize(_plant_data: PlantData):
 
 	var cavity_center: Node2D = get_parent().get_node("CenterOfCavity")
 	look_at(cavity_center.global_position)
+	
+	var direction_to_cavity_center := cavity_center.global_position - global_position
+	global_position += direction_to_cavity_center.normalized() * 30
+
 	rotate(1.5708)
 
 func _process(delta: float) -> void:
@@ -51,6 +57,7 @@ func _process(delta: float) -> void:
 func activate(activation_type: PlantCondition.ActivationType) -> void:
 	if GameStateManager.current_game_state != GameStateManager.GameState.Spinning: return
 	var should_trigger = false	
+	if activations_this_cycle > MAX_ACTIVATIONS: return
 	
 	if	activation_type == PlantCondition.ActivationType.Force:
 		should_trigger = true
@@ -60,6 +67,7 @@ func activate(activation_type: PlantCondition.ActivationType) -> void:
 			should_trigger = true
 
 	if should_trigger:	
+		activations_this_cycle += 1
 		activated_this_cycle = true
 		activations_since_planted += 1
 		get_tree().root.get_node("Game/Washer").activations_this_cycle += 1
@@ -128,6 +136,7 @@ func on_cycle_start():
 	time_since_last_activation = 0
 	previous_activations_this_cycle = []
 	current_mult *= 1 + mult_increase_per_cycle
+	activations_this_cycle = 0
 
 func handle_destruction():
 	has_died.emit()

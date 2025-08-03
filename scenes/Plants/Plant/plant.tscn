@@ -30,19 +30,19 @@ animations = [{
 }]
 
 [node name="Plant" type="Area2D"]
-z_index = 1000
+z_index = 5
 z_as_relative = false
 script = ExtResource("1_fi0kw")
 activated_particle_effect = ExtResource("2_genx4")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-scale = Vector2(0.68, 0.68)
+scale = Vector2(0.559999, 0.559999)
 shape = SubResource("CircleShape2D_5plcq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 2
 position = Vector2(3.00001, 9)
-scale = Vector2(0.299121, 0.299121)
+scale = Vector2(0.246334, 0.246334)
 sprite_frames = SubResource("SpriteFrames_iv0qu")
 animation = &"activated"
 autoplay = "idle"

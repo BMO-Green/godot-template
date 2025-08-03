@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b1an0fegyfxgt"]
+[gd_scene load_steps=36 format=3 uid="uid://b1an0fegyfxgt"]
 
 [ext_resource type="Script" uid="uid://24fku4hjw18q" path="res://scenes/Washer/washer.gd" id="1_lfd6o"]
 [ext_resource type="Texture2D" uid="uid://b8j768yj0o20" path="res://assets/background_art/laundromat_bg_full.png" id="2_fpw1r"]
@@ -18,20 +18,19 @@
 [ext_resource type="PackedScene" uid="uid://buev7i4viyf3s" path="res://scenes/CoinSlot/coin_slot.tscn" id="8_cphwb"]
 [ext_resource type="Script" uid="uid://dqjylnfytfljy" path="res://scenes/Washer/coin_pipe_active.gd" id="8_qlpwf"]
 [ext_resource type="Texture2D" uid="uid://ccsxws80owbn8" path="res://assets/background_art/laundromat_drum_interior.png" id="9_8q70s"]
-[ext_resource type="Shader" uid="uid://cv60oypy7rqts" path="res://scenes/Washer/foregroundplants.gdshader" id="11_qlpwf"]
+[ext_resource type="Shader" path="res://scenes/Washer/foregroundplants.gdshader" id="11_qlpwf"]
 [ext_resource type="Texture2D" uid="uid://cm7bv7moibpw2" path="res://assets/background_art/big_plant_bottom_right.png" id="12_adkea"]
 [ext_resource type="Texture2D" uid="uid://plup3w40kvh8" path="res://assets/background_art/big_plant_bottom_left.png" id="13_clmdp"]
 [ext_resource type="Texture2D" uid="uid://s8fboq0lxjh6" path="res://assets/background_art/big_plant_top_left.png" id="14_s8w7r"]
 [ext_resource type="Texture2D" uid="uid://bo6p4q7y00it6" path="res://assets/background_art/big_plant_top_middle_left.png" id="15_tp1mv"]
 [ext_resource type="Texture2D" uid="uid://dxno7a0w8ml43" path="res://assets/background_art/big_plant_top_middle_right.png" id="16_kt4jv"]
-[ext_resource type="Texture2D" uid="uid://cfexfax22asm7" path="res://assets/background_art/big_plant_top_right.png" id="17_l1yce"]
 [ext_resource type="Texture2D" uid="uid://c600wbtmdpmdy" path="res://assets/ui_elements/tool_heatlamp_on.png" id="16_vfjhv"]
+[ext_resource type="Texture2D" uid="uid://cfexfax22asm7" path="res://assets/background_art/big_plant_top_right.png" id="17_l1yce"]
 [ext_resource type="Texture2D" uid="uid://01n46d84jryg" path="res://assets/ui_elements/tool_heatlamp_off.png" id="17_r63ys"]
 [ext_resource type="Texture2D" uid="uid://qpi4vc6iwns7" path="res://assets/ui_elements/reroll_shop_icon.png" id="18_1h2w1"]
 [ext_resource type="Texture2D" uid="uid://coganxbftx6u3" path="res://assets/ui_elements/tool_lamp_on.png" id="18_rylyh"]
 [ext_resource type="Texture2D" uid="uid://nta87vxlofxk" path="res://assets/ui_elements/tool_lamp_off.png" id="19_clmdp"]
 [ext_resource type="Texture2D" uid="uid://bp1w0jjlrn3ga" path="res://assets/ui_elements/tool_center.png" id="22_rylyh"]
-
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vfjhv"]
 shader = ExtResource("11_qlpwf")
@@ -83,7 +82,8 @@ scale = Vector2(0.212295, 0.212295)
 texture = ExtResource("4_xipsq")
 
 [node name="DoorRing" type="Sprite2D" parent="."]
-z_index = 1
+z_index = 8
+z_as_relative = false
 position = Vector2(-224.421, 69.8456)
 scale = Vector2(0.212295, 0.212295)
 texture = ExtResource("6_jy8l0")
@@ -107,7 +107,7 @@ texture = ExtResource("7_1h2w1")
 script = ExtResource("8_qlpwf")
 
 [node name="DoorGlass" type="Sprite2D" parent="."]
-z_index = 3010
+z_index = 14
 position = Vector2(-224.421, 69.8456)
 scale = Vector2(0.212295, 0.212295)
 texture = ExtResource("7_8q70s")
@@ -235,14 +235,14 @@ active_sprite = ExtResource("16_vfjhv")
 [node name="Sprite2D" parent="HeatLamp" index="2"]
 texture = ExtResource("17_r63ys")
 
-[node name="HeatLamp2" parent="." instance=ExtResource("7_1n734")]
+[node name="LightLamp" parent="." instance=ExtResource("7_1n734")]
 position = Vector2(69, 9)
 rotation = 3.98477
 scale = Vector2(0.914455, 0.914455)
 activation_type = 1
 active_sprite = ExtResource("18_rylyh")
 
-[node name="Sprite2D" parent="HeatLamp2" index="2"]
+[node name="Sprite2D" parent="LightLamp" index="2"]
 texture = ExtResource("19_clmdp")
 
 [node name="Sprinkler" parent="." instance=ExtResource("7_1n734")]
@@ -338,3 +338,6 @@ shape = SubResource("CircleShape2D_rylyh")
 
 [connection signal="on_coin_deposited" from="SpinCoinSlot" to="." method="_on_spin_coin_slot_on_coin_deposited"]
 [connection signal="on_coin_deposited" from="SeedCoinSlot" to="." method="_on_seed_coin_slot_on_coin_deposited"]
+
+[editable path="HeatLamp"]
+[editable path="LightLamp"]
