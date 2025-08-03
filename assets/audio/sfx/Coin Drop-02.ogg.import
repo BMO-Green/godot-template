@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ig2bq7xsdgm"
+path="res://.godot/imported/Coin Drop-02.ogg-0776f74d33ab9d812a4f7fe53289d706.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Coin Drop-02.ogg"
+dest_files=["res://.godot/imported/Coin Drop-02.ogg-0776f74d33ab9d812a4f7fe53289d706.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dx7r3d811j4cu"]
 
 [ext_resource type="Script" uid="uid://cxgtc0qkngc7l" path="res://scenes/MusicManager/music_manager.gd" id="1_tn5dr"]
-[ext_resource type="AudioStream" uid="uid://dy6msgagc7il5" path="res://assets/audio/sfx/loops/BASE_NOTE.ogg" id="2_usoho"]
-[ext_resource type="AudioStream" uid="uid://vmda8emgvdum" path="res://assets/audio/sfx/one_shots/sine C4.wav" id="3_usoho"]
+[ext_resource type="AudioStream" uid="uid://dy6msgagc7il5" path="res://assets/audio/music/loops/BASE_NOTE.ogg" id="2_usoho"]
+[ext_resource type="AudioStream" uid="uid://vmda8emgvdum" path="res://assets/audio/music/one_shots/sine C4.wav" id="3_usoho"]
 
 [sub_resource type="AudioEffectPanner" id="AudioEffectPanner_j3pel"]
 resource_name = "Panner"
@@ -24,7 +24,7 @@ randomize_mode_button = NodePath("CanvasLayer/VBoxContainer/RandomizeModeButton"
 
 [node name="RootPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_usoho")
-volume_db = 1.5
+volume_db = -3.0
 pitch_scale = 1.4375
 bus = &"Music"
 

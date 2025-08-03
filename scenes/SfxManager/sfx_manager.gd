@@ -1,0 +1,12 @@
+extends Node
+  
+@export var ambience_sfx_indoor : AudioStreamPlayer
+
+@export var collision_sounds : AudioStreamPlayer2D
+@export var coin_drop_sounds : AudioStreamPlayer2D
+@export var pop_sounds : AudioStreamPlayer2D
+@export var water_drop_sounds : AudioStreamPlayer2D
+@export var coin_pickup_sounds : AudioStreamPlayer2D
+
+func _ready() -> void:
+	ambience_sfx_indoor.play() # Ambience sound - keep playing
