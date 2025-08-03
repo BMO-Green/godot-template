@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b1an0fegyfxgt"]
+[gd_scene load_steps=23 format=3 uid="uid://b1an0fegyfxgt"]
 
 [ext_resource type="Script" uid="uid://24fku4hjw18q" path="res://scenes/Washer/washer.gd" id="1_lfd6o"]
 [ext_resource type="Texture2D" uid="uid://b8j768yj0o20" path="res://assets/background_art/laundromat_bg_full.png" id="2_fpw1r"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://do1fcos5ajugc" path="res://assets/background_art/door_glass.png" id="7_8q70s"]
 [ext_resource type="PackedScene" uid="uid://buev7i4viyf3s" path="res://scenes/CoinSlot/coin_slot.tscn" id="8_cphwb"]
 [ext_resource type="Script" uid="uid://dqjylnfytfljy" path="res://scenes/Washer/coin_pipe_active.gd" id="8_qlpwf"]
+[ext_resource type="Texture2D" uid="uid://ccsxws80owbn8" path="res://assets/background_art/laundromat_drum_interior.png" id="9_8q70s"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_lfd6o"]
 radius = 150.0
@@ -70,6 +71,11 @@ position = Vector2(-233, 196)
 scale = Vector2(0.212295, 0.212295)
 texture = ExtResource("7_1h2w1")
 script = ExtResource("8_qlpwf")
+
+[node name="DrumInterior" type="Sprite2D" parent="."]
+position = Vector2(0.999969, 81)
+scale = Vector2(0.212295, 0.212295)
+texture = ExtResource("9_8q70s")
 
 [node name="DoorRing" type="Sprite2D" parent="."]
 position = Vector2(-224.421, 69.8456)
