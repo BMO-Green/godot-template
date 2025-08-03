@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PlantData" load_steps=9 format=3 uid="uid://dmvfato6k3m0b"]
+[gd_resource type="Resource" script_class="PlantData" load_steps=9 format=3 uid="uid://cs036fj8duxur"]
 
 [ext_resource type="Script" uid="uid://duht5knl030ng" path="res://scripts/PlantConditions/PlantCondition.gd" id="1_6u73d"]
 [ext_resource type="Script" uid="uid://buej645b6b58j" path="res://scripts/PlantConditions/CycleStartedCondition.gd" id="2_oslu8"]

@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="PlantData" load_steps=11 format=3 uid="uid://ttx8kuym2eku"]
+[gd_resource type="Resource" script_class="PlantData" load_steps=11 format=3 uid="uid://djsicdrj2gf71"]
 
 [ext_resource type="Script" uid="uid://duht5knl030ng" path="res://scripts/PlantConditions/PlantCondition.gd" id="1_52yrn"]
-[ext_resource type="Script" uid="uid://c7j2thylwy2db" path="res://scripts/PlantConditions/OnSeedHitCondition.gd" id="2_q6rpd"]
+[ext_resource type="Script" path="res://scripts/PlantConditions/OnSeedHitCondition.gd" id="2_q6rpd"]
 [ext_resource type="Script" uid="uid://blttmux522ia1" path="res://scripts/PlantEffects/PlantEffect.gd" id="3_38p3u"]
 [ext_resource type="Script" uid="uid://cho387hl17e8i" path="res://scripts/PlantEffects/Untested/ThrowsRandomSeedThenDiesEffect.gd" id="4_q6rpd"]
-[ext_resource type="Script" uid="uid://dfr8k42ebe4nl" path="res://scripts/PlantEffects/Untested/DieEffect.gd" id="5_dbx7o"]
+[ext_resource type="Script" path="res://scripts/PlantEffects/Untested/DieEffect.gd" id="5_dbx7o"]
 [ext_resource type="Script" uid="uid://7213i26wusbl" path="res://scripts/PlantData/plant_data.gd" id="5_vj1gd"]
 [ext_resource type="Texture2D" uid="uid://gyjqp7lwbfsy" path="res://assets/plants/canon_anims/canon_image.png" id="6_dbx7o"]
 
@@ -32,4 +32,5 @@ effects = Array[ExtResource("3_38p3u")]([SubResource("Resource_vd3f4"), SubResou
 conditions = Array[ExtResource("1_52yrn")]([SubResource("Resource_dbx7o")])
 planted_animation = Array[Texture2D]([])
 activated_animation = Array[Texture2D]([])
+enabled_animation = Array[Texture2D]([])
 metadata/_custom_type_script = "uid://7213i26wusbl"
