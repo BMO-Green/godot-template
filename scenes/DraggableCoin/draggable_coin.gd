@@ -65,6 +65,7 @@ func _on_coin_trigger_area_area_entered(area: Area2D) -> void:
 	if area is CoinSlot:
 		coin_slot = area
 		sprite_2d.texture = coin_slot_sprite
+		SfxManager.coin_pickup_sounds.play()
 
 func _on_coin_trigger_area_area_exited(area: Area2D) -> void:
 	if area == coin_slot:
