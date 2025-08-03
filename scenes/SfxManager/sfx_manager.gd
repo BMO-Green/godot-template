@@ -7,6 +7,7 @@ extends Node
 @export var pop_sounds : AudioStreamPlayer2D
 @export var water_drop_sounds : AudioStreamPlayer2D
 @export var coin_pickup_sounds : AudioStreamPlayer2D
+@export var spin_cycle_end_sound : AudioStreamPlayer
 
 func _ready() -> void:
 	ambience_sfx_indoor.play() # Ambience sound - keep playing

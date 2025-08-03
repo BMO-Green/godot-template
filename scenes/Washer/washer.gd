@@ -39,6 +39,7 @@ func _physics_process(delta: float) -> void:
 			on_cycle_end.emit()
 			MusicManager.set_root_player(false) # disable sound
 			MusicManager.set_chord_player(false) # disable sound
+			SfxManager.spin_cycle_end_sound.play()
 
 func spin() -> void:
 	spin_duration_elapsed = 0
