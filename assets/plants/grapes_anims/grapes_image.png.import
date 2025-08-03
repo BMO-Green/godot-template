@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c33w11vduvnie"
-path="res://.godot/imported/corn_3pop_1.png-eca4527501bc184b0c5732ea4341b726.ctex"
+uid="uid://c2h7smosd84rr"
+path="res://.godot/imported/grapes_image.png-2470b3cc12355c0e42171a9f2b2f81b1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/plants/corn/corn_3pop/corn_3pop_1.png"
-dest_files=["res://.godot/imported/corn_3pop_1.png-eca4527501bc184b0c5732ea4341b726.ctex"]
+source_file="res://assets/plants/grapes_anims/grapes_image.png"
+dest_files=["res://.godot/imported/grapes_image.png-2470b3cc12355c0e42171a9f2b2f81b1.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dosmovihqcjnh"
-path="res://.godot/imported/corn_activated_1.png-7b3732852657afb30945b3624a065ef0.ctex"
+uid="uid://cay4ifta84j8h"
+path="res://.godot/imported/corn_image.png-4c2b3d6b287ac185b16f7620c1345d0e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/plants/corn/corn_activated/corn_activated_1.png"
-dest_files=["res://.godot/imported/corn_activated_1.png-7b3732852657afb30945b3624a065ef0.ctex"]
+source_file="res://assets/plants/corn_anims/corn_image.png"
+dest_files=["res://.godot/imported/corn_image.png-4c2b3d6b287ac185b16f7620c1345d0e.ctex"]
 
 [params]
 
