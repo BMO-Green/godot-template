@@ -7,7 +7,7 @@ func _ready() -> void:
 	print(CurrencyManager.currency_spawner)
 	CurrencyManager.currency_spawner.on_coin_created.connect(coin_pipe_blink)
 	
-func coin_pipe_blink(useless_pointless_node_placeholder_coin : Node) -> void:
+func coin_pipe_blink(_useless_pointless_node_placeholder_coin : Node) -> void:
 	var tween : Tween
 	tween = create_tween()
 	tween.tween_property(self,"modulate:a", 1.0, 0.02)

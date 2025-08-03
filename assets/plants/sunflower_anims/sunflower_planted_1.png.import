@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdsj2k1dmil60"
-path="res://.godot/imported/sunflower_planted_3.png-23cfc868da35e8c25aac8fb279e101ad.ctex"
+uid="uid://mgfbrjvjxb5r"
+path="res://.godot/imported/sunflower_planted_1.png-f428b1562b0cfe694c1b4b1ba867c7d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/plants/sunflower_anims/sunflower_planted/sunflower_planted_3.png"
-dest_files=["res://.godot/imported/sunflower_planted_3.png-23cfc868da35e8c25aac8fb279e101ad.ctex"]
+source_file="res://assets/plants/sunflower_anims/sunflower_planted_1.png"
+dest_files=["res://.godot/imported/sunflower_planted_1.png-f428b1562b0cfe694c1b4b1ba867c7d7.ctex"]
 
 [params]
 

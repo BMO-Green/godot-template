@@ -6,7 +6,7 @@ signal hit_by_seed(seed : Seed)
 const PlantEffect = preload("res://scripts/PlantEffects/PlantEffect.gd")
 const PlantCondition = preload("res://scripts/PlantConditions/PlantCondition.gd")
 
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var activated_particle_effect : PackedScene
 var plant_data: PlantData
@@ -15,6 +15,7 @@ var conditions: Array[PlantCondition]
 
 var current_mult : float = 1
 var mult_increase_per_cycle : float = 0.02
+var plant: int
 
 var activations_since_planted : int = 0
 var activated_this_cycle : bool
@@ -26,14 +27,17 @@ func _ready() -> void:
 	add_to_group("plants")
 	
 	
-	
 
 func initialize(_plant_data: PlantData):
 	plant_data = _plant_data
-	sprite_2d.texture = plant_data.store_icon
+	
+	
 	effects = plant_data.effects
 	conditions = plant_data.conditions
 	listen_to_activation_signals()
+	setup_animations()
+
+
 	
 
 func _process(delta: float) -> void:
@@ -44,7 +48,7 @@ func activate(activation_type: PlantCondition.ActivationType) -> void:
 	if GameStateManager.current_game_state != GameStateManager.GameState.Spinning: return
 	activated_this_cycle = true
 	activations_since_planted += 1
-	var should_trigger = false	
+	var should_trigger = false
 	
 	if	activation_type == PlantCondition.ActivationType.Force:
 		should_trigger = true
@@ -59,9 +63,25 @@ func activate(activation_type: PlantCondition.ActivationType) -> void:
 			previous_activations_this_cycle.append(activation_type)
 			get_tree().root.get_node("Game/Washer").activations_this_cycle += 1
 	
+func setup_animations():
+	sprite_2d.sprite_frames.add_frame("idle", plant_data.store_icon)
+	
+	sprite_2d.play("idle")
+	if plant_data.activated_animation == null:
+		return
+	if plant_data.planted_animation == null:
+		return
+
+	
+	for frame in plant_data.planted_animation:
+		sprite_2d.sprite_frames.add_frame("planted", frame)
+
+	for frame in plant_data.activated_animation:
+		sprite_2d.sprite_frames.add_frame("activated", frame)
 
 	
 func play_particle_effect(effect: PackedScene) -> void:
+	if	effect == null: return
 	var particle_effect = effect.instantiate()
 	add_child(particle_effect)
 	particle_effect.global_position = global_position

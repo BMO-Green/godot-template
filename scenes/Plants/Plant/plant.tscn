@@ -1,18 +1,68 @@
-[gd_scene load_steps=4 format=3 uid="uid://up6g1bb2ei2m"]
+[gd_scene load_steps=11 format=3 uid="uid://up6g1bb2ei2m"]
 
 [ext_resource type="Script" uid="uid://yb3q4v8g2q12" path="res://scenes/Plants/Plant/plant.gd" id="1_fi0kw"]
 [ext_resource type="PackedScene" uid="uid://ccowan11ehccn" path="res://scenes/Plants/Plant/plant_activated_particles.tscn" id="2_genx4"]
+[ext_resource type="Texture2D" uid="uid://wrryrx1cvr4i" path="res://assets/plants/sunflower_anims/sunflower_image.png" id="3_77ps8"]
+[ext_resource type="Texture2D" uid="uid://mgfbrjvjxb5r" path="res://assets/plants/sunflower_anims/sunflower_planted_1.png" id="3_p3qpl"]
+[ext_resource type="Texture2D" uid="uid://cxesgnrj3vqrd" path="res://assets/plants/sunflower_anims/sunflower_planted_2.png" id="4_38t4y"]
+[ext_resource type="Texture2D" uid="uid://cdsj2k1dmil60" path="res://assets/plants/sunflower_anims/sunflower_planted_3.png" id="5_bq5r7"]
+[ext_resource type="Texture2D" uid="uid://cr2xhw8vfb8tu" path="res://assets/plants/sunflower_anims/sunflower_planted_4.png" id="6_735r3"]
+[ext_resource type="Texture2D" uid="uid://dettem43jor6m" path="res://assets/plants/sunflower_anims/sunflower_planted_5.png" id="7_86x2h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5plcq"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_iv0qu"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"activated",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_77ps8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_p3qpl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_38t4y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bq5r7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_735r3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_86x2h")
+}],
+"loop": true,
+"name": &"planted",
+"speed": 5.0
+}]
+
 [node name="Plant" type="Area2D"]
+z_index = 1000
+z_as_relative = false
 script = ExtResource("1_fi0kw")
 activated_particle_effect = ExtResource("2_genx4")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_5plcq")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 2
+position = Vector2(3.00001, 9)
+scale = Vector2(0.439883, 0.439883)
+sprite_frames = SubResource("SpriteFrames_iv0qu")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.278125
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
