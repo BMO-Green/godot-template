@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b2v76ttkfjs7c"]
+[gd_scene load_steps=14 format=3 uid="uid://b2v76ttkfjs7c"]
 
 [ext_resource type="PackedScene" uid="uid://dylocvpccd342" path="res://scenes/SeedBuffer/seed_buffer.tscn" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://b1an0fegyfxgt" path="res://scenes/Washer/washer.tscn" id="1_uwrxv"]
