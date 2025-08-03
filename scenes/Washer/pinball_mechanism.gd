@@ -15,8 +15,7 @@ func _process(delta: float) -> void:
 		tween.kill()
 		tween = null
 		pinball_button_on.modulate.a = 0.0
-	
-	print(tween)
+
 
 func _ready() -> void:
 	pinball_button_on.visible = true 
