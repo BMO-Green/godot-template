@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dli3mw3vc64we"]
+[gd_scene load_steps=38 format=3 uid="uid://dli3mw3vc64we"]
 
 [ext_resource type="Script" uid="uid://dn4qbh3qrbi42" path="res://scenes/SfxManager/sfx_manager.gd" id="1_kwtne"]
 [ext_resource type="AudioStream" uid="uid://c3edh5owo8o2e" path="res://assets/audio/sfx/AMBIENCE-Indoor-noise-02.ogg" id="2_0kkc0"]
@@ -30,6 +30,7 @@
 [ext_resource type="AudioStream" uid="uid://c0n7x4awu73o7" path="res://assets/audio/sfx/SFX-Drops-26.ogg" id="28_rpchu"]
 [ext_resource type="AudioStream" uid="uid://b7v3w5simci6c" path="res://assets/audio/sfx/SFX-Pickup-01.ogg" id="29_dj751"]
 [ext_resource type="AudioStream" uid="uid://d4i0f41d0an6d" path="res://assets/audio/sfx/cat-meow.ogg" id="30_5okc6"]
+[ext_resource type="AudioStream" uid="uid://bqohfhyq0c401" path="res://assets/audio/sfx/SFX-Spin-End.ogg" id="31_y8mkp"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_r8ejx"]
 streams_count = 6
@@ -82,7 +83,7 @@ random_pitch = 1.3
 streams_count = 1
 stream_0/stream = ExtResource("30_5okc6")
 
-[node name="SfxManager" type="Node" node_paths=PackedStringArray("ambience_sfx_indoor", "collision_sounds", "coin_drop_sounds", "pop_sounds", "water_drop_sounds", "coin_pickup_sounds")]
+[node name="SfxManager" type="Node" node_paths=PackedStringArray("ambience_sfx_indoor", "collision_sounds", "coin_drop_sounds", "pop_sounds", "water_drop_sounds", "coin_pickup_sounds", "spin_cycle_end_sound")]
 script = ExtResource("1_kwtne")
 ambience_sfx_indoor = NodePath("AmbiencePlayer")
 collision_sounds = NodePath("CollisionSounds")
@@ -90,6 +91,7 @@ coin_drop_sounds = NodePath("CoinDropSounds")
 pop_sounds = NodePath("PopSounds")
 water_drop_sounds = NodePath("WaterDropSounds")
 coin_pickup_sounds = NodePath("CoinPickupSound")
+spin_cycle_end_sound = NodePath("SpinCycleDoneSound")
 
 [node name="AmbiencePlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_0kkc0")
@@ -130,3 +132,7 @@ stream = SubResource("AudioStreamRandomizer_y8mkp")
 volume_db = -6.0
 pitch_scale = 1.2
 max_polyphony = 16
+
+[node name="SpinCycleDoneSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_y8mkp")
+bus = &"SFX"
