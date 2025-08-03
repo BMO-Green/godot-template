@@ -5,6 +5,7 @@ class_name Washer
 signal on_cycle_start
 signal on_cycle_end
 signal on_seed_shop_opened
+signal on_seed_planted
 
 @onready var cavity: Node2D = $Cavity
 

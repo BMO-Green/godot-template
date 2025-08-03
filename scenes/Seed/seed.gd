@@ -23,6 +23,8 @@ func _physics_process(_delta: float) -> void:
 		plant_instance.global_position = self.global_position
 		
 		plant_instance.initialize(plant_data)
+		var washer = cavity.get_parent()
+		washer.on_seed_planted.emit()
 
 		MusicManager.play_note()
 		queue_free()
