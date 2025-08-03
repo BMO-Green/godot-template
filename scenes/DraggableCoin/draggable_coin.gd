@@ -10,10 +10,13 @@ var coin_slot
 @export var held_sprite: Texture2D
 @export var coin_slot_sprite: Texture2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var flat: CollisionShape2D = $Flat
+@onready var circle: CollisionShape2D = $Circle
 
 
 func _init() -> void:
 	self.add_to_group("pickable")
+	linear_velocity = Vector2(-10,-10)
 
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -22,8 +25,15 @@ func _on_input_event(viewport, event, shape_idx):
 			
 			
 func _physics_process(delta):
+	
+	
 	if held:
 		global_transform.origin = get_global_mouse_position()
+	else:
+		if linear_velocity.length() < 0.2:
+			sprite_2d.texture = idle_sprite
+			circle.disabled = true
+			flat.disabled = false
 		
 func pickup():
 	if held:
@@ -43,6 +53,8 @@ func drop(impulse=Vector2.ZERO):
 			handle_depositing()
 		else:
 			sprite_2d.texture = idle_sprite
+			circle.disabled = true
+			flat.disabled = false
 
 
 func handle_depositing():

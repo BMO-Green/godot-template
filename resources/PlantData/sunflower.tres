@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PlantData" load_steps=22 format=3 uid="uid://cjt4s3ytdkof7"]
+[gd_resource type="Resource" script_class="PlantData" load_steps=22 format=3 uid="uid://dob7pvnbx6b0w"]
 
 [ext_resource type="Texture2D" uid="uid://drxp6g6qwiqju" path="res://assets/plants/sunflower_anims/sunflower_radiant/sunflower_radiant_1.png" id="1_73jak"]
 [ext_resource type="Script" uid="uid://duht5knl030ng" path="res://scripts/PlantConditions/PlantCondition.gd" id="1_ckmcc"]

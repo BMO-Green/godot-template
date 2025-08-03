@@ -8,7 +8,6 @@ signal on_out_of_coins
 
 var currency_spawner: CurrencySpawner
 var held_object = null
-var coins : Array[DraggableCoin]= []
 
 
 

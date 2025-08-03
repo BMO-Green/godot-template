@@ -23,7 +23,6 @@ held_sprite = ExtResource("2_hygbv")
 coin_slot_sprite = ExtResource("4_rd80j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_as_relative = false
 scale = Vector2(0.225249, 0.225249)
 texture = ExtResource("2_hygbv")
 

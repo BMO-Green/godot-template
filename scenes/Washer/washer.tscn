@@ -62,17 +62,20 @@ scale = Vector2(0.212295, 0.212295)
 texture = ExtResource("5_anttn")
 
 [node name="CoinPipeInactive" type="Sprite2D" parent="."]
+z_index = 40
 position = Vector2(-233, 196)
 scale = Vector2(0.212295, 0.212295)
 texture = ExtResource("6_8q70s")
 
 [node name="CoinPipeActive" type="Sprite2D" parent="."]
+z_index = 40
 position = Vector2(-233, 196)
 scale = Vector2(0.212295, 0.212295)
 texture = ExtResource("7_1h2w1")
 script = ExtResource("8_qlpwf")
 
 [node name="DoorGlass" type="Sprite2D" parent="."]
+z_index = 3010
 position = Vector2(-224.421, 69.8456)
 scale = Vector2(0.212295, 0.212295)
 texture = ExtResource("7_8q70s")

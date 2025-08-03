@@ -14,8 +14,18 @@ animations = [{
 }, {
 "frames": [],
 "loop": true,
-"name": &"planted",
+"name": &"cherry_planted",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle",
 "speed": 8.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"planted",
+"speed": 5.0
 }]
 
 [node name="Plant" type="Area2D"]
@@ -34,5 +44,6 @@ position = Vector2(3.00001, 9)
 scale = Vector2(0.299121, 0.299121)
 sprite_frames = SubResource("SpriteFrames_iv0qu")
 animation = &"activated"
+autoplay = "idle"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

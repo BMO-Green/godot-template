@@ -58,7 +58,7 @@ func activate(activation_type: PlantCondition.ActivationType) -> void:
 		if condition.attempt_activate(self,activation_type):
 			should_trigger = true
 
-	if should_trigger:
+	if should_trigger:	
 		activated_this_cycle = true
 		activations_since_planted += 1
 		get_tree().root.get_node("Game/Washer").activations_this_cycle += 1
