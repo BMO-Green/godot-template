@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://b1an0fegyfxgt"]
+[gd_scene load_steps=44 format=3 uid="uid://b1an0fegyfxgt"]
 
 [ext_resource type="Script" uid="uid://24fku4hjw18q" path="res://scenes/Washer/washer.gd" id="1_lfd6o"]
 [ext_resource type="Texture2D" uid="uid://b8j768yj0o20" path="res://assets/background_art/laundromat_bg_full.png" id="2_fpw1r"]
@@ -36,6 +36,8 @@
 [ext_resource type="Texture2D" uid="uid://coganxbftx6u3" path="res://assets/ui_elements/tool_lamp_on.png" id="18_rylyh"]
 [ext_resource type="Texture2D" uid="uid://nta87vxlofxk" path="res://assets/ui_elements/tool_lamp_off.png" id="19_clmdp"]
 [ext_resource type="Texture2D" uid="uid://bp1w0jjlrn3ga" path="res://assets/ui_elements/tool_center.png" id="22_rylyh"]
+[ext_resource type="PackedScene" uid="uid://blvyjf466y8mk" path="res://scenes/Sprinkler/heat_particles.tscn" id="28_yxkay"]
+[ext_resource type="PackedScene" uid="uid://dcb55bhtkbd0i" path="res://scenes/Sprinkler/light_particles.tscn" id="31_pbjm3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7nn5q"]
 radius = 81.18
@@ -260,24 +262,52 @@ seed_prefab = ExtResource("4_ufg6d")
 position = Vector2(-77, 26)
 rotation = 2.14715
 scale = Vector2(0.914455, 0.914455)
+particle_system = ExtResource("28_yxkay")
 activation_type = 3
 active_sprite = ExtResource("16_vfjhv")
 
+[node name="SprinklerBody" parent="HeatLamp" index="0"]
+position = Vector2(-6, -82)
+
+[node name="WateringCollider" parent="HeatLamp" index="1"]
+position = Vector2(-3, -82)
+
+[node name="CollisionShape2D" parent="HeatLamp/WateringCollider" index="0"]
+position = Vector2(-4, 175)
+
 [node name="Sprite2D" parent="HeatLamp" index="2"]
+position = Vector2(-5, -83)
 texture = ExtResource("17_r63ys")
+
+[node name="CoinSlot" parent="HeatLamp" index="3"]
+position = Vector2(-5, -85)
 
 [node name="LightLamp" parent="." instance=ExtResource("7_1n734")]
 position = Vector2(69, 9)
 rotation = 3.98477
 scale = Vector2(0.914455, 0.914455)
+particle_system = ExtResource("31_pbjm3")
 activation_type = 1
 active_sprite = ExtResource("18_rylyh")
 
+[node name="SprinklerBody" parent="LightLamp" index="0"]
+position = Vector2(-6, -82)
+
+[node name="WateringCollider" parent="LightLamp" index="1"]
+position = Vector2(-3, -82)
+
+[node name="CollisionShape2D" parent="LightLamp/WateringCollider" index="0"]
+position = Vector2(-4, 175)
+
 [node name="Sprite2D" parent="LightLamp" index="2"]
+position = Vector2(-5, -83)
 texture = ExtResource("19_clmdp")
 
+[node name="CoinSlot" parent="LightLamp" index="3"]
+position = Vector2(-5, -85)
+
 [node name="Sprinkler" parent="." instance=ExtResource("7_1n734")]
-position = Vector2(8, 167)
+position = Vector2(3, 87)
 scale = Vector2(0.961206, 0.963944)
 
 [node name="Control" type="Control" parent="."]

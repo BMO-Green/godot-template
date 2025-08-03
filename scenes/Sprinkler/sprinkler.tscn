@@ -9,7 +9,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_0xn57"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xn57"]
-size = Vector2(204, 370)
+size = Vector2(150, 250)
 
 [node name="Sprinkler" type="Node2D" node_paths=PackedStringArray("water_spray_detection")]
 script = ExtResource("1_0xn57")
@@ -19,27 +19,23 @@ time_between_sprays = 1.5
 active_sprite = ExtResource("3_ybw30")
 
 [node name="SprinklerBody" type="StaticBody2D" parent="."]
-position = Vector2(-6, -82)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SprinklerBody"]
 shape = SubResource("CircleShape2D_0xn57")
 
 [node name="WateringCollider" type="Area2D" parent="."]
-position = Vector2(-3, -82)
 scale = Vector2(0.600001, 0.600001)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WateringCollider"]
-position = Vector2(-4, 175)
+position = Vector2(0, 140)
 shape = SubResource("RectangleShape2D_0xn57")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-5, -83)
 rotation = 3.13127
 scale = Vector2(0.12, 0.12)
 texture = ExtResource("3_arh5y")
 
 [node name="CoinSlot" parent="." instance=ExtResource("5_sn2xb")]
-position = Vector2(-5, -85)
 scale = Vector2(0.200001, 0.200001)
 
 [connection signal="on_coin_deposited" from="CoinSlot" to="." method="_on_coin_slot_on_coin_deposited"]

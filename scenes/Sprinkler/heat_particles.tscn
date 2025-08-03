@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://blvyjf466y8mk"]
+
+[ext_resource type="Texture2D" uid="uid://ctnfoq3cl1a1g" path="res://assets/particles/rain_particle_b.png" id="1_c23wo"]
+[ext_resource type="Script" uid="uid://xlsxrhjfn0e1" path="res://scenes/Sprinkler/watering_particles.gd" id="24_hdk13"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gomms"]
+lifetime_randomness = 0.5
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+emission_shape_offset = Vector3(72, -100, 0)
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+inherit_velocity_ratio = 1.0
+direction = Vector3(0, 90, 0)
+spread = 40.0
+initial_velocity_min = 300.0
+initial_velocity_max = 450.0
+angular_velocity_min = 0.999984
+angular_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+scale_min = 0.05
+scale_max = 0.15
+scale_over_velocity_min = 0.05
+scale_over_velocity_max = 0.2
+hue_variation_min = -1.0
+hue_variation_max = -0.65
+turbulence_enabled = true
+turbulence_noise_strength = 0.1
+turbulence_noise_scale = 0.1
+turbulence_noise_speed_random = 0.1
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+modulate = Color(100, 1.036, 0.16, 1)
+z_index = 1
+amount = 300
+texture = ExtResource("1_c23wo")
+lifetime = 0.7
+process_material = SubResource("ParticleProcessMaterial_gomms")
+script = ExtResource("24_hdk13")

@@ -45,8 +45,8 @@ func _physics_process(delta: float) -> void:
 	
 func spawn_particle_effect() -> void:
 	var particle_effect = particle_system.instantiate()
+	particle_effect.global_position = self.position
 	add_child(particle_effect)
-	particle_effect.global_position = global_position
 	particle_effect.restart()
 
 
