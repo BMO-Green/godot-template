@@ -3,6 +3,7 @@ extends Node2D
 
 signal hit_by_seed(seed : Seed)
 signal has_activated
+signal has_died
 
 const PlantEffect = preload("res://scripts/PlantEffects/PlantEffect.gd")
 const PlantCondition = preload("res://scripts/PlantConditions/PlantCondition.gd")
@@ -43,8 +44,6 @@ func _process(delta: float) -> void:
 
 func activate(activation_type: PlantCondition.ActivationType) -> void:
 	if GameStateManager.current_game_state != GameStateManager.GameState.Spinning: return
-	activated_this_cycle = true
-	activations_since_planted += 1
 	var should_trigger = false	
 	
 	if	activation_type == PlantCondition.ActivationType.Force:
@@ -55,6 +54,8 @@ func activate(activation_type: PlantCondition.ActivationType) -> void:
 			should_trigger = true
 
 	if should_trigger:
+		activated_this_cycle = true
+		activations_since_planted += 1
 		get_tree().root.get_node("Game/Washer").activations_this_cycle += 1
 		has_activated.emit()
 		for effect in effects:
@@ -102,4 +103,5 @@ func on_cycle_start():
 	current_mult *= 1 + mult_increase_per_cycle
 
 func handle_destruction():
+	has_died.emit()
 	queue_free()
