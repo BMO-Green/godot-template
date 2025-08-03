@@ -23,6 +23,7 @@ CurrencyManager="*res://scenes/CurrencyManager/currency_manager.tscn"
 GameStateManager="*res://scenes/GameStateManager/game_state_manager.tscn"
 DebugTools="*res://scenes/DebugTools/DebugTools.tscn"
 SfxManager="*res://scenes/SfxManager/sfx_manager.tscn"
+MusicManager="*res://scenes/MusicManager/music_manager.tscn"
 
 [display]
 

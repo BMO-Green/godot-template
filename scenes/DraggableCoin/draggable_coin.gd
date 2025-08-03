@@ -30,6 +30,7 @@ func pickup():
 		return
 	freeze = true
 	held = true
+	SfxManager.coin_pickup_sounds.play()
 
 func drop(impulse=Vector2.ZERO):
 	if held:
@@ -45,6 +46,7 @@ func drop(impulse=Vector2.ZERO):
 
 
 func handle_depositing():
+	SfxManager.coin_drop_sounds.play()
 	queue_free()
 
 func _on_coin_trigger_area_area_entered(area: Area2D) -> void:
