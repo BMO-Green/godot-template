@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://duht5knl030ng" path="res://scripts/PlantConditions/PlantCondition.gd" id="1_bai8l"]
 [ext_resource type="Script" uid="uid://c6krxvko12dho" path="res://scripts/PlantConditions/OnSpinElapsedTimeCondition.gd" id="2_bai8l"]
 [ext_resource type="Script" uid="uid://blttmux522ia1" path="res://scripts/PlantEffects/PlantEffect.gd" id="3_jg4m7"]
-[ext_resource type="Script" path="res://scripts/PlantEffects/Untested/BoostsAllPlantMultipliersEffect.gd" id="4_kujed"]
+[ext_resource type="Script" uid="uid://c7qxhmig5doju" path="res://scripts/PlantEffects/Untested/BoostsAllPlantMultipliersEffect.gd" id="4_kujed"]
 [ext_resource type="Script" uid="uid://7213i26wusbl" path="res://scripts/PlantData/plant_data.gd" id="5_meycj"]
 [ext_resource type="Texture2D" uid="uid://cnyov0mohbc1k" path="res://assets/plants/cat_anims/cat_image.png" id="6_jg4m7"]
 

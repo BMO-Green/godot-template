@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://bq54un4w526y" path="res://scenes/GameStateManager/game_state_manager.gd" id="1_py4rd"]
 [ext_resource type="Script" uid="uid://7213i26wusbl" path="res://scripts/PlantData/plant_data.gd" id="2_057w6"]
-[ext_resource type="Resource" uid="uid://bvg4s2kk0wkhu" path="res://assets/plants/sunflower_anims/sunflower_radiant/sunflower.tres" id="3_2i40f"]
 [ext_resource type="Resource" uid="uid://djsicdrj2gf71" path="res://resources/PlantData/poppy.tres" id="4_lo58c"]
 [ext_resource type="Resource" uid="uid://bn33if2l28ga0" path="res://resources/PlantData/lily.tres" id="5_8an15"]
 [ext_resource type="Resource" uid="uid://da3smda15e5l7" path="res://resources/PlantData/grapes.tres" id="6_vtlrr"]
@@ -10,9 +9,10 @@
 [ext_resource type="Resource" uid="uid://dlgam38yc13rn" path="res://resources/PlantData/cherry.tres" id="9_c3x4x"]
 [ext_resource type="Resource" uid="uid://cey5l48fyjyyn" path="res://resources/PlantData/catplant.tres" id="10_vnmcf"]
 [ext_resource type="Resource" uid="uid://dk2c8gopn2fld" path="res://resources/PlantData/catbud.tres" id="11_2u5tl"]
+[ext_resource type="Resource" uid="uid://bvg4s2kk0wkhu" path="res://resources/PlantData/sunflower.tres" id="12_qfs6d"]
 [ext_resource type="Resource" uid="uid://bmofbyovbetne" path="res://resources/PlantData/billberry.tres" id="12_tkx3x"]
 [ext_resource type="Resource" uid="uid://dpohgb6hu8afl" path="res://resources/PlantData/banana.tres" id="13_v4vmu"]
 
 [node name="Node" type="Node"]
 script = ExtResource("1_py4rd")
-available_plants = Array[ExtResource("2_057w6")]([ExtResource("3_2i40f"), ExtResource("4_lo58c"), ExtResource("5_8an15"), ExtResource("6_vtlrr"), ExtResource("8_khd2a"), ExtResource("9_c3x4x"), ExtResource("10_vnmcf"), ExtResource("11_2u5tl"), ExtResource("12_tkx3x"), ExtResource("13_v4vmu")])
+available_plants = Array[ExtResource("2_057w6")]([ExtResource("4_lo58c"), ExtResource("5_8an15"), ExtResource("6_vtlrr"), ExtResource("8_khd2a"), ExtResource("9_c3x4x"), ExtResource("10_vnmcf"), ExtResource("11_2u5tl"), ExtResource("12_tkx3x"), ExtResource("13_v4vmu"), ExtResource("12_qfs6d")])
