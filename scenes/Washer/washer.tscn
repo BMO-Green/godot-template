@@ -21,8 +21,8 @@
 [ext_resource type="PackedScene" uid="uid://buev7i4viyf3s" path="res://scenes/CoinSlot/coin_slot.tscn" id="8_cphwb"]
 [ext_resource type="Script" uid="uid://dqjylnfytfljy" path="res://scenes/Washer/coin_pipe_active.gd" id="8_qlpwf"]
 [ext_resource type="Texture2D" uid="uid://ccsxws80owbn8" path="res://assets/background_art/laundromat_drum_interior.png" id="9_8q70s"]
-[ext_resource type="Script" path="res://scenes/Washer/door.gd" id="9_off0q"]
-[ext_resource type="Shader" path="res://scenes/Washer/foregroundplants.gdshader" id="11_qlpwf"]
+[ext_resource type="Script" uid="uid://cm5wbdgl82aw0" path="res://scenes/Washer/door.gd" id="9_off0q"]
+[ext_resource type="Shader" uid="uid://cv60oypy7rqts" path="res://scenes/Washer/foregroundplants.gdshader" id="11_qlpwf"]
 [ext_resource type="Texture2D" uid="uid://cm7bv7moibpw2" path="res://assets/background_art/big_plant_bottom_right.png" id="12_adkea"]
 [ext_resource type="Texture2D" uid="uid://plup3w40kvh8" path="res://assets/background_art/big_plant_bottom_left.png" id="13_clmdp"]
 [ext_resource type="Texture2D" uid="uid://s8fboq0lxjh6" path="res://assets/background_art/big_plant_top_left.png" id="14_s8w7r"]
@@ -209,7 +209,7 @@ physics_material_override = SubResource("PhysicsMaterial_mgpd2")
 [node name="DonutCollisionPolygon2D" type="CollisionPolygon2D" parent="Cavity/StaticBody2D"]
 position = Vector2(0, 80)
 scale = Vector2(16.6832, 16.8187)
-polygon = PackedVector2Array(6.73533e-16, -11, 2.14599, -10.7886, 4.20952, -10.1627, 6.11127, -9.14617, 7.77817, -7.77817, 9.14617, -6.11127, 10.1627, -4.20952, 10.7886, -2.14599, 11, 0, 10.7886, 2.14599, 10.1627, 4.20952, 9.14617, 6.11127, 7.77817, 7.77817, 6.11127, 9.14617, 4.20952, 10.1627, 2.14599, 10.7886, 6.73533e-16, 11, -2.14599, 10.7886, -4.20952, 10.1627, -6.11127, 9.14617, -7.77817, 7.77817, -9.14617, 6.11127, -10.1627, 4.20952, -10.7886, 2.14599, -11, 1.34707e-15, -10.7886, -2.14599, -10.1627, -4.20952, -9.14617, -6.11127, -7.77817, -7.77817, -6.11127, -9.14617, -4.20952, -10.1627, -2.14599, -10.7886, -2.0206e-15, -11, -1.65322e-15, -9, -1.75581, -8.82707, -3.44415, -8.31492, -5.00013, -7.48323, -6.36396, -6.36396, -7.48323, -5.00013, -8.31492, -3.44415, -8.82707, -1.75581, -9, 1.10215e-15, -8.82707, 1.75581, -8.31492, 3.44415, -7.48323, 5.00013, -6.36396, 6.36396, -5.00013, 7.48323, -3.44415, 8.31492, -1.75581, 8.82707, 5.51073e-16, 9, 1.75581, 8.82707, 3.44415, 8.31492, 5.00013, 7.48323, 6.36396, 6.36396, 7.48323, 5.00013, 8.31492, 3.44415, 8.82707, 1.75581, 9, 0, 8.82707, -1.75581, 8.31492, -3.44415, 7.48323, -5.00013, 6.36396, -6.36396, 5.00013, -7.48323, 3.44415, -8.31492, 1.75581, -8.82707, 5.51073e-16, -9, 0.0001, -10.9999)
+polygon = PackedVector2Array(6.73556e-16, -11, 2.14599, -10.7886, 4.20952, -10.1627, 6.11127, -9.14617, 7.77817, -7.77817, 9.14617, -6.11127, 10.1627, -4.20952, 10.7886, -2.14599, 11, 0, 10.7886, 2.14599, 10.1627, 4.20952, 9.14617, 6.11127, 7.77817, 7.77817, 6.11127, 9.14617, 4.20952, 10.1627, 2.14599, 10.7886, 6.73556e-16, 11, -2.14599, 10.7886, -4.20952, 10.1627, -6.11127, 9.14617, -7.77817, 7.77817, -9.14617, 6.11127, -10.1627, 4.20952, -10.7886, 2.14599, -11, 1.34711e-15, -10.7886, -2.14599, -10.1627, -4.20952, -9.14617, -6.11127, -7.77817, -7.77817, -6.11127, -9.14617, -4.20952, -10.1627, -2.14599, -10.7886, -2.02067e-15, -11, -1.65327e-15, -9, -1.75581, -8.82707, -3.44415, -8.31492, -5.00013, -7.48323, -6.36396, -6.36396, -7.48323, -5.00013, -8.31492, -3.44415, -8.82707, -1.75581, -9, 1.10218e-15, -8.82707, 1.75581, -8.31492, 3.44415, -7.48323, 5.00013, -6.36396, 6.36396, -5.00013, 7.48323, -3.44415, 8.31492, -1.75581, 8.82707, 5.51091e-16, 9, 1.75581, 8.82707, 3.44415, 8.31492, 5.00013, 7.48323, 6.36396, 6.36396, 7.48323, 5.00013, 8.31492, 3.44415, 8.82707, 1.75581, 9, 0, 8.82707, -1.75581, 8.31492, -3.44415, 7.48323, -5.00013, 6.36396, -6.36396, 5.00013, -7.48323, 3.44415, -8.31492, 1.75581, -8.82707, 5.51091e-16, -9, 0.0001, -10.9999)
 script = ExtResource("2_mgpd2")
 metadata/_custom_type_script = "uid://ccsr5veij22yb"
 
@@ -260,7 +260,7 @@ shape = SubResource("CapsuleShape2D_mgpd2")
 [node name="CenterOfCavity" type="Node2D" parent="Cavity"]
 
 [node name="SeedSpawnLocation" type="Node2D" parent="."]
-position = Vector2(4, -34)
+position = Vector2(-107, -15)
 script = ExtResource("3_p4vi5")
 seed_prefab = ExtResource("4_ufg6d")
 
@@ -283,12 +283,10 @@ position = Vector2(-4, 175)
 
 [node name="Sprite2D" parent="HeatLamp" index="2"]
 position = Vector2(-5, -83)
-scale = Vector2(0.12, 0.12)
 texture = ExtResource("17_r63ys")
 
 [node name="CoinSlot" parent="HeatLamp" index="3"]
 position = Vector2(-5, -85)
-scale = Vector2(0.200001, 0.200001)
 
 [node name="LightLamp" parent="." instance=ExtResource("7_1n734")]
 position = Vector2(69, 9)
@@ -309,12 +307,10 @@ position = Vector2(-4, 175)
 
 [node name="Sprite2D" parent="LightLamp" index="2"]
 position = Vector2(-5, -83)
-scale = Vector2(0.12, 0.12)
 texture = ExtResource("19_clmdp")
 
 [node name="CoinSlot" parent="LightLamp" index="3"]
 position = Vector2(-5, -85)
-scale = Vector2(0.200001, 0.200001)
 
 [node name="Sprinkler" parent="." instance=ExtResource("7_1n734")]
 position = Vector2(3, 87)
