@@ -36,6 +36,7 @@ turbulence_noise_speed_random = 0.1
 [node name="GPUParticles2D" type="GPUParticles2D"]
 modulate = Color(100, 1.036, 0.16, 1)
 z_index = 1
+emitting = false
 amount = 300
 texture = ExtResource("1_c23wo")
 lifetime = 0.7

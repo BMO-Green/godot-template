@@ -4,6 +4,8 @@ signal on_round_changed(round_index: int)
 signal on_state_changed(new_state: GameState)
 
 @export var available_plants: Array[PlantData]
+@export var reward_amount_for_beating_target: int
+
 
 var end_of_cycle_signal: Signal
 var game_over_screen: Label
@@ -45,7 +47,7 @@ func _handle_end_of_cycle() -> void:
 func progress_to_next_round() -> void:
 	round_index += 1
 	PointManager.points = 0
-	CurrencyManager.modify_currency(10)
+	CurrencyManager.modify_currency(reward_amount_for_beating_target)
 	
 # Called by washer
 func init_washer(washer: Washer):

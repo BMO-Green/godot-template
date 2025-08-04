@@ -21,8 +21,8 @@
 [ext_resource type="PackedScene" uid="uid://buev7i4viyf3s" path="res://scenes/CoinSlot/coin_slot.tscn" id="8_cphwb"]
 [ext_resource type="Script" uid="uid://dqjylnfytfljy" path="res://scenes/Washer/coin_pipe_active.gd" id="8_qlpwf"]
 [ext_resource type="Texture2D" uid="uid://ccsxws80owbn8" path="res://assets/background_art/laundromat_drum_interior.png" id="9_8q70s"]
-[ext_resource type="Script" path="res://scenes/Washer/door.gd" id="9_off0q"]
-[ext_resource type="Shader" path="res://scenes/Washer/foregroundplants.gdshader" id="11_qlpwf"]
+[ext_resource type="Script" uid="uid://cm5wbdgl82aw0" path="res://scenes/Washer/door.gd" id="9_off0q"]
+[ext_resource type="Shader" uid="uid://cv60oypy7rqts" path="res://scenes/Washer/foregroundplants.gdshader" id="11_qlpwf"]
 [ext_resource type="Texture2D" uid="uid://cm7bv7moibpw2" path="res://assets/background_art/big_plant_bottom_right.png" id="12_adkea"]
 [ext_resource type="Texture2D" uid="uid://plup3w40kvh8" path="res://assets/background_art/big_plant_bottom_left.png" id="13_clmdp"]
 [ext_resource type="Texture2D" uid="uid://s8fboq0lxjh6" path="res://assets/background_art/big_plant_top_left.png" id="14_s8w7r"]
@@ -283,12 +283,10 @@ position = Vector2(-4, 175)
 
 [node name="Sprite2D" parent="HeatLamp" index="2"]
 position = Vector2(-5, -83)
-scale = Vector2(0.12, 0.12)
 texture = ExtResource("17_r63ys")
 
 [node name="CoinSlot" parent="HeatLamp" index="3"]
 position = Vector2(-5, -85)
-scale = Vector2(0.200001, 0.200001)
 
 [node name="LightLamp" parent="." instance=ExtResource("7_1n734")]
 position = Vector2(69, 9)
@@ -309,12 +307,10 @@ position = Vector2(-4, 175)
 
 [node name="Sprite2D" parent="LightLamp" index="2"]
 position = Vector2(-5, -83)
-scale = Vector2(0.12, 0.12)
 texture = ExtResource("19_clmdp")
 
 [node name="CoinSlot" parent="LightLamp" index="3"]
 position = Vector2(-5, -85)
-scale = Vector2(0.200001, 0.200001)
 
 [node name="Sprinkler" parent="." instance=ExtResource("7_1n734")]
 position = Vector2(3, 87)

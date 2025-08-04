@@ -4,4 +4,4 @@
 
 [node name="CurrencyManager" type="Node"]
 script = ExtResource("1_pwsc1")
-STARTING_COINS = 5
+STARTING_COINS = 6

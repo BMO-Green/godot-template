@@ -75,7 +75,7 @@ func activate(activation_type: PlantCondition.ActivationType) -> void:
 		get_tree().root.get_node("Game/Washer").activations_this_cycle += 1
 		has_activated.emit()
 		MusicManager.play_note()
-		
+		play_particle_effect(activated_particle_effect)
 		
 		for effect in effects:
 			effect.activate(self)

@@ -84,4 +84,5 @@ func _on_pinball_mechanism_input_event(viewport: Node, event: InputEvent, shape_
 
 
 func _on_button_pressed() -> void:
-	spin()
+	if	spin_duration_remaining > 0:
+		spin()
