@@ -1,11 +1,14 @@
-[gd_resource type="Resource" script_class="PlantData" load_steps=9 format=3 uid="uid://dpohgb6hu8afl"]
+[gd_resource type="Resource" script_class="PlantData" load_steps=12 format=3 uid="uid://dpohgb6hu8afl"]
 
 [ext_resource type="Script" uid="uid://duht5knl030ng" path="res://scripts/PlantConditions/PlantCondition.gd" id="1_0jtu0"]
+[ext_resource type="Texture2D" uid="uid://fpyv4r4jaadm" path="res://assets/plants/banana_anims/banana_scored/banana_scored_1.png" id="1_hpqpa"]
 [ext_resource type="Script" uid="uid://d4all7rn1opx4" path="res://scripts/PlantConditions/OnCoinGainCondition.gd" id="2_qjfw8"]
+[ext_resource type="Texture2D" uid="uid://b4ki3wkijhen8" path="res://assets/plants/banana_anims/banana_ripe/banana_ripe_1.png" id="2_tdh7v"]
 [ext_resource type="Script" uid="uid://blttmux522ia1" path="res://scripts/PlantEffects/PlantEffect.gd" id="3_ruyd4"]
 [ext_resource type="Script" uid="uid://bxanhjyovl7qt" path="res://scripts/PlantEffects/Untested/MultiplierForActivationsEffect.gd" id="4_hpqpa"]
 [ext_resource type="Script" uid="uid://7213i26wusbl" path="res://scripts/PlantData/plant_data.gd" id="5_tdh7v"]
 [ext_resource type="Texture2D" uid="uid://cdlxomf06exbn" path="res://assets/plants/banana_anims/banana_image.png" id="6_4d2mu"]
+[ext_resource type="Texture2D" uid="uid://fls8fjp6nbgf" path="res://assets/plants/banana_anims/banana_planted/banana_planted_1.png" id="7_4d2mu"]
 
 [sub_resource type="Resource" id="Resource_8ub7j"]
 script = ExtResource("2_qjfw8")
@@ -26,7 +29,7 @@ plant_description = "When a coin is gained, multiplies the next 30 activations b
 store_icon = ExtResource("6_4d2mu")
 effects = Array[ExtResource("3_ruyd4")]([SubResource("Resource_xitxw")])
 conditions = Array[ExtResource("1_0jtu0")]([SubResource("Resource_8ub7j")])
-planted_animation = Array[Texture2D]([])
-activated_animation = Array[Texture2D]([])
+planted_animation = Array[Texture2D]([ExtResource("7_4d2mu"), ExtResource("2_tdh7v")])
+activated_animation = Array[Texture2D]([ExtResource("1_hpqpa"), ExtResource("2_tdh7v"), ExtResource("1_hpqpa"), ExtResource("2_tdh7v"), ExtResource("1_hpqpa"), ExtResource("2_tdh7v")])
 enabled_animation = Array[Texture2D]([])
 metadata/_custom_type_script = "uid://7213i26wusbl"
