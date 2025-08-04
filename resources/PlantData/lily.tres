@@ -1,10 +1,19 @@
-[gd_resource type="Resource" script_class="PlantData" load_steps=7 format=3 uid="uid://bn33if2l28ga0"]
+[gd_resource type="Resource" script_class="PlantData" load_steps=16 format=3 uid="uid://bn33if2l28ga0"]
 
+[ext_resource type="Texture2D" uid="uid://c1yd6vkbcaaka" path="res://assets/plants/lily_anims/lily_sprinkler/lily_sprinkler_2.png" id="1_adfcl"]
 [ext_resource type="Script" uid="uid://duht5knl030ng" path="res://scripts/PlantConditions/PlantCondition.gd" id="1_tncqh"]
 [ext_resource type="Script" uid="uid://0b0mvqf508uj" path="res://scripts/PlantConditions/StatusCondition.gd" id="2_0412q"]
+[ext_resource type="Texture2D" uid="uid://ccfggbdlwpqq7" path="res://assets/plants/lily_anims/lily_sprinkler/lily_sprinkler_3.png" id="2_pkpoa"]
+[ext_resource type="Texture2D" uid="uid://mq6k7bjylgtm" path="res://assets/plants/lily_anims/lily_sprinkler/lily_sprinkler_1.png" id="3_4k7vo"]
 [ext_resource type="Script" uid="uid://blttmux522ia1" path="res://scripts/PlantEffects/PlantEffect.gd" id="3_ug6nq"]
 [ext_resource type="Script" uid="uid://7213i26wusbl" path="res://scripts/PlantData/plant_data.gd" id="5_yifgk"]
 [ext_resource type="Texture2D" uid="uid://bndycoc5xfobp" path="res://assets/plants/lily_anims/lily_image.png" id="6_0412q"]
+[ext_resource type="Texture2D" uid="uid://dk2hg36xh5ati" path="res://assets/plants/lily_anims/lily_planted/lily_planted_1.png" id="7_7l0iu"]
+[ext_resource type="Texture2D" uid="uid://d2xphxu7gpce0" path="res://assets/plants/lily_anims/lily_planted/lily_planted_2.png" id="8_7h7rd"]
+[ext_resource type="Texture2D" uid="uid://ddnj4qo288xif" path="res://assets/plants/lily_anims/lily_planted/lily_planted_3.png" id="9_hd0ue"]
+[ext_resource type="Texture2D" uid="uid://b6yghfqysghrg" path="res://assets/plants/lily_anims/lily_planted/lily_planted_4.png" id="10_227e7"]
+[ext_resource type="Texture2D" uid="uid://b4wvbo0vogfsk" path="res://assets/plants/lily_anims/lily_lit/lily_lit_3.png" id="11_jcr4j"]
+[ext_resource type="Texture2D" uid="uid://cn857v1hcqg85" path="res://assets/plants/lily_anims/lily_lit/lily_lit_4.png" id="12_0xouc"]
 
 [sub_resource type="Resource" id="Resource_tncqh"]
 script = ExtResource("2_0412q")
@@ -14,11 +23,11 @@ metadata/_custom_type_script = "uid://0b0mvqf508uj"
 [resource]
 script = ExtResource("5_yifgk")
 plant_name = "Lily"
-plant_description = "When watered, activates nearby plants"
+plant_description = "When sunlit, activates nearby plants"
 store_icon = ExtResource("6_0412q")
 effects = Array[ExtResource("3_ug6nq")]([])
 conditions = Array[ExtResource("1_tncqh")]([SubResource("Resource_tncqh")])
-planted_animation = Array[Texture2D]([])
-activated_animation = Array[Texture2D]([])
+planted_animation = Array[Texture2D]([ExtResource("7_7l0iu"), ExtResource("8_7h7rd"), ExtResource("9_hd0ue"), ExtResource("10_227e7"), ExtResource("11_jcr4j"), ExtResource("12_0xouc")])
+activated_animation = Array[Texture2D]([ExtResource("1_adfcl"), ExtResource("2_pkpoa"), ExtResource("1_adfcl"), ExtResource("2_pkpoa"), ExtResource("1_adfcl"), ExtResource("2_pkpoa"), ExtResource("3_4k7vo")])
 enabled_animation = Array[Texture2D]([])
 metadata/_custom_type_script = "uid://7213i26wusbl"
