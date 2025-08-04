@@ -91,10 +91,11 @@ position = Vector2(-224.421, 69.8456)
 scale = Vector2(0.212295, 0.212295)
 texture = ExtResource("2_fpw1r")
 
-[node name="PinballMechanism" type="Area2D" parent="."]
+[node name="PinballMechanism" type="Area2D" parent="." node_paths=PackedStringArray("queue")]
 position = Vector2(-200, -17)
 scale = Vector2(0.212295, 0.212295)
 script = ExtResource("4_l1yce")
+queue = NodePath("Queue")
 
 [node name="PinballSpring" type="Sprite2D" parent="PinballMechanism"]
 texture = ExtResource("4_kt4jv")
@@ -110,6 +111,50 @@ texture = ExtResource("6_18e17")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PinballMechanism"]
 position = Vector2(-141.313, -9.05991e-06)
 shape = SubResource("CircleShape2D_7nn5q")
+
+[node name="Queue" type="Node2D" parent="PinballMechanism"]
+
+[node name="QueuedSeed1" parent="PinballMechanism/Queue" instance=ExtResource("4_ufg6d")]
+z_index = -10
+position = Vector2(122.471, -4.71043)
+rotation = 0.865989
+scale = Vector2(5, 5)
+freeze = true
+
+[node name="QueuedSeed2" parent="PinballMechanism/Queue" instance=ExtResource("4_ufg6d")]
+z_index = -10
+position = Vector2(65.946, 94.2085)
+rotation = -0.420574
+scale = Vector2(5, 5)
+freeze = true
+
+[node name="QueuedSeed3" parent="PinballMechanism/Queue" instance=ExtResource("4_ufg6d")]
+z_index = -10
+position = Vector2(61.2355, 207.259)
+rotation = 0.752786
+scale = Vector2(5, 5)
+freeze = true
+
+[node name="QueuedSeed4" parent="PinballMechanism/Queue" instance=ExtResource("4_ufg6d")]
+z_index = -10
+position = Vector2(61.2355, 329.73)
+rotation = 2.66151
+scale = Vector2(5, 5)
+freeze = true
+
+[node name="QueuedSeed5" parent="PinballMechanism/Queue" instance=ExtResource("4_ufg6d")]
+z_index = -10
+position = Vector2(61.2355, 447.49)
+rotation = 0.39661
+scale = Vector2(5, 5)
+freeze = true
+
+[node name="QueuedSeed6" parent="PinballMechanism/Queue" instance=ExtResource("4_ufg6d")]
+z_index = -10
+position = Vector2(4.71033, 527.568)
+rotation = 1.89405
+scale = Vector2(5, 5)
+freeze = true
 
 [node name="ShopBg" type="Sprite2D" parent="."]
 position = Vector2(-278.377, 58.2368)

@@ -1,5 +1,7 @@
 extends Area2D
 
+@export var queue : Node2D
+
 @onready var pinball_button_on: Sprite2D = $PinballButtonOn
 @onready var washer: Washer = $".."
 
@@ -18,13 +20,25 @@ func _process(delta: float) -> void:
 		tween.kill()
 		tween = null
 		pinball_button_on.modulate.a = 0.0
+	
+	# Show as many seeds as were bought
+	for idx in queue.get_children().size():
+		queue.get_child(idx).hide()
+	var visible_seeds := washer.seed_buffer.seeds_in_buffer.size()
+	for idx in visible_seeds:
+		queue.get_child(idx).show()
 
 
 func _ready() -> void:
 	pinball_button_on.visible = true 
 	pinball_button_on.modulate.a = 0.0
 	
-	
+	# List all seeds that can be shown in the queue
+	for idx in queue.get_children().size():
+		var seed : Seed = queue.get_child(idx)
+		seed.hide()
+
+
 func pinball_button_blink() -> void:
 	tween = create_tween()
 	tween.tween_property(pinball_button_on,"modulate:a", 1.0, 0.1)
