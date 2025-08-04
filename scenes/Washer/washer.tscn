@@ -91,10 +91,11 @@ position = Vector2(-224.421, 69.8456)
 scale = Vector2(0.212295, 0.212295)
 texture = ExtResource("2_fpw1r")
 
-[node name="PinballMechanism" type="Area2D" parent="."]
+[node name="PinballMechanism" type="Area2D" parent="." node_paths=PackedStringArray("queue")]
 position = Vector2(-200, -17)
 scale = Vector2(0.212295, 0.212295)
 script = ExtResource("4_l1yce")
+queue = NodePath("Queue")
 
 [node name="PinballSpring" type="Sprite2D" parent="PinballMechanism"]
 texture = ExtResource("4_kt4jv")
@@ -110,6 +111,50 @@ texture = ExtResource("6_18e17")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PinballMechanism"]
 position = Vector2(-141.313, -9.05991e-06)
 shape = SubResource("CircleShape2D_7nn5q")
+
+[node name="Queue" type="Node2D" parent="PinballMechanism"]
+
+[node name="QueuedSeed1" parent="PinballMechanism/Queue" instance=ExtResource("4_ufg6d")]
+z_index = -10
+position = Vector2(122.471, -4.71043)
+rotation = 0.865989
+scale = Vector2(5, 5)
+freeze = true
+
+[node name="QueuedSeed2" parent="PinballMechanism/Queue" instance=ExtResource("4_ufg6d")]
+z_index = -10
+position = Vector2(65.946, 94.2085)
+rotation = -0.420574
+scale = Vector2(5, 5)
+freeze = true
+
+[node name="QueuedSeed3" parent="PinballMechanism/Queue" instance=ExtResource("4_ufg6d")]
+z_index = -10
+position = Vector2(61.2355, 207.259)
+rotation = 0.752786
+scale = Vector2(5, 5)
+freeze = true
+
+[node name="QueuedSeed4" parent="PinballMechanism/Queue" instance=ExtResource("4_ufg6d")]
+z_index = -10
+position = Vector2(61.2355, 329.73)
+rotation = 2.66151
+scale = Vector2(5, 5)
+freeze = true
+
+[node name="QueuedSeed5" parent="PinballMechanism/Queue" instance=ExtResource("4_ufg6d")]
+z_index = -10
+position = Vector2(61.2355, 447.49)
+rotation = 0.39661
+scale = Vector2(5, 5)
+freeze = true
+
+[node name="QueuedSeed6" parent="PinballMechanism/Queue" instance=ExtResource("4_ufg6d")]
+z_index = -10
+position = Vector2(4.71033, 527.568)
+rotation = 1.89405
+scale = Vector2(5, 5)
+freeze = true
 
 [node name="ShopBg" type="Sprite2D" parent="."]
 position = Vector2(-278.377, 58.2368)
@@ -209,7 +254,7 @@ physics_material_override = SubResource("PhysicsMaterial_mgpd2")
 [node name="DonutCollisionPolygon2D" type="CollisionPolygon2D" parent="Cavity/StaticBody2D"]
 position = Vector2(0, 80)
 scale = Vector2(16.6832, 16.8187)
-polygon = PackedVector2Array(6.73533e-16, -11, 2.14599, -10.7886, 4.20952, -10.1627, 6.11127, -9.14617, 7.77817, -7.77817, 9.14617, -6.11127, 10.1627, -4.20952, 10.7886, -2.14599, 11, 0, 10.7886, 2.14599, 10.1627, 4.20952, 9.14617, 6.11127, 7.77817, 7.77817, 6.11127, 9.14617, 4.20952, 10.1627, 2.14599, 10.7886, 6.73533e-16, 11, -2.14599, 10.7886, -4.20952, 10.1627, -6.11127, 9.14617, -7.77817, 7.77817, -9.14617, 6.11127, -10.1627, 4.20952, -10.7886, 2.14599, -11, 1.34707e-15, -10.7886, -2.14599, -10.1627, -4.20952, -9.14617, -6.11127, -7.77817, -7.77817, -6.11127, -9.14617, -4.20952, -10.1627, -2.14599, -10.7886, -2.0206e-15, -11, -1.65322e-15, -9, -1.75581, -8.82707, -3.44415, -8.31492, -5.00013, -7.48323, -6.36396, -6.36396, -7.48323, -5.00013, -8.31492, -3.44415, -8.82707, -1.75581, -9, 1.10215e-15, -8.82707, 1.75581, -8.31492, 3.44415, -7.48323, 5.00013, -6.36396, 6.36396, -5.00013, 7.48323, -3.44415, 8.31492, -1.75581, 8.82707, 5.51073e-16, 9, 1.75581, 8.82707, 3.44415, 8.31492, 5.00013, 7.48323, 6.36396, 6.36396, 7.48323, 5.00013, 8.31492, 3.44415, 8.82707, 1.75581, 9, 0, 8.82707, -1.75581, 8.31492, -3.44415, 7.48323, -5.00013, 6.36396, -6.36396, 5.00013, -7.48323, 3.44415, -8.31492, 1.75581, -8.82707, 5.51073e-16, -9, 0.0001, -10.9999)
+polygon = PackedVector2Array(6.73556e-16, -11, 2.14599, -10.7886, 4.20952, -10.1627, 6.11127, -9.14617, 7.77817, -7.77817, 9.14617, -6.11127, 10.1627, -4.20952, 10.7886, -2.14599, 11, 0, 10.7886, 2.14599, 10.1627, 4.20952, 9.14617, 6.11127, 7.77817, 7.77817, 6.11127, 9.14617, 4.20952, 10.1627, 2.14599, 10.7886, 6.73556e-16, 11, -2.14599, 10.7886, -4.20952, 10.1627, -6.11127, 9.14617, -7.77817, 7.77817, -9.14617, 6.11127, -10.1627, 4.20952, -10.7886, 2.14599, -11, 1.34711e-15, -10.7886, -2.14599, -10.1627, -4.20952, -9.14617, -6.11127, -7.77817, -7.77817, -6.11127, -9.14617, -4.20952, -10.1627, -2.14599, -10.7886, -2.02067e-15, -11, -1.65327e-15, -9, -1.75581, -8.82707, -3.44415, -8.31492, -5.00013, -7.48323, -6.36396, -6.36396, -7.48323, -5.00013, -8.31492, -3.44415, -8.82707, -1.75581, -9, 1.10218e-15, -8.82707, 1.75581, -8.31492, 3.44415, -7.48323, 5.00013, -6.36396, 6.36396, -5.00013, 7.48323, -3.44415, 8.31492, -1.75581, 8.82707, 5.51091e-16, 9, 1.75581, 8.82707, 3.44415, 8.31492, 5.00013, 7.48323, 6.36396, 6.36396, 7.48323, 5.00013, 8.31492, 3.44415, 8.82707, 1.75581, 9, 0, 8.82707, -1.75581, 8.31492, -3.44415, 7.48323, -5.00013, 6.36396, -6.36396, 5.00013, -7.48323, 3.44415, -8.31492, 1.75581, -8.82707, 5.51091e-16, -9, 0.0001, -10.9999)
 script = ExtResource("2_mgpd2")
 metadata/_custom_type_script = "uid://ccsr5veij22yb"
 
@@ -260,7 +305,7 @@ shape = SubResource("CapsuleShape2D_mgpd2")
 [node name="CenterOfCavity" type="Node2D" parent="Cavity"]
 
 [node name="SeedSpawnLocation" type="Node2D" parent="."]
-position = Vector2(4, -34)
+position = Vector2(-107, -15)
 script = ExtResource("3_p4vi5")
 seed_prefab = ExtResource("4_ufg6d")
 
