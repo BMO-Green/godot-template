@@ -18,3 +18,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		var all_plants = get_tree().get_nodes_in_group("plants")
 		for plant in all_plants:
 			plant.activate(PlantCondition.ActivationType.Force)
+	
+	if event.is_action_pressed("debug_plant_seeds"):
+		var all_seeds = get_tree().get_nodes_in_group("seed")
+		for seed in all_seeds:
+			seed.settle_down()

@@ -35,7 +35,7 @@ func _ready() -> void:
 	
 	# List all seeds that can be shown in the queue
 	for idx in queue.get_children().size():
-		var seed : Seed = queue.get_child(idx)
+		var seed : RigidBody2D = queue.get_child(idx)
 		seed.hide()
 
 

@@ -9,22 +9,20 @@ const PlantEffect = preload("res://scripts/PlantEffects/PlantEffect.gd")
 const PlantCondition = preload("res://scripts/PlantConditions/PlantCondition.gd")
 
 @onready var sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-
 @export var activated_particle_effect : PackedScene
 var plant_data: PlantData
 var effects : Array[PlantEffect]
 var conditions: Array[PlantCondition]
-
-var current_mult : float = 1
-var mult_increase_per_cycle : float = 0.02
-var plant: int
-
-var activations_since_planted : int = 0
 var activations_this_cycle: int
 var MAX_ACTIVATIONS = 10
-var activated_this_cycle : bool
-var time_since_last_activation: float
+
+# References for plant effects
 var previous_activations_this_cycle: Array[PlantCondition.ActivationType]= []
+var time_since_last_activation: float
+var activated_this_cycle : bool
+var current_mult : float = 1
+var mult_increase_per_cycle : float = 0.02
+var activations_since_planted : int = 0
 
 
 
@@ -34,7 +32,6 @@ func _ready() -> void:
 
 func initialize(_plant_data: PlantData):
 	plant_data = _plant_data
-	
 	
 	effects = plant_data.effects
 	conditions = plant_data.conditions

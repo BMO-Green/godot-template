@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dq87i1lo66mc6"]
 
 [ext_resource type="Script" uid="uid://ddpyxkankebsp" path="res://scenes/DebugTools/debug_tools.gd" id="1_eu1bm"]
-[ext_resource type="Resource" uid="uid://drirb6ml1yvux" path="res://resources/PlantData/Test/test_plant.tres" id="2_fqcq8"]
 [ext_resource type="Script" uid="uid://bdwsiili120pq" path="res://scripts/PlantEffects/Tested/CoinEffect.gd" id="2_uy2ww"]
+[ext_resource type="Resource" uid="uid://bvg4s2kk0wkhu" path="res://resources/PlantData/sunflower.tres" id="3_uy2ww"]
 
 [sub_resource type="Resource" id="Resource_uy2ww"]
 script = ExtResource("2_uy2ww")
@@ -12,4 +12,4 @@ metadata/_custom_type_script = "uid://bdwsiili120pq"
 [node name="DebugTools" type="Node"]
 script = ExtResource("1_eu1bm")
 plant_effect = SubResource("Resource_uy2ww")
-test_plant_data = ExtResource("2_fqcq8")
+test_plant_data = ExtResource("3_uy2ww")
