@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://buev7i4viyf3s"]
+[gd_scene load_steps=5 format=3 uid="uid://buev7i4viyf3s"]
 
 [ext_resource type="Texture2D" uid="uid://cf7qtfha7ttgd" path="res://assets/ui_elements/coin_slot.png" id="1_0x8y6"]
 [ext_resource type="Script" uid="uid://cbjxnfqkbtf0f" path="res://scenes/CoinSlot/coin_slot.gd" id="1_xbysr"]
+[ext_resource type="Texture2D" uid="uid://c8vybuyecsqb" path="res://assets/ui_elements/coin_slot_blink.png" id="3_ct1fe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0x8y6"]
 size = Vector2(52, 100.5)
 
-[node name="CoinSlot" type="Area2D"]
+[node name="CoinSlot" type="Area2D" node_paths=PackedStringArray("slotblink")]
 script = ExtResource("1_xbysr")
+slotblink = NodePath("Node2D/SlotBlink")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 2)
@@ -17,6 +19,13 @@ shape = SubResource("RectangleShape2D_0x8y6")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.600001, 0.600001)
 texture = ExtResource("1_0x8y6")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="SlotBlink" type="Sprite2D" parent="Node2D"]
+position = Vector2(-9.53674e-07, -1.90735e-06)
+scale = Vector2(0.646667, 0.646667)
+texture = ExtResource("3_ct1fe")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
