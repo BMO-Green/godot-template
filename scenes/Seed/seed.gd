@@ -6,6 +6,7 @@ class_name Seed
 @export var plant_scene: PackedScene
 var plant_data: PlantData
 @onready var cavity: Node2D = get_node("/root/Game/Washer/Cavity")
+@onready var donut: Node2D = get_node("/root/Game/Washer/Cavity/Donut")
 @onready var washer = get_node("/root/Game/Washer")
 var bounce_sound_timer : Timer
 var bounce_sound_cooldown : float = 0.1
@@ -18,18 +19,18 @@ func _ready() -> void:
 	bounce_sound_timer.wait_time = bounce_sound_cooldown
 	add_child(bounce_sound_timer)
 	self.body_entered.connect(_on_body_entered) ## NOT WORKING
-	add_to_group("seed")
-	
 
-func _physics_process(_delta: float) -> void:
-	if linear_velocity.length() < rooting_velocity:
-		settle_down()
+	add_to_group("seed")
+
+
+#func _physics_process(_delta: float) -> void:
+	#if linear_velocity.length() < rooting_velocity:
+		#settle_down()
 
 func settle_down():
 	var plant_instance = plant_scene.instantiate()
-	add_child(plant_instance)
-	
-	remove_child(plant_instance)
+	#add_child(plant_instance) these seem to do nothing! 
+	#remove_child(plant_instance) these seem to do nothing! 
 	cavity.add_child(plant_instance)
 	
 	plant_instance.global_position = self.global_position
@@ -41,6 +42,9 @@ func settle_down():
 	queue_free()
 
 func _on_body_entered(body): ## NOT WORKING - FROZEN?
+	if linear_velocity.length() < rooting_velocity:
+		settle_down()
+	
 	if linear_velocity.length() > 1.25 and bounce_sound_timer.is_stopped():
 		SfxManager.collision_sounds.play()
 		bounce_sound_timer.start()
