@@ -1,32 +1,31 @@
-[gd_resource type="Resource" script_class="PlantData" load_steps=9 format=3 uid="uid://bwb2yqjfcc63w"]
+[gd_resource type="Resource" script_class="PlantData" load_steps=14 format=3 uid="uid://bwb2yqjfcc63w"]
 
 [ext_resource type="Script" uid="uid://duht5knl030ng" path="res://scripts/PlantConditions/PlantCondition.gd" id="1_21ebk"]
+[ext_resource type="Texture2D" uid="uid://dxdfgxmpu80a3" path="res://assets/plants/corn_anims/corn_1pop/corn_1pop_1.png" id="1_nm3me"]
 [ext_resource type="Script" uid="uid://0b0mvqf508uj" path="res://scripts/PlantConditions/StatusCondition.gd" id="2_ib6de"]
+[ext_resource type="Texture2D" uid="uid://cm7xk8pr7p0pq" path="res://assets/plants/corn_anims/corn_2pop/corn_2pop_1.png" id="2_rtiy8"]
 [ext_resource type="Script" uid="uid://blttmux522ia1" path="res://scripts/PlantEffects/PlantEffect.gd" id="3_f2nem"]
-[ext_resource type="Script" path="res://scripts/PlantEffects/Untested/TimedPointMultiplierEffect.gd" id="4_k3504"]
+[ext_resource type="Texture2D" uid="uid://c33w11vduvnie" path="res://assets/plants/corn_anims/corn_3pop/corn_3pop_1.png" id="3_hbxqq"]
+[ext_resource type="Texture2D" uid="uid://vi1xh36x7pah" path="res://assets/plants/corn_anims/corn_4pop/corn_4pop_1.png" id="4_qgiij"]
 [ext_resource type="Script" uid="uid://7213i26wusbl" path="res://scripts/PlantData/plant_data.gd" id="5_1v6p0"]
+[ext_resource type="Texture2D" uid="uid://i61f64rmrbfm" path="res://assets/plants/corn_anims/corn5_pop/corn_5pop_1.png" id="5_sup4e"]
 [ext_resource type="Texture2D" uid="uid://cay4ifta84j8h" path="res://assets/plants/corn_anims/corn_image.png" id="6_21ebk"]
+[ext_resource type="Texture2D" uid="uid://dq5si7emhfaug" path="res://assets/plants/corn_anims/corn_planted/corn_planted_1.png" id="9_dmkgv"]
+[ext_resource type="Texture2D" uid="uid://dosmovihqcjnh" path="res://assets/plants/corn_anims/corn_activated/corn_activated_1.png" id="10_g4sle"]
 
 [sub_resource type="Resource" id="Resource_nm3me"]
 script = ExtResource("2_ib6de")
 required_activation_type = 3
 metadata/_custom_type_script = "uid://0b0mvqf508uj"
 
-[sub_resource type="Resource" id="Resource_rtiy8"]
-script = ExtResource("4_k3504")
-mult_amount = 2
-time = 1
-activate_type = 2
-metadata/_custom_type_script = "uid://cmt6glkrmm0xh"
-
 [resource]
 script = ExtResource("5_1v6p0")
 plant_name = "Corn"
 plant_description = "When heated, multiplies by 3 points gained until the spin ends"
 store_icon = ExtResource("6_21ebk")
-effects = Array[ExtResource("3_f2nem")]([SubResource("Resource_rtiy8")])
+effects = Array[ExtResource("3_f2nem")]([])
 conditions = Array[ExtResource("1_21ebk")]([SubResource("Resource_nm3me")])
-planted_animation = Array[Texture2D]([])
-activated_animation = Array[Texture2D]([])
+planted_animation = Array[Texture2D]([ExtResource("9_dmkgv"), ExtResource("10_g4sle")])
+activated_animation = Array[Texture2D]([ExtResource("1_nm3me"), ExtResource("2_rtiy8"), ExtResource("3_hbxqq"), ExtResource("4_qgiij"), ExtResource("5_sup4e")])
 enabled_animation = Array[Texture2D]([])
 metadata/_custom_type_script = "uid://7213i26wusbl"
