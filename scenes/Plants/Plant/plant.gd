@@ -44,8 +44,8 @@ func initialize(_plant_data: PlantData):
 	var cavity_center: Node2D = get_parent().get_node("CenterOfCavity")
 	look_at(cavity_center.global_position)
 	
-	var direction_to_cavity_center := cavity_center.global_position - global_position
-	global_position += direction_to_cavity_center.normalized() * 15
+	#var direction_to_cavity_center := cavity_center.global_position - global_position
+	#global_position += direction_to_cavity_center.normalized() * 15
 
 	rotate(1.5708)
 
