@@ -10,6 +10,7 @@ var plant_data: PlantData
 @onready var washer = get_node("/root/Game/Washer")
 var bounce_sound_timer : Timer
 var bounce_sound_cooldown : float = 0.1
+var collision_counter := 0
 
 func _ready() -> void:
 	linear_velocity = Vector2(0,-1)
@@ -41,9 +42,16 @@ func settle_down():
 	MusicManager.play_note()
 	queue_free()
 
-func _on_body_entered(body): ## NOT WORKING - FROZEN?
-	if linear_velocity.length() < rooting_velocity:
+func _on_body_entered(body): ## NOT WORKING - FROZEN? 
+	
+	var random_collision_goal := randi_range(25, 60)
+	collision_counter += 1
+	
+	if collision_counter >= random_collision_goal:
 		settle_down()
+	
+	#if linear_velocity.length() < rooting_velocity:
+		#settle_down()
 	
 	if linear_velocity.length() > 1.25 and bounce_sound_timer.is_stopped():
 		SfxManager.collision_sounds.play()
