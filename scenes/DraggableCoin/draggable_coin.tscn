@@ -17,6 +17,8 @@ size = Vector2(63.5, 84)
 
 [node name="DraggableCoin" type="RigidBody2D"]
 input_pickable = true
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_x7akd")
 idle_sprite = ExtResource("2_n0p2r")
 held_sprite = ExtResource("2_hygbv")
@@ -42,6 +44,7 @@ script = ExtResource("3_3sd2e")
 position = Vector2(1.25, -3)
 shape = SubResource("RectangleShape2D_hygbv")
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="area_entered" from="CoinTriggerArea" to="." method="_on_coin_trigger_area_area_entered"]
 [connection signal="area_exited" from="CoinTriggerArea" to="." method="_on_coin_trigger_area_area_exited"]

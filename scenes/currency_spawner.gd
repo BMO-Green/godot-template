@@ -22,7 +22,6 @@ func spawn_coin()-> void:
 	coin.global_position = global_position
 	coin_spawn_elapsed = 0 
 	coins_left_to_spawn -= 1
-	print(coins_left_to_spawn)
 	on_coin_created.emit(coin)
 	SfxManager.create_coin_sound.play()
 	

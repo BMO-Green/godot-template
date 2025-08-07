@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://duht5knl030ng" path="res://scripts/PlantConditions/PlantCondition.gd" id="1_3cmvj"]
 [ext_resource type="Texture2D" uid="uid://cheuppxxsj6oa" path="res://assets/plants/cherry_anims/cherry_scored/cherry_scored_2.png" id="1_i8hqh"]
-[ext_resource type="Script" path="res://scripts/PlantConditions/OnPlantBornCondition.gd" id="2_3cmvj"]
+[ext_resource type="Script" uid="uid://yeby1om7yl8g" path="res://scripts/PlantConditions/OnPlantBornCondition.gd" id="2_3cmvj"]
 [ext_resource type="Texture2D" uid="uid://bwlh002lv2djg" path="res://assets/plants/cherry_anims/cherry_scored/cherry_scored_3.png" id="2_frf6k"]
 [ext_resource type="Texture2D" uid="uid://cw7lse7h4pgi3" path="res://assets/plants/cherry_anims/cherry_scored/cherry_scored_1.png" id="3_6a5fg"]
 [ext_resource type="Script" uid="uid://blttmux522ia1" path="res://scripts/PlantEffects/PlantEffect.gd" id="3_mxce2"]

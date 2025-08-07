@@ -10,6 +10,8 @@ var coin_slot
 @export var idle_sprite: Texture2D
 @export var held_sprite: Texture2D
 @export var coin_slot_sprite: Texture2D
+@export var min_time_between_jostle_sounds: float = 0.3
+var time_since_last_jostle_sound: float
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var flat_collider: CollisionShape2D = $Flat
 @onready var circle_collider: CollisionShape2D = $Circle
@@ -31,7 +33,9 @@ func _physics_process(delta):
 	else:
 		if linear_velocity.length() < 0.2:
 			display_laying_flat()
-		
+			
+	time_since_last_jostle_sound += delta
+	
 func pickup():
 	if held:
 		return
@@ -57,17 +61,6 @@ func handle_depositing():
 	SfxManager.coin_drop_sounds.play()
 	queue_free()
 
-func _on_coin_trigger_area_area_entered(area: Area2D) -> void:
-	if area is CoinSlot:
-		coin_slot = area
-		display_enter_coin_slot()
-		SfxManager.coin_pickup_sounds.play()
-
-func _on_coin_trigger_area_area_exited(area: Area2D) -> void:
-	if area == coin_slot:
-		coin_slot = null
-		display_facing_camera()
-
 func display_facing_camera():
 	make_shape_circular()
 	sprite_2d.texture = held_sprite
@@ -88,3 +81,21 @@ func make_shape_flat():
 func make_shape_circular():
 	circle_collider.disabled = false
 	flat_collider.disabled = true
+
+func _on_coin_trigger_area_area_entered(area: Area2D) -> void:
+	if area is CoinSlot:
+		coin_slot = area
+		display_enter_coin_slot()
+		SfxManager.coin_pickup_sounds.play()
+
+func _on_coin_trigger_area_area_exited(area: Area2D) -> void:
+	if area == coin_slot:
+		coin_slot = null
+		display_facing_camera()
+
+func _on_body_entered(body:Node) -> void:
+	if time_since_last_jostle_sound > min_time_between_jostle_sounds:
+		# play coin jostle sound here
+		#placeholder dont get mad at me max :)
+		SfxManager.coin_pickup_sounds.play()
+		time_since_last_jostle_sound = 0
