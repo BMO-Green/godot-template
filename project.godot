@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Godot-Template"
+config/name="PLOTMACHINE"
 run/main_scene="uid://b2v76ttkfjs7c"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="uid://cy65hi0756toq"
