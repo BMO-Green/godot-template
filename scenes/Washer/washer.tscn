@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://b1an0fegyfxgt"]
+[gd_scene load_steps=55 format=3 uid="uid://b1an0fegyfxgt"]
 
 [ext_resource type="Script" uid="uid://24fku4hjw18q" path="res://scenes/Washer/washer.gd" id="1_lfd6o"]
 [ext_resource type="Texture2D" uid="uid://b8j768yj0o20" path="res://assets/background_art/laundromat_bg_full.png" id="2_fpw1r"]
@@ -41,10 +41,12 @@
 [ext_resource type="Script" uid="uid://ds0wpfgsspvx5" path="res://scenes/ShopScreen/shop_screen_ui.gd" id="34_oibin"]
 [ext_resource type="Texture2D" uid="uid://babg7jjwnaki1" path="res://assets/ui_elements/speed_gauge_indicator.png" id="34_tijac"]
 [ext_resource type="PackedScene" uid="uid://dygjq4gkwhjxs" path="res://scenes/SeedShopPlantCard/seed_shop_popup.tscn" id="36_off0q"]
-[ext_resource type="Texture2D" uid="uid://cs0pqrnwv475b" path="res://assets/speed_gauge_lame.png" id="36_yxkay"]
 [ext_resource type="Texture2D" uid="uid://c5rgx5uk0jmy7" path="res://assets/ui_elements/clock_bg.png" id="37_a78va"]
 [ext_resource type="Script" uid="uid://blj5m6sb04c16" path="res://scripts/UI/point_display.gd" id="40_na54g"]
 [ext_resource type="Script" uid="uid://84nyvtos2mu4" path="res://scenes/Washer/target_label.gd" id="41_ij2v1"]
+[ext_resource type="Texture2D" uid="uid://dp3cnkjgadf5j" path="res://assets/ui_elements/speed_gauge_base.png" id="42_hmpjo"]
+[ext_resource type="Texture2D" uid="uid://djw4afsuricv2" path="res://assets/ui_elements/bunny_stop.png" id="45_pjvq3"]
+[ext_resource type="Texture2D" uid="uid://56psvt4nhoyg" path="res://assets/ui_elements/turtle_stop.png" id="46_cjp45"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7nn5q"]
 radius = 81.18
@@ -267,6 +269,7 @@ texture = ExtResource("9_8q70s")
 
 [node name="Donut" type="StaticBody2D" parent="Cavity"]
 position = Vector2(0, -80)
+collision_layer = 128
 physics_material_override = SubResource("PhysicsMaterial_mgpd2")
 
 [node name="DonutCollisionPolygon2D" type="CollisionPolygon2D" parent="Cavity/Donut"]
@@ -481,7 +484,7 @@ offset_bottom = 40.0
 [node name="SpeedGaugeLame" type="Sprite2D" parent="Control"]
 position = Vector2(-363, 2)
 scale = Vector2(0.396874, 0.396874)
-texture = ExtResource("36_yxkay")
+texture = ExtResource("42_hmpjo")
 
 [node name="ScoreLabel" type="Label" parent="Control"]
 layout_mode = 0
@@ -508,6 +511,16 @@ offset_top = 177.0
 offset_right = -324.0
 offset_bottom = 200.0
 text = "Score / Target"
+
+[node name="Bunny" type="Sprite2D" parent="Control"]
+position = Vector2(-372, -1)
+scale = Vector2(0.409605, 0.409605)
+texture = ExtResource("45_pjvq3")
+
+[node name="Turtle" type="Sprite2D" parent="Control"]
+position = Vector2(-356, -3)
+scale = Vector2(0.402883, 0.402883)
+texture = ExtResource("46_cjp45")
 
 [node name="SpinCoinSlot" parent="." instance=ExtResource("8_cphwb")]
 position = Vector2(-215, -97)
