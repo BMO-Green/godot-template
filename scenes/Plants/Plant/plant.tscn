@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://yb3q4v8g2q12" path="res://scenes/Plants/Plant/plant.gd" id="1_fi0kw"]
 [ext_resource type="PackedScene" uid="uid://ccowan11ehccn" path="res://scenes/Plants/Plant/plant_activated_particles.tscn" id="2_genx4"]
-[ext_resource type="Script" uid="uid://bwaqpttlpg4dv" path="res://scenes/Plants/Plant/soilseeker.gd" id="3_77ps8"]
+[ext_resource type="Script" path="res://scenes/Plants/Plant/soilseeker.gd" id="3_77ps8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5plcq"]
 
