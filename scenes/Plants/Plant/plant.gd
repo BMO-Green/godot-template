@@ -10,6 +10,8 @@ const PlantCondition = preload("res://scripts/PlantConditions/PlantCondition.gd"
 
 @onready var sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @export var activated_particle_effect : PackedScene
+@export var soilseeker : RayCast2D
+
 var plant_data: PlantData
 var effects : Array[PlantEffect]
 var conditions: Array[PlantCondition]
@@ -44,10 +46,16 @@ func initialize(_plant_data: PlantData):
 	var cavity_center: Node2D = get_parent().get_node("CenterOfCavity")
 	look_at(cavity_center.global_position)
 	
+	rotate(1.5708)
+	soilseeker.force_raycast_update()
+	
+	global_position = soilseeker.get_collision_point()
+	
+	
 	#var direction_to_cavity_center := cavity_center.global_position - global_position
 	#global_position += direction_to_cavity_center.normalized() * 15
 
-	rotate(1.5708)
+	
 
 func _process(delta: float) -> void:
 	if activated_this_cycle:
