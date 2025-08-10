@@ -15,5 +15,5 @@
 
 [node name="Node" type="Node"]
 script = ExtResource("1_py4rd")
-available_plants = Array[ExtResource("2_057w6")]([ExtResource("4_lo58c"), ExtResource("5_8an15"), ExtResource("6_vtlrr"), ExtResource("8_khd2a"), ExtResource("9_c3x4x"), ExtResource("10_vnmcf"), ExtResource("11_2u5tl"), ExtResource("12_tkx3x"), ExtResource("13_v4vmu"), ExtResource("12_qfs6d")])
+available_plants = Array[ExtResource("2_057w6")]([ExtResource("12_qfs6d"), ExtResource("5_8an15"), ExtResource("9_c3x4x"), ExtResource("6_vtlrr"), ExtResource("10_vnmcf"), ExtResource("8_khd2a"), ExtResource("4_lo58c"), ExtResource("12_tkx3x"), ExtResource("11_2u5tl"), ExtResource("13_v4vmu")])
 reward_amount_for_beating_target = 4

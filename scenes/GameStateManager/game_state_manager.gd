@@ -12,6 +12,7 @@ var game_over_screen: Label
 var shop_screen: ShopScreenUI
 var seed_buffer: SeedBuffer
 
+
 enum GameState{ShopMenu, Spinning}
 
 var current_game_state: GameState :
@@ -19,6 +20,7 @@ var current_game_state: GameState :
 		current_game_state = value
 		on_state_changed.emit()
 
+var cycle_index: int = 0
 var round_index: int: 
 	set(value):
 		round_index = value
@@ -43,6 +45,7 @@ func _handle_end_of_cycle() -> void:
 	current_game_state = GameState.ShopMenu
 	if PointManager.is_past_threshold(round_index):
 		progress_to_next_round()
+	cycle_index += 1
 	
 func progress_to_next_round() -> void:
 	round_index += 1
@@ -60,9 +63,21 @@ func init_washer(washer: Washer):
 
 
 func generate_shop_selection() -> Array[PlantData]:
+	#weighted selection of plants in shop pool based on how often player used the washer
+	var current_shop_pool : Array[PlantData]
+	
+	var unlocked_plant_lvl : int = min(cycle_index + 3, available_plants.size())
+	
+	for idx in range(unlocked_plant_lvl):
+		var append_multiplier : int = abs(idx - unlocked_plant_lvl)
+		for times in range(append_multiplier):
+			current_shop_pool.append(available_plants[idx])
+	
 	var selection: Array[PlantData] = []
-	selection.append(available_plants.pick_random())
-	selection.append(available_plants.pick_random())
-	selection.append(available_plants.pick_random())
+	selection.append(current_shop_pool.pick_random())
+	selection.append(current_shop_pool.pick_random())
+	selection.append(current_shop_pool.pick_random())
+	
+	print(current_shop_pool)
 
 	return selection
