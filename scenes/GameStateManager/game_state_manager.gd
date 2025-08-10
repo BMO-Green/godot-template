@@ -66,6 +66,7 @@ func generate_shop_selection() -> Array[PlantData]:
 	#weighted selection of plants in shop pool based on how often player used the washer
 	var current_shop_pool : Array[PlantData]
 	
+	#would probably be nicer if it was its own function cause there is a lot of variables dancing around in here
 	var unlocked_plant_lvl : int = min(cycle_index + 3, available_plants.size())
 	
 	for idx in range(unlocked_plant_lvl):
@@ -77,7 +78,5 @@ func generate_shop_selection() -> Array[PlantData]:
 	selection.append(current_shop_pool.pick_random())
 	selection.append(current_shop_pool.pick_random())
 	selection.append(current_shop_pool.pick_random())
-	
-	print(current_shop_pool)
 
 	return selection
