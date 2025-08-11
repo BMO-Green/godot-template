@@ -47,6 +47,8 @@ func _ready() -> void:
 	on_duration_changed.connect(func(value): 
 		spin_duration_label.text = str(snapped(value, 0.1)))
 	spin_duration_remaining = STARTING_DURATION
+	on_spin_speed_changed.connect(handle_speed_change_audio)
+	
 	
 func _physics_process(delta: float) -> void:
 	if is_spinning:
@@ -108,3 +110,11 @@ func _on_speed_slider_coin_slot_on_coin_deposited() -> void:
 		print("spin speed increased")
 		print(spin_speed)
 	else: CurrencyManager.modify_currency(1) #give them their coin back
+
+func handle_speed_change_audio(new_value: int):
+	var spin_speed_index : int = remap(new_value, MIN_SPIN_SPEED, MAX_SPIN_SPEED, 0, MusicData.KEYS.size() - 1)
+	MusicManager.set_music_key.emit(MusicData.KEYS[MusicData.KEYS.keys()[spin_speed_index]])
+	SfxManager.slider_sound.pitch_scale = remap(new_value, self.min_value, self.max_value, 0.5, 2.0)
+	
+	if spin_speed < new_value:
+		SfxManager.slider_sound.play()
