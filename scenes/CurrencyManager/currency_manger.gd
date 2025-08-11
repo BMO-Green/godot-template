@@ -1,7 +1,6 @@
 extends Node
 #CurrencyManager autoload
 signal on_coins_changed
-signal on_out_of_coins
 
 @export var STARTING_COINS: int = 10
 @export var coin_scene : PackedScene
@@ -20,6 +19,7 @@ func _ready() -> void:
 
 func modify_currency(amount: int) -> void:
 	currency_spawner.spawn_coins(amount)
+	on_coins_changed.emit()
 
 func _on_pickable_clicked(object):
 	if !held_object:

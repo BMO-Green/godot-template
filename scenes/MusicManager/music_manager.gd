@@ -57,7 +57,8 @@ func _connect_signals() -> void:
 		# LOGGING
 		last_key_string = music_data.get_key_string(music_key)
 		current_key_string = music_data.get_key_string(new_key)
-		print("Current Key: ", current_key_string, "\t- Last Key: ", last_key_string)
+		if debug_log:
+			print("Current Key: ", current_key_string, "\t- Last Key: ", last_key_string)
 		
 		# UPDATING
 		current_key_scale = music_data.get_key_scale(new_key) # set key scale
@@ -69,7 +70,8 @@ func _connect_signals() -> void:
 		# LOGGING
 		last_mode_string = music_data.get_mode_string(music_mode)
 		current_mode_string = music_data.get_mode_string(new_mode)
-		print("Current Mode: ", current_mode_string, "\t- Last Mode: ", last_mode_string)
+		if debug_log:
+			print("Current Mode: ", current_mode_string, "\t- Last Mode: ", last_mode_string)
 		
 		# UPDATING
 		music_mode = new_mode # update to new KEY enum value
@@ -116,9 +118,12 @@ var last_mode_string : String
 		set_chord_player(enabled)
 		chord_player_playing = enabled
 
+@export_category("Debug Settings")
+@export var debug_log: bool
 # Plays a random note from note_player instance
 func play_note():
-	print("PLAY NOTE")
+	if debug_log:
+		print("PLAY NOTE")
 	play_random_note_from(note_player)
 	return
 
@@ -130,12 +135,14 @@ func toggle_root_player():
 func toggle_chord_player():
 	set_chord_player(!chord_player.playing)
 	
-# Sets root player active to 'on'
+# Sets root player active to 'on
 func set_root_player(on : bool):
+	@warning_ignore("standalone_ternary")
 	root_player.play() if on else root_player.stop()
 	
 # Sets third player active to 'on'
 func set_chord_player(on : bool):
+	@warning_ignore("standalone_ternary")
 	chord_player.play() if on else chord_player.stop()
 	
 # Sets music_key to random KEYS enum from music_data
@@ -172,9 +179,10 @@ func update_audio_players():
 
 # Shifts current notes to updated key scale
 func pitch_shift_chord(to_key_interval : float, tween_duration : float = 1):
-	var tween: Tween = create_tween().set_parallel()
-	tween.tween_property(root_player, "pitch_scale", to_key_interval, tween_duration)
-	tween.tween_property(chord_player, "pitch_scale", to_key_interval * current_mode_intervals[2] * 2, 1)
+	if root_player != null:
+		create_tween().set_parallel().tween_property(root_player, "pitch_scale", to_key_interval, tween_duration)
+	if chord_player != null:
+		create_tween().set_parallel().tween_property(chord_player, "pitch_scale", to_key_interval * current_mode_intervals[2] * 2, 1)
 	#tween.tween_property(fifthPlayer, "pitch_scale", to_key_interval * current_mode[4] * 2, 1)
 #endregion
 
@@ -194,17 +202,21 @@ func _ready():
 #region Chord Progressions
 ## TODO: implement chord progressions
 func generate_chord():
-	print("current key: ", current_key_string, " ", current_mode_string)
+	if debug_log:
+		print("current key: ", current_key_string, " ", current_mode_string)
+		
 	if music_bank.chord_progressions.has(current_key_string):
 		if music_bank.chord_progressions[current_key_string].has(current_mode_string):
 			var new_key_options = music_bank.chord_progressions[current_key_string][current_mode_string]
-			var new_option = new_key_options.pick_random()
+			var _new_option = new_key_options.pick_random()
 			#change_key_to(new_option["key"])
 			#change_mode_to(new_option["mode"])
 		else:
-			print("mode not logged yet")
+			if debug_log:
+				print("mode not logged yet")
 	else:
-		print("key not logged yet")
+		if debug_log:
+			print("key not logged yet")
 #endregion
 
 #region UI

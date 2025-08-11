@@ -7,5 +7,5 @@ func attempt_activate(_plant: Plant, _activation_type: ActivationType) -> bool:
 	
 	return true
 
-func get_activation_signals(plant: Plant)-> Array[Signal]:
+func get_activation_signals(_plant: Plant)-> Array[Signal]:
 	return [CurrencyManager.on_coins_changed]

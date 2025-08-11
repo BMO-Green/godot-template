@@ -5,7 +5,7 @@ extends Node
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action("debug_gain_points"):
-		print(PointManager.points)
+		PointManager.increase_score(50)
 	
 	if event.is_action_pressed("debug_test_plant_effect"):
 		var seed_spawner : SeedSpawner = get_tree().root.get_node("/root/Game/Washer").get_seed_spawner()
@@ -21,5 +21,5 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("debug_plant_seeds"):
 		var all_seeds = get_tree().get_nodes_in_group("seed")
-		for seed in all_seeds:
-			seed.settle_down()
+		for s in all_seeds:
+			s.settle_down()

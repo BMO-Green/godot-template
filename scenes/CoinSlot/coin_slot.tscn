@@ -7,9 +7,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0x8y6"]
 size = Vector2(52, 100.5)
 
-[node name="CoinSlot" type="Area2D" node_paths=PackedStringArray("slotblink")]
+[node name="CoinSlot" type="Area2D" node_paths=PackedStringArray("slot_blink")]
 script = ExtResource("1_xbysr")
-slotblink = NodePath("Node2D/SlotBlink")
+slot_blink = NodePath("Node2D/slot_blink")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 2)
@@ -22,7 +22,7 @@ texture = ExtResource("1_0x8y6")
 
 [node name="Node2D" type="Node2D" parent="."]
 
-[node name="SlotBlink" type="Sprite2D" parent="Node2D"]
+[node name="slot_blink" type="Sprite2D" parent="Node2D"]
 position = Vector2(-9.53674e-07, -1.90735e-06)
 scale = Vector2(0.646667, 0.646667)
 texture = ExtResource("3_ct1fe")

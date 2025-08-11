@@ -11,6 +11,8 @@ var plant_data: PlantData
 var bounce_sound_timer : Timer
 var bounce_sound_cooldown : float = 0.1
 var collision_counter := 0
+@onready var collision_goal := randi_range(25, 60)
+ 
 
 func _ready() -> void:
 	linear_velocity = Vector2(0,-1)
@@ -19,19 +21,13 @@ func _ready() -> void:
 	bounce_sound_timer.one_shot = true
 	bounce_sound_timer.wait_time = bounce_sound_cooldown
 	add_child(bounce_sound_timer)
-	self.body_entered.connect(_on_body_entered) ## NOT WORKING
+	self.body_entered.connect(_on_body_entered)
 
 	add_to_group("seed")
 
-
-#func _physics_process(_delta: float) -> void:
-	#if linear_velocity.length() < rooting_velocity:
-		#settle_down()
-
 func settle_down():
 	var plant_instance = plant_scene.instantiate()
-	#add_child(plant_instance) these seem to do nothing! 
-	#remove_child(plant_instance) these seem to do nothing! 
+	
 	cavity.add_child(plant_instance)
 	
 	plant_instance.global_position = self.global_position
@@ -42,21 +38,14 @@ func settle_down():
 	MusicManager.play_note()
 	queue_free()
 
-func _on_body_entered(body): ## NOT WORKING - FROZEN? 
-	
-	var random_collision_goal := randi_range(25, 60)
+func _on_body_entered(_body): 
 	collision_counter += 1
-	
-	if collision_counter >= random_collision_goal:
-		settle_down()
-	
-	#if linear_velocity.length() < rooting_velocity:
-		#settle_down()
+	if collision_counter >= collision_goal:
+		call_deferred("settle_down")
 	
 	if linear_velocity.length() > 1.25 and bounce_sound_timer.is_stopped():
 		SfxManager.collision_sounds.play()
 		bounce_sound_timer.start()
-	#MusicManager.play_note()
 
 func handle_destruction():
 	queue_free()

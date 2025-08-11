@@ -5,10 +5,8 @@ class_name Washer
 signal on_cycle_start
 signal on_cycle_end
 signal on_seed_shop_opened
-signal on_seed_planted
 signal on_duration_changed(value: float)
 signal on_spin_speed_changed(value: float)
-signal on_spin_second_passed
 
 @onready var cavity: Node2D = $Cavity
 @export_category("Seeds")
@@ -22,13 +20,15 @@ var spin_duration_elapsed: float
 
 @export var SPIN_TIME_PER_COIN: int = 10
 @export var SPEED_GAINED_PER_COIN: float = 0.5
+@export var STARTING_DURATION: float = 10
+
+@export_category("Spin Speed")
+@export var SPIN_SPEED_DECAY: float = 0.1
 @export var MAX_SPIN_SPEED: float = 4
 @export var MIN_SPIN_SPEED:float= 0.5
-@export var STARTING_DURATION: float = 10
-@export var SPIN_SPEED_DECAY: float = 0.1
+@export var STARTING_SPIN_SPEED: float = 2
 
 var is_spinning: bool = false
-
 var activations_this_cycle : int = 0
 var spins_so_far : int = 0
 var whole_seconds_passed : int = 0
@@ -48,7 +48,7 @@ func _ready() -> void:
 		spin_duration_label.text = str(snapped(value, 0.1)))
 	spin_duration_remaining = STARTING_DURATION
 	on_spin_speed_changed.connect(handle_speed_change_audio)
-	
+	spin_speed = STARTING_SPIN_SPEED
 	
 func _physics_process(delta: float) -> void:
 	if is_spinning:
@@ -105,16 +105,15 @@ func _on_button_pressed() -> void:
 
 
 func _on_speed_slider_coin_slot_on_coin_deposited() -> void:
-	if spin_speed < MAX_SPIN_SPEED:
+	if spin_speed < MAX_SPIN_SPEED - spin_speed:
 		spin_speed = spin_speed + SPEED_GAINED_PER_COIN
-		print("spin speed increased")
-		print(spin_speed)
 	else: CurrencyManager.modify_currency(1) #give them their coin back
 
 func handle_speed_change_audio(new_value: int):
-	var spin_speed_index : int = remap(new_value, MIN_SPIN_SPEED, MAX_SPIN_SPEED, 0, MusicData.KEYS.size() - 1)
+	var spin_speed_audio_value : float = remap(new_value, MIN_SPIN_SPEED, MAX_SPIN_SPEED, 0, MusicData.KEYS.size() - 1)
+	var spin_speed_index: int = round(spin_speed_audio_value)
 	MusicManager.set_music_key.emit(MusicData.KEYS[MusicData.KEYS.keys()[spin_speed_index]])
-	SfxManager.slider_sound.pitch_scale = remap(new_value, self.min_value, self.max_value, 0.5, 2.0)
+	SfxManager.slider_sound.pitch_scale = remap(new_value, MIN_SPIN_SPEED, MAX_SPIN_SPEED, 0.5, 2.0)
 	
 	if spin_speed < new_value:
 		SfxManager.slider_sound.play()

@@ -12,7 +12,6 @@ var points: int:
 		
 func increase_score(amount: int):
 	points += amount
-	print(amount)
 
 func is_past_threshold(round_index: int) -> bool:
 	return points >= get_threshold(round_index)

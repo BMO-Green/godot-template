@@ -2,7 +2,6 @@ extends RigidBody2D
 class_name DraggableCoin
 signal clicked
 signal on_released
-signal on_bounced
 
 var held = false
 var coin_slot
@@ -21,7 +20,7 @@ func _init() -> void:
 	self.add_to_group("pickable")
 	linear_velocity = Vector2(-10,-10)
 
-func _on_input_event(viewport, event, shape_idx):
+func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			clicked.emit(self)
@@ -75,12 +74,12 @@ func display_enter_coin_slot():
 	make_shape_flat()
 	
 func make_shape_flat():
-	circle_collider.disabled = true
-	flat_collider.disabled = false
+	circle_collider.set_deferred("disabled",true)
+	flat_collider.set_deferred("disabled",false)
 	
 func make_shape_circular():
-	circle_collider.disabled = false
-	flat_collider.disabled = true
+	circle_collider.set_deferred("disabled",false)
+	flat_collider.set_deferred("disabled",true)
 
 func _on_coin_trigger_area_area_entered(area: Area2D) -> void:
 	if area is CoinSlot:
@@ -93,7 +92,7 @@ func _on_coin_trigger_area_area_exited(area: Area2D) -> void:
 		coin_slot = null
 		display_facing_camera()
 
-func _on_body_entered(body:Node) -> void:
+func _on_body_entered(_body:Node) -> void:
 	if time_since_last_jostle_sound > min_time_between_jostle_sounds:
 		# play coin jostle sound here
 		#placeholder dont get mad at me max :)

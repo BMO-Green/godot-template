@@ -7,12 +7,11 @@ extends Area2D
 
 var tween : Tween
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var prompt_player_to_shoot_seed_by_blinking := (
 			not washer.seed_buffer.seeds_in_buffer.is_empty()
 			and washer.is_spinning
 	)
-	#print(prompt_player_to_shoot_seed_by_blinking)
 	
 	if prompt_player_to_shoot_seed_by_blinking and washer.is_spinning and tween == null:
 		pinball_button_blink()
@@ -35,8 +34,8 @@ func _ready() -> void:
 	
 	# List all seeds that can be shown in the queue
 	for idx in queue.get_children().size():
-		var seed : RigidBody2D = queue.get_child(idx)
-		seed.hide()
+		var s : RigidBody2D = queue.get_child(idx)
+		s.hide()
 
 
 func pinball_button_blink() -> void:

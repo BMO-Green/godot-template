@@ -26,7 +26,7 @@ func update_polygons() -> void:
 	var points := get_polygon_points(Vector2(0,0), radius)
 	polygon = points
 
-
+@warning_ignore_start("shadowed_variable")
 func get_polygon_points(center: Vector2, radius: float) -> PackedVector2Array:
 	var half_width := width / 2
 	var inner_circle := get_circle_points(center, radius - half_width)
@@ -40,7 +40,7 @@ func get_polygon_points(center: Vector2, radius: float) -> PackedVector2Array:
 
 
 func get_circle_points(center: Vector2, radius: float, angle_from: float = 0, angle_to: float = 360) -> PackedVector2Array:
-	var nb_points := 16
+	var _nb_points := 16
 	var points_arc := PackedVector2Array()
 	for i in range(quality + 1):
 		var angle_point := deg_to_rad(angle_from + i * (angle_to - angle_from) / quality - 90)

@@ -5,12 +5,13 @@ signal hit_by_seed(seed : Seed)
 signal has_activated
 signal has_died
 
+@warning_ignore_start("shadowed_global_identifier")
 const PlantEffect = preload("res://scripts/PlantEffects/PlantEffect.gd")
 const PlantCondition = preload("res://scripts/PlantConditions/PlantCondition.gd")
 
 @onready var sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @export var activated_particle_effect : PackedScene
-@export var soilseeker : RayCast2D
+@export var soil_seeker : RayCast2D
 
 var plant_data: PlantData
 var effects : Array[PlantEffect]
@@ -47,9 +48,9 @@ func initialize(_plant_data: PlantData):
 	look_at(cavity_center.global_position)
 	
 	rotate(1.5708)
-	soilseeker.force_raycast_update()
+	soil_seeker.force_raycast_update()
 	
-	global_position = soilseeker.get_collision_point()
+	global_position = soil_seeker.get_collision_point()
 	
 	
 	#var direction_to_cavity_center := cavity_center.global_position - global_position

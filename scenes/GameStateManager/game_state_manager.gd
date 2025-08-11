@@ -26,20 +26,8 @@ var round_index: int:
 		round_index = value
 		on_round_changed.emit(round_index) 
 
-
 func _ready() -> void:
 	round_index = 0
-	CurrencyManager.on_out_of_coins.connect(_handle_out_of_coins)
-	
-	
-
-func _handle_out_of_coins() -> void:
-	await end_of_cycle_signal
-	if PointManager.is_past_threshold(round_index):
-		pass
-	else:
-		game_over_screen.visible = true
-	   
 	
 func _handle_end_of_cycle() -> void:
 	current_game_state = GameState.ShopMenu

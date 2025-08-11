@@ -5,7 +5,7 @@ extends Node2D
 var tween : Tween
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	
 	if washer.is_spinning:
 		ongoing_rumble()

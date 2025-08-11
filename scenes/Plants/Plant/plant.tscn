@@ -29,12 +29,12 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Plant" type="Area2D" node_paths=PackedStringArray("soilseeker")]
+[node name="Plant" type="Area2D" node_paths=PackedStringArray("soil_seeker")]
 z_index = 5
 z_as_relative = false
 script = ExtResource("1_fi0kw")
 activated_particle_effect = ExtResource("2_genx4")
-soilseeker = NodePath("Soilseeker")
+soil_seeker = NodePath("soil_seeker")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 scale = Vector2(0.559999, 0.559999)
@@ -47,7 +47,7 @@ scale = Vector2(0.246334, 0.246334)
 sprite_frames = SubResource("SpriteFrames_iv0qu")
 animation = &"planted"
 
-[node name="Soilseeker" type="RayCast2D" parent="."]
+[node name="soil_seeker" type="RayCast2D" parent="."]
 enabled = false
 collision_mask = 128
 

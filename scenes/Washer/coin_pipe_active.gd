@@ -4,7 +4,6 @@ extends Sprite2D
 func _ready() -> void:
 	self.visible = true 
 	self.modulate.a = 0.0
-	print(CurrencyManager.currency_spawner)
 	CurrencyManager.currency_spawner.on_coin_created.connect(coin_pipe_blink)
 	
 func coin_pipe_blink(_useless_pointless_node_placeholder_coin : Node) -> void:
