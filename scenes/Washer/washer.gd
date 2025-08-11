@@ -23,6 +23,7 @@ var spin_duration_elapsed: float
 @export var SPIN_TIME_PER_COIN: int = 10
 @export var SPEED_GAINED_PER_COIN: float = 0.5
 @export var MAX_SPIN_SPEED: float = 4
+@export var MIN_SPIN_SPEED:float= 0.5
 @export var STARTING_DURATION: float = 10
 @export var SPIN_SPEED_DECAY: float = 0.1
 
@@ -51,7 +52,9 @@ func _physics_process(delta: float) -> void:
 	if is_spinning:
 		cavity.rotate(spin_speed * delta)
 		spin_duration_remaining -= delta
-		spin_speed = spin_speed - SPIN_SPEED_DECAY * delta
+		if spin_speed >= MIN_SPIN_SPEED:
+			spin_speed = spin_speed - SPIN_SPEED_DECAY * delta
+		
 		if spin_duration_remaining < 0:
 			handle_end_of_cycle()
 
