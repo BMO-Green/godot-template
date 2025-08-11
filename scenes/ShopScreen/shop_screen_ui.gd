@@ -21,9 +21,9 @@ func _ready() -> void:
 func initialize(cards_to_display: Array[PlantData]) -> void:
 	if !first_run:
 		for slot in slots:
-			var child = slot.get_child(0)
-			if child != null:
-				child.queue_free()
+			var children = slot.get_children()
+			if children != null and children.size() > 0:
+				children[0].queue_free()
 	
 	var cards_displayed = 0
 	for card in cards_to_display:

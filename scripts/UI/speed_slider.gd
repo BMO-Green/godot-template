@@ -8,5 +8,8 @@ func _ready() -> void:
 	max_value = washer.MAX_SPIN_SPEED
 	value = washer.spin_speed
 
+
+
 func _on_value_changed(new_value: float ) -> void:
 	value = new_value
+	print(value)

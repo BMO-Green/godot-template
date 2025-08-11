@@ -23,3 +23,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		var all_seeds = get_tree().get_nodes_in_group("seed")
 		for s in all_seeds:
 			s.settle_down()
+
+	if event.is_action_pressed("debug_gain_coin"):
+		CurrencyManager.modify_currency(1)

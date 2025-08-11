@@ -2,8 +2,6 @@ class_name Plant
 extends Node2D
 
 signal hit_by_seed(seed : Seed)
-signal has_activated
-signal has_died
 
 @warning_ignore_start("shadowed_global_identifier")
 const PlantEffect = preload("res://scripts/PlantEffects/PlantEffect.gd")
@@ -16,22 +14,12 @@ const PlantCondition = preload("res://scripts/PlantConditions/PlantCondition.gd"
 var plant_data: PlantData
 var effects : Array[PlantEffect]
 var conditions: Array[PlantCondition]
-var activations_this_cycle: int
-var MAX_ACTIVATIONS = 10
 
-# References for plant effects
-var previous_activations_this_cycle: Array[PlantCondition.ActivationType]= []
-var time_since_last_activation: float
-var activated_this_cycle : bool
-var current_mult : float = 1
-var mult_increase_per_cycle : float = 0.02
-var activations_since_planted : int = 0
-
-
+var plant_context: PlantContext
 
 func _ready() -> void:
 	add_to_group("plants")
-
+	plant_context = PlantContext.new()
 
 func initialize(_plant_data: PlantData):
 	plant_data = _plant_data
@@ -43,7 +31,6 @@ func initialize(_plant_data: PlantData):
 	if plant_data.planted_animation != null:
 		sprite_2d.play("planted")
 		
-
 	var cavity_center: Node2D = get_parent().get_node("CenterOfCavity")
 	look_at(cavity_center.global_position)
 	
@@ -52,40 +39,27 @@ func initialize(_plant_data: PlantData):
 	
 	global_position = soil_seeker.get_collision_point()
 	
-	
-	#var direction_to_cavity_center := cavity_center.global_position - global_position
-	#global_position += direction_to_cavity_center.normalized() * 15
-
-	
-
-func _process(delta: float) -> void:
-	if activated_this_cycle:
-		time_since_last_activation += delta
 
 func activate(activation_type: PlantCondition.ActivationType) -> void:
 	if GameStateManager.current_game_state != GameStateManager.GameState.Spinning: return
 	var should_trigger = false	
-	if activations_this_cycle > MAX_ACTIVATIONS: return
+	if plant_context.hit_activation_limit(): return
 	
 	if	activation_type == PlantCondition.ActivationType.Force:
 		should_trigger = true
 	
 	for condition in conditions:
-		if condition.attempt_activate(self,activation_type):
+		if condition.attempt_activate(plant_context, activation_type):
 			should_trigger = true
 
 	if should_trigger:	
-		activations_this_cycle += 1
-		activated_this_cycle = true
-		activations_since_planted += 1
 		get_tree().root.get_node("Game/Washer").activations_this_cycle += 1
-		has_activated.emit()
 		MusicManager.play_note()
 		play_particle_effect(activated_particle_effect)
 		
 		for effect in effects:
 			effect.activate(self)
-			previous_activations_this_cycle.append(activation_type)
+			plant_context.update(activation_type)
 			get_tree().root.get_node("Game/Washer").activations_this_cycle += 1
 			
 			if plant_data.activated_animation != null:
@@ -100,7 +74,6 @@ func setup_animations():
 	if plant_data.planted_animation == null:
 		return
 
-	
 	for frame in plant_data.planted_animation:
 		sprite_2d.sprite_frames.add_frame("planted", frame)
 
@@ -143,16 +116,10 @@ func _on_body_entered(body):
 	if(body is Seed): hit_by_seed.emit()
 
 func on_cycle_start():
-	activated_this_cycle = false
-	time_since_last_activation = 0
-	previous_activations_this_cycle = []
-	current_mult *= 1 + mult_increase_per_cycle
-	activations_this_cycle = 0
+	plant_context.on_cycle_start()
 
 func handle_destruction():
-	has_died.emit()
 	queue_free()
-
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if (sprite_2d.animation == "planted"):

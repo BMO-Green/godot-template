@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="PlantData" load_steps=5 format=3 uid="uid://dorytvtg5urwc"]
+
+[ext_resource type="Script" uid="uid://duht5knl030ng" path="res://scripts/PlantConditions/PlantCondition.gd" id="1_1iwgd"]
+[ext_resource type="Script" uid="uid://blttmux522ia1" path="res://scripts/PlantEffects/PlantEffect.gd" id="2_xkdvs"]
+[ext_resource type="Script" uid="uid://7213i26wusbl" path="res://scripts/PlantData/plant_data.gd" id="3_dake8"]
+[ext_resource type="Texture2D" uid="uid://bilclg7l7nbxr" path="res://assets/plants/chili_anims/chili_image.png" id="4_ao285"]
+
+[resource]
+script = ExtResource("3_dake8")
+plant_name = "Chili"
+plant_description = ""
+store_icon = ExtResource("4_ao285")
+effects = Array[ExtResource("2_xkdvs")]([])
+conditions = Array[ExtResource("1_1iwgd")]([])
+planted_animation = Array[Texture2D]([])
+activated_animation = Array[Texture2D]([])
+enabled_animation = Array[Texture2D]([])
+metadata/_custom_type_script = "uid://7213i26wusbl"

@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="PlantData" load_steps=16 format=3 uid="uid://bvg4s2kk0wkhu"]
+
+[ext_resource type="Texture2D" uid="uid://d2tg16b62vxsp" path="res://assets/plants/sunflower_anims/sunflower_radiant/sunflower_radiant_3.png" id="1_w4sqo"]
+[ext_resource type="Texture2D" uid="uid://cn1e665oopg6c" path="res://assets/plants/sunflower_anims/sunflower_radiant/sunflower_radiant_2.png" id="2_m1e6u"]
+[ext_resource type="Texture2D" uid="uid://drxp6g6qwiqju" path="res://assets/plants/sunflower_anims/sunflower_radiant/sunflower_radiant_1.png" id="3_dt6s2"]
+[ext_resource type="Script" uid="uid://duht5knl030ng" path="res://scripts/PlantConditions/PlantCondition.gd" id="4_ae1pe"]
+[ext_resource type="Script" uid="uid://0b0mvqf508uj" path="res://scripts/PlantConditions/StatusCondition.gd" id="5_ftn1q"]
+[ext_resource type="Script" uid="uid://blttmux522ia1" path="res://scripts/PlantEffects/PlantEffect.gd" id="6_44w75"]
+[ext_resource type="Script" uid="uid://cq8g1h4djhk4x" path="res://scripts/PlantEffects/Tested/PointEffect.gd" id="7_8877q"]
+[ext_resource type="Texture2D" uid="uid://cieyhk7miyfv8" path="res://assets/plants/sunflower_anims/sunflower_planted/sunflower_planted_1.png" id="8_v3uud"]
+[ext_resource type="Texture2D" uid="uid://ckibveya72awg" path="res://assets/plants/sunflower_anims/sunflower_planted/sunflower_planted_2.png" id="9_121on"]
+[ext_resource type="Texture2D" uid="uid://bv36xem1dpv2p" path="res://assets/plants/sunflower_anims/sunflower_watered/sunflower_watered_4.png" id="10_05giy"]
+[ext_resource type="Texture2D" uid="uid://bo4qjtnf8k2n1" path="res://assets/plants/sunflower_anims/sunflower_watered/sunflower_watered_5.png" id="11_j4us6"]
+[ext_resource type="Script" uid="uid://7213i26wusbl" path="res://scripts/PlantData/plant_data.gd" id="12_ag2f5"]
+[ext_resource type="Texture2D" uid="uid://wrryrx1cvr4i" path="res://assets/plants/sunflower_anims/sunflower_image.png" id="13_ns3wt"]
+
+[sub_resource type="Resource" id="Resource_trox0"]
+script = ExtResource("5_ftn1q")
+required_activation_type = 0
+metadata/_custom_type_script = "uid://0b0mvqf508uj"
+
+[sub_resource type="Resource" id="Resource_24j2k"]
+script = ExtResource("7_8877q")
+point_amount = 10
+metadata/_custom_type_script = "uid://cq8g1h4djhk4x"
+
+[resource]
+script = ExtResource("12_ag2f5")
+plant_name = "Sunflower"
+plant_description = "When watered, give 10 points"
+store_icon = ExtResource("13_ns3wt")
+effects = Array[ExtResource("6_44w75")]([SubResource("Resource_24j2k")])
+conditions = Array[ExtResource("4_ae1pe")]([SubResource("Resource_trox0")])
+planted_animation = Array[Texture2D]([ExtResource("8_v3uud"), ExtResource("9_121on"), ExtResource("10_05giy"), ExtResource("11_j4us6")])
+activated_animation = Array[Texture2D]([ExtResource("1_w4sqo"), ExtResource("2_m1e6u"), ExtResource("1_w4sqo"), ExtResource("2_m1e6u"), ExtResource("1_w4sqo"), ExtResource("1_w4sqo"), ExtResource("2_m1e6u"), ExtResource("3_dt6s2")])
+enabled_animation = Array[Texture2D]([])
+metadata/_custom_type_script = "uid://7213i26wusbl"

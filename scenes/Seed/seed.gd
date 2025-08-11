@@ -31,9 +31,7 @@ func settle_down():
 	cavity.add_child(plant_instance)
 	
 	plant_instance.global_position = self.global_position
-	
 	plant_instance.initialize(plant_data)
-	washer.on_seed_planted.emit()
 
 	MusicManager.play_note()
 	queue_free()

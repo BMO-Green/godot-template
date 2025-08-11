@@ -19,7 +19,6 @@ signal on_spin_speed_changed(value: float)
 var spin_duration_elapsed: float
 
 @export var SPIN_TIME_PER_COIN: int = 10
-@export var SPEED_GAINED_PER_COIN: float = 0.5
 @export var STARTING_DURATION: float = 10
 
 @export_category("Spin Speed")
@@ -27,6 +26,8 @@ var spin_duration_elapsed: float
 @export var MAX_SPIN_SPEED: float = 4
 @export var MIN_SPIN_SPEED:float= 0.5
 @export var STARTING_SPIN_SPEED: float = 2
+@export var SPEED_GAINED_PER_COIN: float = 0.5
+@export var SPEED_WASTE_PROTECTION_FACTOR: float = 0.5
 
 var is_spinning: bool = false
 var activations_this_cycle : int = 0
@@ -83,6 +84,7 @@ func get_seed_spawner() -> SeedSpawner:
 
 func _on_seed_coin_slot_on_coin_deposited() -> void:
 	on_seed_shop_opened.emit()
+	print(spin_speed)
 	
 
 func _on_spin_coin_slot_on_coin_deposited() -> void:
@@ -105,7 +107,7 @@ func _on_button_pressed() -> void:
 
 
 func _on_speed_slider_coin_slot_on_coin_deposited() -> void:
-	if spin_speed < MAX_SPIN_SPEED - spin_speed:
+	if spin_speed < MAX_SPIN_SPEED - SPEED_GAINED_PER_COIN * SPEED_WASTE_PROTECTION_FACTOR:
 		spin_speed = spin_speed + SPEED_GAINED_PER_COIN
 	else: CurrencyManager.modify_currency(1) #give them their coin back
 

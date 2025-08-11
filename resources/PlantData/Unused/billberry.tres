@@ -1,24 +1,17 @@
-[gd_resource type="Resource" script_class="PlantData" load_steps=7 format=3 uid="uid://bmofbyovbetne"]
+[gd_resource type="Resource" script_class="PlantData" load_steps=5 format=3 uid="uid://bmofbyovbetne"]
 
 [ext_resource type="Script" uid="uid://duht5knl030ng" path="res://scripts/PlantConditions/PlantCondition.gd" id="1_xulev"]
-[ext_resource type="Script" uid="uid://62wqba8agui1" path="res://scripts/PlantConditions/OnNeighborActivationCondition.gd" id="2_risoq"]
 [ext_resource type="Script" uid="uid://blttmux522ia1" path="res://scripts/PlantEffects/PlantEffect.gd" id="3_4mf3o"]
 [ext_resource type="Script" uid="uid://7213i26wusbl" path="res://scripts/PlantData/plant_data.gd" id="6_0yxuf"]
 [ext_resource type="Texture2D" uid="uid://dnth7q667hlq2" path="res://assets/plants/bill_anims/bill_image.png" id="7_buqvu"]
 
-[sub_resource type="Resource" id="Resource_7rml2"]
-script = ExtResource("2_risoq")
-area = 2
-required_activation_type = 2
-metadata/_custom_type_script = "uid://62wqba8agui1"
-
 [resource]
 script = ExtResource("6_0yxuf")
 plant_name = "Billberry"
-plant_description = "When a neighbor activates, grants 3 coins, dies"
+plant_description = ""
 store_icon = ExtResource("7_buqvu")
 effects = Array[ExtResource("3_4mf3o")]([])
-conditions = Array[ExtResource("1_xulev")]([SubResource("Resource_7rml2")])
+conditions = Array[ExtResource("1_xulev")]([])
 planted_animation = Array[Texture2D]([])
 activated_animation = Array[Texture2D]([])
 enabled_animation = Array[Texture2D]([])

@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="PlantData" load_steps=14 format=3 uid="uid://dpohgb6hu8afl"]
+
+[ext_resource type="Texture2D" uid="uid://fpyv4r4jaadm" path="res://assets/plants/banana_anims/banana_scored/banana_scored_1.png" id="1_fvwlu"]
+[ext_resource type="Texture2D" uid="uid://b4ki3wkijhen8" path="res://assets/plants/banana_anims/banana_ripe/banana_ripe_1.png" id="2_roc2g"]
+[ext_resource type="Script" uid="uid://duht5knl030ng" path="res://scripts/PlantConditions/PlantCondition.gd" id="3_c46nc"]
+[ext_resource type="Script" uid="uid://0b0mvqf508uj" path="res://scripts/PlantConditions/StatusCondition.gd" id="4_c46nc"]
+[ext_resource type="Script" uid="uid://blttmux522ia1" path="res://scripts/PlantEffects/PlantEffect.gd" id="4_hsq5h"]
+[ext_resource type="Texture2D" uid="uid://fls8fjp6nbgf" path="res://assets/plants/banana_anims/banana_planted/banana_planted_1.png" id="5_ud7nx"]
+[ext_resource type="Script" uid="uid://cq8g1h4djhk4x" path="res://scripts/PlantEffects/Tested/PointEffect.gd" id="6_hsq5h"]
+[ext_resource type="Script" uid="uid://7213i26wusbl" path="res://scripts/PlantData/plant_data.gd" id="6_ydy6k"]
+[ext_resource type="Texture2D" uid="uid://cdlxomf06exbn" path="res://assets/plants/banana_anims/banana_image.png" id="7_mntt8"]
+
+[sub_resource type="Resource" id="Resource_ud7nx"]
+script = ExtResource("4_c46nc")
+required_activation_type = 0
+metadata/_custom_type_script = "uid://0b0mvqf508uj"
+
+[sub_resource type="Resource" id="Resource_ydy6k"]
+script = ExtResource("4_c46nc")
+required_activation_type = 3
+metadata/_custom_type_script = "uid://0b0mvqf508uj"
+
+[sub_resource type="Resource" id="Resource_c46nc"]
+script = ExtResource("4_c46nc")
+required_activation_type = 1
+metadata/_custom_type_script = "uid://0b0mvqf508uj"
+
+[sub_resource type="Resource" id="Resource_mntt8"]
+script = ExtResource("6_hsq5h")
+point_amount = 5
+metadata/_custom_type_script = "uid://cq8g1h4djhk4x"
+
+[resource]
+script = ExtResource("6_ydy6k")
+plant_name = "Banana"
+plant_description = "When watered, heated or sunlit, gain 5 points"
+store_icon = ExtResource("7_mntt8")
+effects = Array[ExtResource("4_hsq5h")]([SubResource("Resource_mntt8")])
+conditions = Array[ExtResource("3_c46nc")]([SubResource("Resource_ud7nx"), SubResource("Resource_ydy6k"), SubResource("Resource_c46nc")])
+planted_animation = Array[Texture2D]([ExtResource("5_ud7nx"), ExtResource("2_roc2g")])
+activated_animation = Array[Texture2D]([ExtResource("1_fvwlu"), ExtResource("2_roc2g"), ExtResource("1_fvwlu"), ExtResource("2_roc2g"), ExtResource("1_fvwlu"), ExtResource("2_roc2g")])
+enabled_animation = Array[Texture2D]([])
+metadata/_custom_type_script = "uid://7213i26wusbl"

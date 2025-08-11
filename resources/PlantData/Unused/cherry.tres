@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="PlantData" load_steps=15 format=3 uid="uid://dlgam38yc13rn"]
+[gd_resource type="Resource" script_class="PlantData" load_steps=13 format=3 uid="uid://dlgam38yc13rn"]
 
 [ext_resource type="Script" uid="uid://duht5knl030ng" path="res://scripts/PlantConditions/PlantCondition.gd" id="1_3cmvj"]
 [ext_resource type="Texture2D" uid="uid://cheuppxxsj6oa" path="res://assets/plants/cherry_anims/cherry_scored/cherry_scored_2.png" id="1_i8hqh"]
-[ext_resource type="Script" uid="uid://yeby1om7yl8g" path="res://scripts/PlantConditions/OnPlantBornCondition.gd" id="2_3cmvj"]
 [ext_resource type="Texture2D" uid="uid://bwlh002lv2djg" path="res://assets/plants/cherry_anims/cherry_scored/cherry_scored_3.png" id="2_frf6k"]
 [ext_resource type="Texture2D" uid="uid://cw7lse7h4pgi3" path="res://assets/plants/cherry_anims/cherry_scored/cherry_scored_1.png" id="3_6a5fg"]
 [ext_resource type="Script" uid="uid://blttmux522ia1" path="res://scripts/PlantEffects/PlantEffect.gd" id="3_mxce2"]
@@ -14,18 +13,13 @@
 [ext_resource type="Texture2D" uid="uid://c72uxx4002lhr" path="res://assets/plants/cherry_anims/cherry_planted/cherry_planted_4.png" id="10_2qu7f"]
 [ext_resource type="Texture2D" uid="uid://bbamixo8fycor" path="res://assets/plants/cherry_anims/cherry_planted/cherry_planted_5.png" id="11_ilr5i"]
 
-[sub_resource type="Resource" id="Resource_mxce2"]
-script = ExtResource("2_3cmvj")
-required_activation_type = 2
-metadata/_custom_type_script = "uid://yeby1om7yl8g"
-
 [resource]
 script = ExtResource("5_4j57r")
 plant_name = "Cherry"
-plant_description = "When a plant grows, gives 30 points"
+plant_description = ""
 store_icon = ExtResource("6_hjbtj")
 effects = Array[ExtResource("3_mxce2")]([])
-conditions = Array[ExtResource("1_3cmvj")]([SubResource("Resource_mxce2")])
+conditions = Array[ExtResource("1_3cmvj")]([])
 planted_animation = Array[Texture2D]([ExtResource("7_kojfs"), ExtResource("8_ypo48"), ExtResource("9_ljr8r"), ExtResource("10_2qu7f"), ExtResource("11_ilr5i")])
 activated_animation = Array[Texture2D]([ExtResource("1_i8hqh"), ExtResource("2_frf6k"), ExtResource("1_i8hqh"), ExtResource("2_frf6k"), ExtResource("1_i8hqh"), ExtResource("2_frf6k"), ExtResource("1_i8hqh"), ExtResource("2_frf6k"), ExtResource("3_6a5fg")])
 enabled_animation = Array[Texture2D]([])
