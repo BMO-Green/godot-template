@@ -84,7 +84,6 @@ func get_seed_spawner() -> SeedSpawner:
 
 func _on_seed_coin_slot_on_coin_deposited() -> void:
 	on_seed_shop_opened.emit()
-	print(spin_speed)
 	
 
 func _on_spin_coin_slot_on_coin_deposited() -> void:
