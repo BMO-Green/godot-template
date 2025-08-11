@@ -11,7 +11,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		var seed_spawner : SeedSpawner = get_tree().root.get_node("/root/Game/Washer").get_seed_spawner()
 		test_plant_data.effects = []
 		test_plant_data.effects.append(plant_effect)
-		print(test_plant_data)
 		seed_spawner.spawn_seed(test_plant_data)
 	
 	if event.is_action_pressed("debug_activate_all_plants"):
