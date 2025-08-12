@@ -30,7 +30,9 @@ var spin_duration_elapsed: float
 @export var BUNNY_CLOCK_TIME_GAINED_PER_COIN = 10.0
 #@export var SPEED_WASTE_PROTECTION_FACTOR: float = 0.5
 @export var BUNNY_CLOCK: Timeout
-
+@export var bunny : AnimatedSprite2D
+@export var turtle : AnimatedSprite2D
+@export var SPEED_SLIDER : HSlider
 var speed_increase_factor : float = 0
 var speed_increase_per_second : float = MAX_SPIN_SPEED / BUNNY_CLOCK_TIME_GAINED_PER_COIN
 enum speed_slider_states {
@@ -71,8 +73,6 @@ func _physics_process(delta: float) -> void:
 	if is_spinning:
 		cavity.rotate(spin_speed * delta)
 		spin_duration_remaining -= delta
-		#if spin_speed >= MIN_SPIN_SPEED:
-			#spin_speed = spin_speed - SPIN_SPEED_DECAY * delta
 		
 		if spin_duration_remaining < 0:
 			handle_end_of_cycle()
@@ -80,22 +80,24 @@ func _physics_process(delta: float) -> void:
 func speed_state_entering() -> void:
 	if current_speed_state == previous_speed_state:
 		pass
-	
 	else:
 		if current_speed_state == speed_slider_states.PAUSED:
-			pass
+			bunny.stop()
+			turtle.stop()
 		elif current_speed_state == speed_slider_states.SPEED_UP:
-			pass
-			#TODO bunny anim starts
+			bunny.play()
+			print(bunny.is_playing())
+			turtle.stop()
 		elif current_speed_state == speed_slider_states.SLOW_DOWN:
-			pass 
+			bunny.stop()
+			turtle.play() 
 	
 	previous_speed_state = current_speed_state
 
 func speed_state_process(delta: float) -> void:
 	if current_speed_state == speed_slider_states.PAUSED:
 		if is_spinning == false:
-			current_speed_state = speed_slider_states.PAUSED
+			pass
 		elif BUNNY_CLOCK.is_finished():
 			current_speed_state = speed_slider_states.SLOW_DOWN
 		else:
@@ -111,15 +113,12 @@ func speed_state_process(delta: float) -> void:
 			spin_speed += speed_increase_per_second * delta
 			
 	elif current_speed_state == speed_slider_states.SLOW_DOWN:
-		if is_spinning == false:
+		if is_spinning == false or SPEED_SLIDER.value == SPEED_SLIDER.min_value:
 			current_speed_state = speed_slider_states.PAUSED
 		elif not BUNNY_CLOCK.is_finished():
 			current_speed_state = speed_slider_states.SPEED_UP
 		else:
 			spin_speed -= speed_increase_per_second * delta
-		#TODO turtle anim, easing in and out
-	
-	previous_speed_state = current_speed_state
 
 func spin() -> void:
 	spin_duration_elapsed = 0
@@ -167,9 +166,6 @@ func _on_button_pressed() -> void:
 
 func _on_speed_slider_coin_slot_on_coin_deposited() -> void:
 	BUNNY_CLOCK.refill(10.0)
-	#if spin_speed < MAX_SPIN_SPEED - SPEED_GAINED_PER_COIN * SPEED_WASTE_PROTECTION_FACTOR:
-		#spin_speed = spin_speed + SPEED_GAINED_PER_COIN
-	#else: CurrencyManager.modify_currency(1) #give them their coin back
 
 func handle_speed_change_audio(new_value: int):
 	var spin_speed_audio_value : float = remap(new_value, MIN_SPIN_SPEED, MAX_SPIN_SPEED, 0, MusicData.KEYS.size() - 1)

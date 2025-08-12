@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://b1an0fegyfxgt"]
+[gd_scene load_steps=60 format=3 uid="uid://b1an0fegyfxgt"]
 
 [ext_resource type="Script" uid="uid://24fku4hjw18q" path="res://scenes/Washer/washer.gd" id="1_lfd6o"]
 [ext_resource type="Texture2D" uid="uid://b8j768yj0o20" path="res://assets/background_art/laundromat_bg_full.png" id="2_fpw1r"]
@@ -45,8 +45,10 @@
 [ext_resource type="Script" uid="uid://blj5m6sb04c16" path="res://scripts/UI/point_display.gd" id="40_na54g"]
 [ext_resource type="Script" uid="uid://84nyvtos2mu4" path="res://scenes/Washer/target_label.gd" id="41_ij2v1"]
 [ext_resource type="Texture2D" uid="uid://dp3cnkjgadf5j" path="res://assets/ui_elements/speed_gauge_base.png" id="42_hmpjo"]
+[ext_resource type="Texture2D" uid="uid://bbeg2fvcmy6l0" path="res://assets/ui_elements/bunny_move.png" id="45_ib3l4"]
 [ext_resource type="Texture2D" uid="uid://djw4afsuricv2" path="res://assets/ui_elements/bunny_stop.png" id="45_pjvq3"]
 [ext_resource type="Texture2D" uid="uid://56psvt4nhoyg" path="res://assets/ui_elements/turtle_stop.png" id="46_cjp45"]
+[ext_resource type="Texture2D" uid="uid://y5xvtyung7xg" path="res://assets/ui_elements/turtle_move.png" id="47_loftn"]
 [ext_resource type="Script" uid="uid://be70wckfs3oe" path="res://scripts/Utility/timeout.gd" id="48_pjvq3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7nn5q"]
@@ -80,14 +82,45 @@ height = 56.0
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_50xyq"]
 texture = ExtResource("34_tijac")
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_ee7q1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("45_pjvq3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_ib3l4")
+}],
+"loop": true,
+"name": &"bunny",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ek3cj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("47_loftn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_cjp45")
+}],
+"loop": true,
+"name": &"turtle",
+"speed": 1.5
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_rylyh"]
 radius = 199.199
 
-[node name="Washer" type="Node2D" node_paths=PackedStringArray("seed_spawner", "spin_duration_label", "BUNNY_CLOCK")]
+[node name="Washer" type="Node2D" node_paths=PackedStringArray("seed_spawner", "spin_duration_label", "BUNNY_CLOCK", "bunny", "turtle", "SPEED_SLIDER")]
 script = ExtResource("1_lfd6o")
 seed_spawner = NodePath("SeedSpawnLocation")
 spin_duration_label = NodePath("Control/Duration Label")
 BUNNY_CLOCK = NodePath("BunnyClock")
+bunny = NodePath("Control/Bunny")
+turtle = NodePath("Control/Turtle")
+SPEED_SLIDER = NodePath("Control/VBoxContainer/SpeedSlider")
 
 [node name="CoinChuteBg" type="Sprite2D" parent="."]
 z_index = -1000
@@ -513,15 +546,17 @@ offset_right = -324.0
 offset_bottom = 200.0
 text = "Score / Target"
 
-[node name="Bunny" type="Sprite2D" parent="Control"]
+[node name="Bunny" type="AnimatedSprite2D" parent="Control"]
 position = Vector2(-372, -1)
 scale = Vector2(0.409605, 0.409605)
-texture = ExtResource("45_pjvq3")
+sprite_frames = SubResource("SpriteFrames_ee7q1")
+animation = &"bunny"
 
-[node name="Turtle" type="Sprite2D" parent="Control"]
+[node name="Turtle" type="AnimatedSprite2D" parent="Control"]
 position = Vector2(-356, -3)
 scale = Vector2(0.402883, 0.402883)
-texture = ExtResource("46_cjp45")
+sprite_frames = SubResource("SpriteFrames_ek3cj")
+animation = &"turtle"
 
 [node name="SpinCoinSlot" parent="." instance=ExtResource("8_cphwb")]
 position = Vector2(-215, -97)
