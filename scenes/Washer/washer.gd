@@ -14,7 +14,7 @@ signal on_spin_speed_changed(value: float)
 @export var seed_buffer : SeedBuffer
 
 @export_category("Spin")
-@export var spin_duration: float = 15
+@export var spin_duration: float = 10
 @export var spin_duration_label: Label
 var spin_duration_elapsed: float
 
@@ -26,8 +26,20 @@ var spin_duration_elapsed: float
 @export var MAX_SPIN_SPEED: float = 4
 @export var MIN_SPIN_SPEED:float= 0.5
 @export var STARTING_SPIN_SPEED: float = 2
-@export var SPEED_GAINED_PER_COIN: float = 0.5
-@export var SPEED_WASTE_PROTECTION_FACTOR: float = 0.5
+#@export var SPEED_GAINED_PER_COIN: float = 0.5
+@export var BUNNY_CLOCK_TIME_GAINED_PER_COIN = 10.0
+#@export var SPEED_WASTE_PROTECTION_FACTOR: float = 0.5
+@export var BUNNY_CLOCK: Timeout
+
+var speed_increase_factor : float = 0
+var speed_increase_per_second : float = MAX_SPIN_SPEED / BUNNY_CLOCK_TIME_GAINED_PER_COIN
+enum speed_slider_states {
+	PAUSED,
+	SPEED_UP,
+	SLOW_DOWN,
+}
+var current_speed_state := speed_slider_states.PAUSED
+var previous_speed_state : speed_slider_states
 
 var is_spinning: bool = false
 var activations_this_cycle : int = 0
@@ -36,7 +48,7 @@ var whole_seconds_passed : int = 0
 
 var spin_speed: float:
 	set(value):
-		spin_speed = value
+		spin_speed = clamp(value, 0.5, 4.0)
 		on_spin_speed_changed.emit(value)
 var spin_duration_remaining: float : 
 	set(value):
@@ -52,14 +64,62 @@ func _ready() -> void:
 	spin_speed = STARTING_SPIN_SPEED
 	
 func _physics_process(delta: float) -> void:
+	
+	speed_state_entering()
+	speed_state_process(delta)
+	
 	if is_spinning:
 		cavity.rotate(spin_speed * delta)
 		spin_duration_remaining -= delta
-		if spin_speed >= MIN_SPIN_SPEED:
-			spin_speed = spin_speed - SPIN_SPEED_DECAY * delta
+		#if spin_speed >= MIN_SPIN_SPEED:
+			#spin_speed = spin_speed - SPIN_SPEED_DECAY * delta
 		
 		if spin_duration_remaining < 0:
 			handle_end_of_cycle()
+	
+func speed_state_entering() -> void:
+	if current_speed_state == previous_speed_state:
+		pass
+	
+	else:
+		if current_speed_state == speed_slider_states.PAUSED:
+			pass
+		elif current_speed_state == speed_slider_states.SPEED_UP:
+			pass
+			#TODO bunny anim starts
+		elif current_speed_state == speed_slider_states.SLOW_DOWN:
+			pass 
+	
+	previous_speed_state = current_speed_state
+
+func speed_state_process(delta: float) -> void:
+	if current_speed_state == speed_slider_states.PAUSED:
+		if is_spinning == false:
+			current_speed_state = speed_slider_states.PAUSED
+		elif BUNNY_CLOCK.is_finished():
+			current_speed_state = speed_slider_states.SLOW_DOWN
+		else:
+			current_speed_state = speed_slider_states.SPEED_UP
+			
+	elif current_speed_state == speed_slider_states.SPEED_UP:
+		if is_spinning == false:
+			current_speed_state = speed_slider_states.PAUSED
+		elif BUNNY_CLOCK.is_finished():
+			current_speed_state = speed_slider_states.SLOW_DOWN
+		else:
+			BUNNY_CLOCK.progress(delta)
+			spin_speed += speed_increase_per_second * delta
+			
+	elif current_speed_state == speed_slider_states.SLOW_DOWN:
+		if is_spinning == false:
+			current_speed_state = speed_slider_states.PAUSED
+		elif not BUNNY_CLOCK.is_finished():
+			current_speed_state = speed_slider_states.SPEED_UP
+		else:
+			spin_speed -= speed_increase_per_second * delta
+		#TODO turtle anim, easing in and out
+	
+	previous_speed_state = current_speed_state
 
 func spin() -> void:
 	spin_duration_elapsed = 0
@@ -106,9 +166,10 @@ func _on_button_pressed() -> void:
 
 
 func _on_speed_slider_coin_slot_on_coin_deposited() -> void:
-	if spin_speed < MAX_SPIN_SPEED - SPEED_GAINED_PER_COIN * SPEED_WASTE_PROTECTION_FACTOR:
-		spin_speed = spin_speed + SPEED_GAINED_PER_COIN
-	else: CurrencyManager.modify_currency(1) #give them their coin back
+	BUNNY_CLOCK.refill(10.0)
+	#if spin_speed < MAX_SPIN_SPEED - SPEED_GAINED_PER_COIN * SPEED_WASTE_PROTECTION_FACTOR:
+		#spin_speed = spin_speed + SPEED_GAINED_PER_COIN
+	#else: CurrencyManager.modify_currency(1) #give them their coin back
 
 func handle_speed_change_audio(new_value: int):
 	var spin_speed_audio_value : float = remap(new_value, MIN_SPIN_SPEED, MAX_SPIN_SPEED, 0, MusicData.KEYS.size() - 1)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://b1an0fegyfxgt"]
+[gd_scene load_steps=56 format=3 uid="uid://b1an0fegyfxgt"]
 
 [ext_resource type="Script" uid="uid://24fku4hjw18q" path="res://scenes/Washer/washer.gd" id="1_lfd6o"]
 [ext_resource type="Texture2D" uid="uid://b8j768yj0o20" path="res://assets/background_art/laundromat_bg_full.png" id="2_fpw1r"]
@@ -47,6 +47,7 @@
 [ext_resource type="Texture2D" uid="uid://dp3cnkjgadf5j" path="res://assets/ui_elements/speed_gauge_base.png" id="42_hmpjo"]
 [ext_resource type="Texture2D" uid="uid://djw4afsuricv2" path="res://assets/ui_elements/bunny_stop.png" id="45_pjvq3"]
 [ext_resource type="Texture2D" uid="uid://56psvt4nhoyg" path="res://assets/ui_elements/turtle_stop.png" id="46_cjp45"]
+[ext_resource type="Script" uid="uid://be70wckfs3oe" path="res://scripts/Utility/timeout.gd" id="48_pjvq3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7nn5q"]
 radius = 81.18
@@ -82,10 +83,11 @@ texture = ExtResource("34_tijac")
 [sub_resource type="CircleShape2D" id="CircleShape2D_rylyh"]
 radius = 199.199
 
-[node name="Washer" type="Node2D" node_paths=PackedStringArray("seed_spawner", "spin_duration_label")]
+[node name="Washer" type="Node2D" node_paths=PackedStringArray("seed_spawner", "spin_duration_label", "BUNNY_CLOCK")]
 script = ExtResource("1_lfd6o")
 seed_spawner = NodePath("SeedSpawnLocation")
 spin_duration_label = NodePath("Control/Duration Label")
+BUNNY_CLOCK = NodePath("BunnyClock")
 
 [node name="CoinChuteBg" type="Sprite2D" parent="."]
 z_index = -1000
@@ -332,7 +334,7 @@ script = ExtResource("3_p4vi5")
 seed_prefab = ExtResource("4_ufg6d")
 
 [node name="HeatLamp" parent="." instance=ExtResource("7_1n734")]
-position = Vector2(-77, 26)
+position = Vector2(-80, 34)
 rotation = 2.14715
 scale = Vector2(0.914455, 0.914455)
 particle_system = ExtResource("28_yxkay")
@@ -346,7 +348,7 @@ position = Vector2(-6, -82)
 position = Vector2(-3, -82)
 
 [node name="CollisionShape2D" parent="HeatLamp/WateringCollider" index="0"]
-position = Vector2(-4, 175)
+position = Vector2(-1.11261, 140.639)
 
 [node name="Sprite2D" parent="HeatLamp" index="2"]
 position = Vector2(-5, -83)
@@ -356,7 +358,7 @@ texture = ExtResource("17_r63ys")
 position = Vector2(-5, -85)
 
 [node name="LightLamp" parent="." instance=ExtResource("7_1n734")]
-position = Vector2(69, 9)
+position = Vector2(70, 15)
 rotation = 3.98477
 scale = Vector2(0.914455, 0.914455)
 particle_system = ExtResource("31_pbjm3")
@@ -370,7 +372,7 @@ position = Vector2(-6, -82)
 position = Vector2(-3, -82)
 
 [node name="CollisionShape2D" parent="LightLamp/WateringCollider" index="0"]
-position = Vector2(-4, 175)
+position = Vector2(-11.8003, 136.347)
 
 [node name="Sprite2D" parent="LightLamp" index="2"]
 position = Vector2(-5, -83)
@@ -380,7 +382,7 @@ texture = ExtResource("19_clmdp")
 position = Vector2(-5, -85)
 
 [node name="Sprinkler" parent="." instance=ExtResource("7_1n734")]
-position = Vector2(3, 87)
+position = Vector2(2, 94)
 scale = Vector2(0.961206, 0.963944)
 
 [node name="SpeedSliderCoinSlot" parent="." instance=ExtResource("8_cphwb")]
@@ -530,7 +532,7 @@ position = Vector2(-438, 100)
 scale = Vector2(0.559999, 0.559999)
 
 [node name="ToolCenter" type="Sprite2D" parent="."]
-position = Vector2(2, 72)
+position = Vector2(1.00489, 81.1029)
 scale = Vector2(0.140914, 0.142294)
 texture = ExtResource("22_rylyh")
 
@@ -543,9 +545,15 @@ shape = SubResource("CircleShape2D_rylyh")
 shape = SubResource("CircleShape2D_rylyh")
 
 [node name="ToolCenter2" type="Sprite2D" parent="."]
-position = Vector2(2, 72)
+position = Vector2(1.00489, 81.1029)
 scale = Vector2(0.140914, 0.142294)
 texture = ExtResource("22_rylyh")
+
+[node name="BunnyClock" type="Node" parent="."]
+script = ExtResource("48_pjvq3")
+MAXIMUM_TIME = 50.0
+START_DEPLETED = true
+metadata/_custom_type_script = "uid://be70wckfs3oe"
 
 [connection signal="input_event" from="PinballMechanism" to="." method="_on_pinball_mechanism_input_event"]
 [connection signal="on_coin_deposited" from="SpeedSliderCoinSlot" to="." method="_on_speed_slider_coin_slot_on_coin_deposited"]
