@@ -33,7 +33,13 @@ var spin_duration_elapsed: float
 @export var bunny : AnimatedSprite2D
 @export var turtle : AnimatedSprite2D
 @export var SPEED_SLIDER : HSlider
-var speed_increase_factor : float = 0
+
+var speed_increase_factor : float = 0:
+	set(value):
+		var decrease_speed : float = -0.3
+		var increase_speed : float = 1
+		speed_increase_factor = clamp(value, decrease_speed, increase_speed)
+		
 var speed_increase_per_second : float = MAX_SPIN_SPEED / BUNNY_CLOCK_TIME_GAINED_PER_COIN
 enum speed_slider_states {
 	PAUSED,
@@ -86,7 +92,6 @@ func speed_state_entering() -> void:
 			turtle.stop()
 		elif current_speed_state == speed_slider_states.SPEED_UP:
 			bunny.play()
-			print(bunny.is_playing())
 			turtle.stop()
 		elif current_speed_state == speed_slider_states.SLOW_DOWN:
 			bunny.stop()
@@ -110,7 +115,8 @@ func speed_state_process(delta: float) -> void:
 			current_speed_state = speed_slider_states.SLOW_DOWN
 		else:
 			BUNNY_CLOCK.progress(delta)
-			spin_speed += speed_increase_per_second * delta
+			speed_increase_factor = lerp(speed_increase_factor, 1.0, 0.05)
+			spin_speed += speed_increase_per_second * delta * speed_increase_factor
 			
 	elif current_speed_state == speed_slider_states.SLOW_DOWN:
 		if is_spinning == false or SPEED_SLIDER.value == SPEED_SLIDER.min_value:
@@ -118,7 +124,8 @@ func speed_state_process(delta: float) -> void:
 		elif not BUNNY_CLOCK.is_finished():
 			current_speed_state = speed_slider_states.SPEED_UP
 		else:
-			spin_speed -= speed_increase_per_second * delta
+			speed_increase_factor = lerp(speed_increase_factor, -1.0, 0.05)
+			spin_speed += speed_increase_per_second * delta * speed_increase_factor
 
 func spin() -> void:
 	spin_duration_elapsed = 0
