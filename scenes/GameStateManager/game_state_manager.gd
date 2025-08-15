@@ -6,7 +6,7 @@ signal on_state_changed(new_state: GameState)
 @export var available_plants: Array[PlantData]
 @export var reward_amount_for_beating_target: int
 
-
+var washer: Washer 
 var end_of_cycle_signal: Signal
 var game_over_screen: Label
 var shop_screen: ShopScreenUI

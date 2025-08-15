@@ -65,6 +65,7 @@ var spin_duration_remaining: float :
 
 func _ready() -> void:
 	GameStateManager.init_washer(self)
+	GameStateManager.washer = self
 	on_duration_changed.connect(func(value): 
 		spin_duration_label.text = str(snapped(value, 0.1)))
 	spin_duration_remaining = STARTING_DURATION

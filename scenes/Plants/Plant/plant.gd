@@ -14,16 +14,39 @@ const PlantCondition = preload("res://scripts/PlantConditions/PlantCondition.gd"
 var plant_data: PlantData
 var effects : Array[PlantEffect]
 var conditions: Array[PlantCondition]
-
 var plant_context: PlantContext
+
+var plant_rotation_factor: float
+var plant_rotation_max : float
+var plant_bending : float
+var base_ground_truth_rotation : float
 
 func _ready() -> void:
 	add_to_group("plants")
 	plant_context = PlantContext.new()
 
+
+func _process(delta: float) -> void:
+	#bending plants
+	if GameStateManager.washer.is_spinning:
+		rotate_plant()
+	else:
+		undo_rotation()
+
+func undo_rotation() -> void:
+	rotation = base_ground_truth_rotation
+
+
+func rotate_plant() -> void:
+	plant_rotation_factor = remap(GameStateManager.washer.spin_speed, 0.5, 4.0, 0.0, 1.0)
+	plant_rotation_factor = clamp(plant_rotation_factor, 0.0, 1.0)
+	plant_rotation_max = deg_to_rad(40.0) 
+	plant_bending = plant_rotation_factor * plant_rotation_max + base_ground_truth_rotation
+	rotation = plant_bending
+
+
 func initialize(_plant_data: PlantData):
 	plant_data = _plant_data
-	
 	effects = plant_data.effects
 	conditions = plant_data.conditions
 	listen_to_activation_signals()
@@ -36,7 +59,7 @@ func initialize(_plant_data: PlantData):
 	
 	rotate(1.5708)
 	soil_seeker.force_raycast_update()
-	
+	base_ground_truth_rotation = rotation
 	global_position = soil_seeker.get_collision_point()
 	
 
@@ -64,7 +87,8 @@ func activate(activation_type: PlantCondition.ActivationType) -> void:
 			
 			if plant_data.activated_animation != null:
 				sprite_2d.play("activated")
-	
+
+
 func setup_animations():
 	sprite_2d.sprite_frames.add_frame("idle", plant_data.store_icon)
 	
@@ -81,14 +105,16 @@ func setup_animations():
 		sprite_2d.sprite_frames.add_frame("activated", frame)
 	for frame in plant_data.enabled_animation:
 		sprite_2d.sprite_frames.add_frame("enabled", frame)
-	
+
+
 func play_particle_effect(effect: PackedScene) -> void:
 	if	effect == null: return
 	var particle_effect = effect.instantiate()
 	add_child(particle_effect)
 	particle_effect.global_position = global_position
 	particle_effect.restart()
-	
+
+
 func get_nearby_plants(radius: float) -> Array[Plant]:
 	var nearby_plants : Array[Plant]= []
 	var all_plants = get_tree().get_nodes_in_group("plants")
@@ -101,6 +127,7 @@ func get_nearby_plants(radius: float) -> Array[Plant]:
 			
 	return nearby_plants
 
+
 func listen_to_activation_signals() -> void:
 	var activation_signals = []
 	
@@ -112,14 +139,18 @@ func listen_to_activation_signals() -> void:
 			activate(PlantCondition.ActivationType.Signal)
 			)
 
+
 func _on_body_entered(body):
 	if(body is Seed): hit_by_seed.emit()
+
 
 func on_cycle_start():
 	plant_context.on_cycle_start()
 
+
 func handle_destruction():
 	queue_free()
+
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if (sprite_2d.animation == "planted"):
