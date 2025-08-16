@@ -17,8 +17,8 @@ var conditions: Array[PlantCondition]
 var plant_context: PlantContext
 
 var plant_rotation_factor: float
-var plant_rotation_max : float
-var plant_bending : float
+var plant_rotation_max : float = deg_to_rad(30.0)
+var plant_rotation : float
 var base_ground_truth_rotation : float
 var jiggle_tween
 var jiggle_rotation : float
@@ -36,27 +36,45 @@ func init_plant() -> void:
 func _process(delta: float) -> void:
 	if GameStateManager.washer.is_spinning:
 		rotate_plant()
+		shear_plant(plant_rotation)
 	else:
+		shear_plant(jiggle_rotation)
 		rotation = base_ground_truth_rotation + jiggle_rotation
 
 
 func _on_spin_stop_jiggle() -> void:
-	jiggle_rotation = plant_bending
+	jiggle_rotation = plant_rotation
 	
 	jiggle_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-	jiggle_tween.tween_property(self, "jiggle_rotation", deg_to_rad(-20.0) * plant_rotation_factor, 0.2)
-	jiggle_tween.tween_property(self, "jiggle_rotation", deg_to_rad(17.0) * plant_rotation_factor, 0.18)
-	jiggle_tween.tween_property(self, "jiggle_rotation", deg_to_rad(-10.0) * plant_rotation_factor, 0.12)
+	jiggle_tween.tween_property(self, "jiggle_rotation", deg_to_rad(-17.0) * plant_rotation_factor, 0.2)
+	jiggle_tween.tween_property(self, "jiggle_rotation", deg_to_rad(12.0) * plant_rotation_factor, 0.18)
+	jiggle_tween.tween_property(self, "jiggle_rotation", deg_to_rad(-7.0) * plant_rotation_factor, 0.12)
 	jiggle_tween.tween_property(self, "jiggle_rotation", deg_to_rad(3.0) * plant_rotation_factor, 0.08)
 	jiggle_tween.tween_property(self, "jiggle_rotation", 0.0, 0.02)
 
 
 func rotate_plant() -> void:
 	plant_rotation_factor = remap(GameStateManager.washer.spin_speed, 0.5, 4.0, 0.0, 1.0)
-	plant_rotation_factor = clamp(plant_rotation_factor, 0.0, 1.0)
-	plant_rotation_max = deg_to_rad(40.0) 
-	plant_bending = plant_rotation_factor * plant_rotation_max
-	rotation = base_ground_truth_rotation + plant_bending
+	plant_rotation_factor = clamp(plant_rotation_factor, 0.0, 1.0) 
+	plant_rotation = plant_rotation_factor * plant_rotation_max
+	
+	rotation = base_ground_truth_rotation + plant_rotation
+
+
+func shear_plant(bending_rotation : float) -> void:
+	var shear_strength := 0.50
+	
+	var plant_shear_strength := remap(
+		bending_rotation,
+		-plant_rotation_max,
+		plant_rotation_max,
+		-100.0 * shear_strength,
+		100.0 * shear_strength
+	)
+	plant_shear_strength = clamp(plant_shear_strength, -100, 100)
+	
+	var shader : ShaderMaterial = sprite_2d.material
+	shader.set_shader_parameter("strength", plant_shear_strength)
 
 
 func initialize(_plant_data: PlantData):

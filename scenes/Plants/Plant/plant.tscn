@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://up6g1bb2ei2m"]
+[gd_scene load_steps=7 format=3 uid="uid://up6g1bb2ei2m"]
 
 [ext_resource type="Script" uid="uid://yb3q4v8g2q12" path="res://scenes/Plants/Plant/plant.gd" id="1_fi0kw"]
 [ext_resource type="PackedScene" uid="uid://ccowan11ehccn" path="res://scenes/Plants/Plant/plant_activated_particles.tscn" id="2_genx4"]
+[ext_resource type="Shader" uid="uid://c0pfh2505wesy" path="res://scenes/Plants/Plant/plant_sway.gdshader" id="3_77ps8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5plcq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_canmp"]
+shader = ExtResource("3_77ps8")
+shader_parameter/strength = 100.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iv0qu"]
 resource_local_to_scene = true
@@ -42,6 +47,7 @@ shape = SubResource("CircleShape2D_5plcq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 2
+material = SubResource("ShaderMaterial_canmp")
 position = Vector2(-0.281662, -36.581)
 scale = Vector2(0.246334, 0.246334)
 sprite_frames = SubResource("SpriteFrames_iv0qu")
