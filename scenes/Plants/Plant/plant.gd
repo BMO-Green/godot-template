@@ -20,29 +20,43 @@ var plant_rotation_factor: float
 var plant_rotation_max : float
 var plant_bending : float
 var base_ground_truth_rotation : float
+var jiggle_tween
+var jiggle_rotation : float
 
 func _ready() -> void:
+	init_plant.call_deferred()
+
+
+func init_plant() -> void:
 	add_to_group("plants")
 	plant_context = PlantContext.new()
+	GameStateManager.washer.on_cycle_end.connect(_on_spin_stop_jiggle)
 
 
 func _process(delta: float) -> void:
-	#bending plants
 	if GameStateManager.washer.is_spinning:
 		rotate_plant()
 	else:
-		undo_rotation()
+		rotation = base_ground_truth_rotation + jiggle_rotation
 
-func undo_rotation() -> void:
-	rotation = base_ground_truth_rotation
+
+func _on_spin_stop_jiggle() -> void:
+	jiggle_rotation = plant_bending
+	
+	jiggle_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	jiggle_tween.tween_property(self, "jiggle_rotation", deg_to_rad(-20.0) * plant_rotation_factor, 0.2)
+	jiggle_tween.tween_property(self, "jiggle_rotation", deg_to_rad(17.0) * plant_rotation_factor, 0.18)
+	jiggle_tween.tween_property(self, "jiggle_rotation", deg_to_rad(-10.0) * plant_rotation_factor, 0.12)
+	jiggle_tween.tween_property(self, "jiggle_rotation", deg_to_rad(3.0) * plant_rotation_factor, 0.08)
+	jiggle_tween.tween_property(self, "jiggle_rotation", 0.0, 0.02)
 
 
 func rotate_plant() -> void:
 	plant_rotation_factor = remap(GameStateManager.washer.spin_speed, 0.5, 4.0, 0.0, 1.0)
 	plant_rotation_factor = clamp(plant_rotation_factor, 0.0, 1.0)
 	plant_rotation_max = deg_to_rad(40.0) 
-	plant_bending = plant_rotation_factor * plant_rotation_max + base_ground_truth_rotation
-	rotation = plant_bending
+	plant_bending = plant_rotation_factor * plant_rotation_max
+	rotation = base_ground_truth_rotation + plant_bending
 
 
 func initialize(_plant_data: PlantData):
@@ -53,7 +67,7 @@ func initialize(_plant_data: PlantData):
 	setup_animations()
 	if plant_data.planted_animation != null:
 		sprite_2d.play("planted")
-		
+	
 	var cavity_center: Node2D = get_parent().get_node("CenterOfCavity")
 	look_at(cavity_center.global_position)
 	
@@ -68,7 +82,7 @@ func activate(activation_type: PlantCondition.ActivationType) -> void:
 	var should_trigger = false	
 	if plant_context.hit_activation_limit(): return
 	
-	if	activation_type == PlantCondition.ActivationType.Force:
+	if activation_type == PlantCondition.ActivationType.Force:
 		should_trigger = true
 	
 	for condition in conditions:
