@@ -93,6 +93,7 @@ func initialize(_plant_data: PlantData):
 	soil_seeker.force_raycast_update()
 	base_ground_truth_rotation = rotation
 	global_position = soil_seeker.get_collision_point()
+	#print(plant_data.plant_name)
 	
 
 func activate(activation_type: PlantCondition.ActivationType) -> void:

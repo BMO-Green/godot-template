@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://b1an0fegyfxgt"]
+[gd_scene load_steps=62 format=3 uid="uid://b1an0fegyfxgt"]
 
 [ext_resource type="Script" uid="uid://24fku4hjw18q" path="res://scenes/Washer/washer.gd" id="1_lfd6o"]
 [ext_resource type="Texture2D" uid="uid://b8j768yj0o20" path="res://assets/background_art/laundromat_bg_full.png" id="2_fpw1r"]
@@ -35,6 +35,8 @@
 [ext_resource type="Texture2D" uid="uid://coganxbftx6u3" path="res://assets/ui_elements/tool_lamp_on.png" id="18_rylyh"]
 [ext_resource type="Texture2D" uid="uid://nta87vxlofxk" path="res://assets/ui_elements/tool_lamp_off.png" id="19_clmdp"]
 [ext_resource type="Texture2D" uid="uid://bp1w0jjlrn3ga" path="res://assets/ui_elements/tool_center.png" id="22_rylyh"]
+[ext_resource type="Script" uid="uid://d2sj0q3oo2ft6" path="res://scenes/Washer/cavity.gd" id="25_ee7q1"]
+[ext_resource type="Script" uid="uid://ctfsujuv2qtsj" path="res://scripts/Utility/sticky_slices/sticky_slices.gd" id="28_ek3cj"]
 [ext_resource type="PackedScene" uid="uid://blvyjf466y8mk" path="res://scenes/Sprinkler/heat_particles.tscn" id="28_yxkay"]
 [ext_resource type="PackedScene" uid="uid://dcb55bhtkbd0i" path="res://scenes/Sprinkler/light_particles.tscn" id="31_pbjm3"]
 [ext_resource type="Texture2D" uid="uid://bwe6sompyu8c6" path="res://assets/ui_elements/play_button_ready.png" id="33_4w84q"]
@@ -292,9 +294,14 @@ position = Vector2(193, -137)
 scale = Vector2(0.212295, 0.212295)
 texture = ExtResource("17_l1yce")
 
-[node name="Cavity" type="MeshInstance2D" parent="."]
+[node name="Cavity" type="MeshInstance2D" parent="." node_paths=PackedStringArray("soil_slicer", "center_of_cavity")]
 self_modulate = Color(0.306923, 0.306923, 0.306923, 1)
 position = Vector2(2, 82)
+script = ExtResource("25_ee7q1")
+soil_slicer = NodePath("SoilSlicer")
+center_of_cavity = NodePath("CenterOfCavity")
+seed_scene = ExtResource("4_ufg6d")
+metadata/_custom_type_script = "uid://d2sj0q3oo2ft6"
 
 [node name="DrumInterior" type="Sprite2D" parent="Cavity"]
 position = Vector2(-1.00003, -1)
@@ -360,6 +367,15 @@ position = Vector2(73, -76)
 shape = SubResource("CapsuleShape2D_mgpd2")
 
 [node name="CenterOfCavity" type="Node2D" parent="Cavity"]
+
+[node name="SoilSlicer" type="Node" parent="Cavity"]
+script = ExtResource("28_ek3cj")
+range_start = -3.142
+range_end = 3.142
+slices = 30
+stickiness_factor = 0.0
+loop_range = true
+metadata/_custom_type_script = "uid://ctfsujuv2qtsj"
 
 [node name="SeedSpawnLocation" type="Node2D" parent="."]
 position = Vector2(-107, -15)

@@ -8,7 +8,7 @@ signal on_seed_shop_opened
 signal on_duration_changed(value: float)
 signal on_spin_speed_changed(value: float)
 
-@onready var cavity: Node2D = $Cavity
+@onready var cavity: Cavity = $Cavity
 @export_category("Seeds")
 @export var seed_spawner: SeedSpawner
 @export var seed_buffer : SeedBuffer
